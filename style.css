@@ -815,3 +815,84 @@
   0% { background-position: 0% 50%; }
   100% { background-position: 400% 50%; }
 }
+
+/* Highlight main project */
+.featured {
+  border: 1px solid rgba(124,92,255,0.5);
+  box-shadow: 0 0 40px rgba(124,92,255,0.25);
+}
+
+/* Live Demo Button */
+.link-demo {
+  background: linear-gradient(135deg,#00c6ff,#7c5cff);
+  color: white;
+  border: none;
+}
+
+.link-demo:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 20px rgba(0,198,255,0.5);
+}
+
+.project-thumbnail {
+  height: 180px;
+  overflow: hidden;
+  border-radius: 16px 16px 0 0;
+}
+
+.project-thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.project-card:hover img {
+  transform: scale(1.08);
+}
+
+/* Project Image */
+.project-thumbnail {
+  height: 180px;
+  overflow: hidden;
+  border-radius: 16px 16px 0 0;
+}
+
+.project-thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+/* Hover zoom */
+.project-card:hover img {
+  transform: scale(1.08);
+}
+
+/* Live Demo Button */
+.link-demo {
+  background: linear-gradient(135deg,#00c6ff,#7c5cff);
+  color: white;
+  border: none;
+}
+
+.link-demo:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 20px rgba(0,198,255,0.5);
+}
+
+/* Featured Card */
+.featured {
+  border: 1px solid rgba(124,92,255,0.5);
+  box-shadow: 0 0 40px rgba(124,92,255,0.25);
+}
+
+/* Coming Soon */
+.coming-thumb {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40px;
+  color: rgba(255,255,255,0.3);
+}
