@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ajit Kumar Saini — Developer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+ 
+<div id="particles-js"></div>
+ 
+<!-- NAVBAR -->
+<header>
+  <div class="logo">Ajit.</div>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+ 
+<!-- HERO -->
+<section id="home" class="hero">
+  <div class="hero-badge">Available for opportunities</div>
+ 
+  <h1>
+    Hi, I'm
+    <span class="name-highlight">Ajit Kumar Saini</span>
+  </h1>
+ 
+  <div class="hero-typing">
+    <span id="typing"></span>
+    <span class="cursor"></span>
+  </div>
+ 
+  <div class="hero-cta">
+    <a href="#projects" class="btn btn-primary">View Projects ↓</a>
+    <a href="#contact" class="btn btn-secondary">Get in Touch</a>
+  </div>
+ 
+  <div class="scroll-hint">
+    <span>Scroll</span>
+    <div class="scroll-arrow"></div>
+  </div>
+</section>
+ 
+<!-- ABOUT -->
+<section id="about" style="background: var(--bg2); position: relative; z-index: 2;">
+  <div class="section">
+    <div class="section-label reveal">About</div>
+    <h2 class="section-title reveal">The person <span class="highlight">behind the code</span></h2>
+ 
+    <div class="about-inner">
+      <div class="about-image-wrap reveal">
+        <div class="about-image-container">
+          <img src="assets/img.png" alt="Ajit Kumar Saini" class="about-image">
+        </div>
+      </div>
+ 
+      <div class="about-content">
+        <h3 class="reveal">Full Stack Developer & DSA Enthusiast</h3>
+        <p class="reveal">I'm a passionate developer who loves building scalable web applications from the ground up. Whether it's crafting pixel-perfect UIs or designing efficient backend systems, I bring dedication and creativity to every project.</p>
+        <p class="reveal">When I'm not coding, you'll find me solving algorithmic challenges or exploring new technologies. I believe in writing clean, maintainable code that stands the test of time.</p>
+ 
+        <div class="about-stats reveal">
+          <div class="stat-card">
+            <div class="num">10+</div>
+            <div class="label">Projects</div>
+          </div>
+          <div class="stat-card">
+            <div class="num">3+</div>
+            <div class="label">Years Coding</div>
+          </div>
+          <div class="stat-card">
+            <div class="num">500+</div>
+            <div class="label">DSA Problems</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+ 
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section">
+    <div class="section-label reveal">Skills</div>
+    <h2 class="section-title reveal">My <span class="highlight">tech stack</span></h2>
+    <p class="section-desc reveal">Technologies and tools I work with to build modern applications.</p>
+ 
+    <div class="skills-grid">
+      <div class="skill-card reveal">
+        <div class="skill-icon">💻</div>
+        <h3>Languages</h3>
+        <p>Proficient in multiple programming languages for both frontend and backend development.</p>
+        <div class="skill-tags">
+          <span class="tag">C++</span>
+          <span class="tag">Java</span>
+          <span class="tag">JavaScript</span>
+        </div>
+      </div>
+ 
+      <div class="skill-card reveal">
+        <div class="skill-icon">🎨</div>
+        <h3>Frontend</h3>
+        <p>Building responsive, accessible, and visually compelling web interfaces.</p>
+        <div class="skill-tags">
+          <span class="tag">HTML5</span>
+          <span class="tag">CSS3</span>
+          <span class="tag">Responsive Design</span>
+        </div>
+      </div>
+ 
+      <div class="skill-card reveal">
+        <div class="skill-icon">⚙️</div>
+        <h3>Tools & Workflow</h3>
+        <p>Version control, APIs, and developer tools for efficient, collaborative development.</p>
+        <div class="skill-tags">
+          <span class="tag">Git</span>
+          <span class="tag">REST APIs</span>
+          <span class="tag">GitHub</span>
+        </div>
+      </div>
+ 
+      <div class="skill-card reveal">
+        <div class="skill-icon">🧩</div>
+        <h3>DSA & Problem Solving</h3>
+        <p>Solving complex algorithmic problems and building optimal solutions with data structures.</p>
+        <div class="skill-tags">
+          <span class="tag">Arrays</span>
+          <span class="tag">Trees</span>
+          <span class="tag">Dynamic Programming</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+ 
+<!-- PROJECTS -->
+<section id="projects" style="background: var(--bg2); position: relative; z-index: 2;">
+  <div class="section">
+    <div class="section-label reveal">Projects</div>
+    <h2 class="section-title reveal">Things I've <span class="highlight">built</span></h2>
+    <p class="section-desc reveal">A selection of projects that showcase my skills and passion for development.</p>
+ 
+    <div class="projects-grid">
+      <div class="project-card reveal">
+        <div class="project-thumbnail">🎧</div>
+        <div class="project-body">
+          <h3>EchoStream Media Player</h3>
+          <p>A full-featured music player with real-time controls, playlist management, and a clean, modern interface designed for the web.</p>
+          <div class="project-links">
+            <a href="https://github.com/ajitkumarsaini02/EchoStream-Media-Player" target="_blank" class="project-link link-code">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+              View Code
+            </a>
+          </div>
+        </div>
+      </div>
+ 
+      <div class="project-card reveal">
+        <div class="project-thumbnail">🎵</div>
+        <div class="project-body">
+          <h3>Spotify Clone</h3>
+          <p>A pixel-perfect, responsive Spotify UI clone built with HTML and CSS, showcasing my frontend skills and attention to design detail.</p>
+          <div class="project-links">
+            <a href="https://github.com/ajitkumarsaini02/spotify-clone" target="_blank" class="project-link link-code">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+              View Code
+            </a>
+          </div>
+        </div>
+      </div>
+ 
+      <div class="project-card reveal" style="opacity:0.45; pointer-events: none;">
+        <div class="project-thumbnail" style="font-size: 36px; color: rgba(255,255,255,0.2);">+</div>
+        <div class="project-body">
+          <h3 style="color: var(--muted);">More coming soon…</h3>
+          <p>Currently working on new projects. Check back or follow on GitHub for updates.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+ 
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section">
+    <div class="section-label reveal">Contact</div>
+    <h2 class="section-title reveal">Let's <span class="highlight">work together</span></h2>
+ 
+    <div class="contact-inner">
+      <div class="contact-info">
+        <h3 class="reveal">Open to new opportunities</h3>
+        <p class="reveal">Whether you have a project in mind, a role to offer, or just want to say hello — my inbox is always open. I'll get back to you as soon as possible.</p>
+ 
+        <div class="social-links">
+          <a href="https://github.com/ajitkumarsaini02" target="_blank" class="social-link reveal">
+            <div class="social-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+            </div>
+            <div>
+              <div style="font-size:13px;color:var(--muted);margin-bottom:2px;">GitHub</div>
+              <div>ajitkumarsaini02</div>
+            </div>
+          </a>
+ 
+          <a href="mailto:ajit@example.com" class="social-link reveal">
+            <div class="social-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
+            </div>
+            <div>
+              <div style="font-size:13px;color:var(--muted);margin-bottom:2px;">Email</div>
+              <div>Get in touch</div>
+            </div>
+          </a>
+        </div>
+      </div>
+ 
+      <div class="contact-form reveal">
+        <div class="form-group">
+          <label>Your Name</label>
+          <input type="text" placeholder="John Doe">
+        </div>
+        <div class="form-group">
+          <label>Email Address</label>
+          <input type="email" placeholder="john@example.com">
+        </div>
+        <div class="form-group">
+          <label>Message</label>
+          <textarea placeholder="Tell me about your project or opportunity…"></textarea>
+        </div>
+        <button class="form-submit">
+          Send Message
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+ 
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Ajit.</div>
+  <p>© 2026 Ajit Kumar Saini — Built with passion</p>
+  <p style="font-size:12px; color: rgba(124,92,255,0.6);">Ghaziabad, UP</p>
+</footer>
+ 
+<script src="script.js"></script>
+</body>
+</html>
