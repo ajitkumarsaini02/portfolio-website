@@ -12,7 +12,12 @@
       --card: rgba(255,255,255,0.04);
       --glow: 0 0 40px rgba(124,92,255,0.25);
     }
- 
+    
+    /* Highlight TaskMaster project */
+    .project-card:nth-child(4) {
+      border: 1px solid rgba(0,198,255,0.4);
+      box-shadow: 0 0 30px rgba(0,198,255,0.2);
+    }
     html { scroll-behavior: smooth; }
  
     body {
@@ -895,4 +900,22 @@
   justify-content: center;
   font-size: 40px;
   color: rgba(255,255,255,0.3);
+}
+
+.project-link:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(124,92,255,0.3);
+}
+
+@media (max-width: 600px) {
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+}
+.project-body h3 {
+  color: white;
+}
+
+.project-body p {
+  color: #b0b0d0;
 }
