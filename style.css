@@ -410,7 +410,7 @@
  
     .about-stats {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(4, 1fr);
       gap: 16px;
       margin-top: 36px;
     }
@@ -420,6 +420,7 @@
       border: 1px solid var(--border);
       border-radius: 16px;
       padding: 20px 16px;
+      height: 100%;
       text-align: center;
       transition: all 0.3s;
     }
@@ -761,7 +762,7 @@
       nav { display: none; }
       .section { padding: 80px 24px; }
       .about-inner { grid-template-columns: 1fr; gap: 40px; }
-      .about-stats { grid-template-columns: repeat(3, 1fr); }
+      .about-stats { grid-template-columns: repeat(2, 1fr); }
       .contact-inner { grid-template-columns: 1fr; gap: 48px; }
       footer { flex-direction: column; gap: 12px; text-align: center; padding: 24px; }
     }
@@ -919,4 +920,23 @@
 
 .project-body p {
   color: #b0b0d0;
+}
+
+/* Contest links clean styling */
+.stat-card .label a {
+  color: var(--accent2);
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.25s ease;
+}
+
+/* Hover effect */
+.stat-card .label a:hover {
+  color: var(--accent);
+  text-shadow: 0 0 8px rgba(124,92,255,1);
+}
+
+/* Remove visited purple color issue */
+.stat-card .label a:visited {
+  color: var(--accent2);
 }
