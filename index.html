@@ -1,334 +1,895 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ajit Kumar Saini — Developer</title>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
-  <link rel="stylesheet" href="style.css">
+  <title>Ajit Kumar Saini | Portfolio</title>
+  <meta name="description"
+    content="Portfolio of Ajit Kumar Saini — B.Tech Computer Science and Engineering student at ABES Engineering College, with resume details, projects, skills, and coding profiles.">
+  <meta name="keywords"
+    content="Ajit Kumar Saini, B.Tech CSE, ABES Engineering College, C, C++, Java, Python, HTML, CSS, JavaScript, MySQL, LeetCode, CodeChef, Portfolio, Ghaziabad">
+  <meta name="author" content="Ajit Kumar Saini">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Ajit Kumar Saini | Portfolio">
+  <meta property="og:description"
+    content="Resume, projects, skills, education, and coding achievements of Ajit Kumar Saini.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ajit-kumar-saini-portfolio.netlify.app/">
+
+  <!-- Favicon -->
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22 fill=%22%23E5B842%22>&lt;/&gt;</text></svg>">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
+    rel="stylesheet">
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- AOS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.1/aos.css">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
- 
-<div id="particles-js"></div>
- 
-<!-- NAVBAR -->
-<header>
-  <div class="logo">Ajit.</div>
-  <nav>
-    <a href="#home">Home</a>
-    <a href="#about">About</a>
-    <a href="#skills">Skills</a>
-    <a href="#projects">Projects</a>
-    <a href="#contact">Contact</a>
-  </nav>
-</header>
- 
-<!-- HERO -->
-<section id="home" class="hero">
-  <div class="hero-badge">Available for opportunities</div>
- 
-  <h1>
-    Hi, I'm
-    <span class="name-highlight">Ajit Kumar Saini</span>
-  </h1>
- 
-  <div class="hero-typing">
-    <span id="typing"></span>
-    <span class="cursor"></span>
-  </div>
- 
-  <div class="hero-cta">
-    <a href="#projects" class="btn btn-primary">View Projects ↓</a>
-    <a href="#contact" class="btn btn-secondary">Get in Touch</a>
-  </div>
- 
-  <div class="scroll-hint">
-    <span>Scroll</span>
-    <div class="scroll-arrow"></div>
-  </div>
-</section>
- 
-<!-- ABOUT -->
-<section id="about" style="background: var(--bg2); position: relative; z-index: 2;">
-  <div class="section">
-    <div class="section-label reveal">About</div>
-    <h2 class="section-title reveal">The person <span class="highlight">behind the code</span></h2>
- 
-    <div class="about-inner">
-      <div class="about-image-wrap reveal">
-        <div class="about-image-container">
-          <img src="assets/img.png" alt="Ajit Kumar Saini" class="about-image">
-        </div>
-      </div>
- 
-      <div class="about-content">
-        <h3 class="reveal">Full Stack Developer & DSA Enthusiast</h3>
-        <p class="reveal">I'm a passionate developer who loves building scalable web applications from the ground up. Whether it's crafting pixel-perfect UIs or designing efficient backend systems, I bring dedication and creativity to every project.</p>
-        <p class="reveal">When I'm not coding, you'll find me solving algorithmic challenges or exploring new technologies. I believe in writing clean, maintainable code that stands the test of time.</p>
- 
-        <div class="about-stats reveal">
-          <div class="stat-card">
-            <div class="num">4+</div>
-            <div class="label">Projects</div>
-          </div>
-          <div class="stat-card">
-            <div class="num">2+</div>
-            <div class="label">Years Coding</div>
-          </div>
-          <div class="stat-card">
-            <div class="num">350+</div>
-            <div class="label">DSA Problems</div>
-          </div>
-          <div class="stat-card contest">
-            <div class="num">20+</div>
-            <div class="label">
-              Contests <br>
-              <a href="https://leetcode.com/ajitkumarsaini02" target="_blank">LeetCode</a> • 
-              <a href="https://www.codechef.com/users/ajitsaini94" target="_blank">CodeChef</a>
-            </div>
-          </div>
-        </div>
-      </div>
+
+<body data-theme="dark">
+
+  <!-- ============ LOADING SCREEN ============ -->
+  <div id="loader" aria-hidden="true">
+    <div class="loader-inner">
+      <span class="loader-bracket">&lt;</span>
+      <span class="loader-text">Ajit</span>
+      <span class="loader-bracket">/&gt;</span>
+      <div class="loader-bar"><span></span></div>
     </div>
   </div>
-</section>
- 
-<!-- SKILLS -->
-<section id="skills">
-  <div class="section">
-    <div class="section-label reveal">Skills</div>
-    <h2 class="section-title reveal">My <span class="highlight">tech stack</span></h2>
-    <p class="section-desc reveal">Technologies and tools I work with to build modern applications.</p>
- 
-    <div class="skills-grid">
-      <div class="skill-card reveal">
-        <div class="skill-icon">💻</div>
-        <h3>Languages</h3>
-        <p>Proficient in multiple programming languages for both frontend and backend development.</p>
-        <div class="skill-tags">
-          <span class="tag">C</span>
-          <span class="tag">C++</span>
-          <span class="tag">Java</span>
-          <span class="tag">JavaScript</span>
-        </div>
-      </div>
- 
-      <div class="skill-card reveal">
-        <div class="skill-icon">🎨</div>
-        <h3>Frontend</h3>
-        <p>Building responsive, accessible, and visually compelling web interfaces.</p>
-        <div class="skill-tags">
-          <span class="tag">HTML5</span>
-          <span class="tag">CSS3</span>
-          <span class="tag">Responsive Design</span>
-        </div>
-      </div>
- 
-      <div class="skill-card reveal">
-        <div class="skill-icon">⚙️</div>
-        <h3>Tools & Workflow</h3>
-        <p>Version control, APIs, and developer tools for efficient, collaborative development.</p>
-        <div class="skill-tags">
-          <span class="tag">Git</span>
-          <span class="tag">REST APIs</span>
-          <span class="tag">GitHub</span>
-        </div>
-      </div>
- 
-      <div class="skill-card reveal">
-        <div class="skill-icon">🧩</div>
-        <h3>DSA & Problem Solving</h3>
-        <p>Solving complex algorithmic problems and building optimal solutions with data structures.</p>
-        <div class="skill-tags">
-          <span class="tag">Arrays</span>
-          <span class="tag">Trees</span>
-          <span class="tag">Dynamic Programming</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
- 
-<!-- PROJECTS -->
-<section id="projects" style="background: var(--bg2); position: relative; z-index: 2;">
-  <div class="section">
-    <div class="section-label reveal">Projects</div>
-    <h2 class="section-title reveal">Things I've <span class="highlight">built</span></h2>
-    <p class="section-desc reveal">
-      A selection of projects that showcase my skills and passion for development.
-    </p>
 
-    <div class="projects-grid">
+  <!-- Custom cursor -->
+  <div class="cursor-dot" aria-hidden="true"></div>
+  <div class="cursor-ring" aria-hidden="true"></div>
 
-      <!-- 🔥 Portfolio -->
-      <div class="project-card reveal featured">
-        <div class="project-thumbnail">
-          <img src="assets/project1.png" alt="Portfolio">
-        </div>
-        <div class="project-body">
-          <h3>Personal Portfolio Website</h3>
-          <p>
-            A modern developer portfolio featuring animated UI, particle background,
-            typing effects, smooth scrolling, and responsive design.
-          </p>
-          <div class="project-links">
-            <a href="https://github.com/ajitkumarsaini02" target="_blank" class="project-link link-code">
-              View Code
-            </a>
-            <a href="https://ajit-kumar-saini-portfolio.netlify.app/" target="_blank" class="project-link link-demo">
-              Live Demo
-            </a>
-          </div>
-        </div>
-      </div>
+  <!-- ============ NAVBAR ============ -->
+  <header class="navbar" id="navbar">
+    <nav class="nav-container">
+      <a href="#home" class="logo">
+        <span class="logo-bracket">&lt;</span> Ajit <span class="logo-bracket">/&gt;</span>
+      </a>
 
-      <!-- 🎧 EchoStream -->
-      <div class="project-card reveal">
-        <div class="project-thumbnail">
-          <img src="assets/project2.png" alt="EchoStream">
-        </div>
-        <div class="project-body">
-          <h3>EchoStream Media Player</h3>
-          <p>
-            A web-based music player with real-time audio controls, dynamic progress tracking,
-            and event-driven interactions built using JavaScript.
-          </p>
-          <div class="project-links">
-            <a href="https://github.com/ajitkumarsaini02/EchoStream-Media-Player" target="_blank" class="project-link link-code">
-              View Code
-            </a>
-            <a href="https://ajitkumarsaini02.github.io/EchoStream-Media-Player/" target="_blank" class="project-link link-demo">
-              Live Demo
-            </a>
-          </div>
-        </div>
-      </div>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation menu" aria-expanded="false"
+        aria-controls="navMenu">
+        <span></span><span></span><span></span>
+      </button>
 
-      <!-- 🎵 Spotify -->
-      <div class="project-card reveal">
-        <div class="project-thumbnail">
-          <img src="assets/project3.png" alt="Spotify Clone">
-        </div>
-        <div class="project-body">
-          <h3>Spotify Clone</h3>
-          <p>
-            A responsive frontend clone of Spotify focused on layout accuracy,
-            UI design, and clean component structure using HTML and CSS.
-          </p>
-          <div class="project-links">
-            <a href="https://github.com/ajitkumarsaini02/spotify-clone" target="_blank" class="project-link link-code">
-              View Code
-            </a>
-            <a href="https://ajitkumarsaini02.github.io/Spotify-Clone/" target="_blank" class="project-link link-demo">
-              Live Demo
-            </a>
-          </div>
-        </div>
-      </div>
-      
-      <!-- ✅ TaskMaster -->
-      <div class="project-card reveal">
-        <div class="project-thumbnail">
-          <img src="assets/project4.png" alt="TaskMaster">
-        </div>
-        <div class="project-body">
-          <h3>TaskMaster - Smart Task Manager</h3>
-          <p>
-            A responsive task management web app with real-time task updates,
-            search, filtering, priority levels, and dark mode support using localStorage.
-          </p>
-          <div class="project-links">
-            <a href="https://github.com/ajitkumarsaini02/TaskMaster" target="_blank" class="project-link link-code">
-              View Code
-            </a>
-            <a href="https://taskmaster-ajit.netlify.app" target="_blank" class="project-link link-demo">
-              Live Demo
-            </a>
-          </div>
-        </div>
-      </div>
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="#about" class="nav-link" data-section="about">About</a></li>
+        <li><a href="#skills" class="nav-link" data-section="skills">Skills</a></li>
+        <li><a href="#experience" class="nav-link" data-section="experience">Experience</a></li>
+        <li><a href="#projects" class="nav-link" data-section="projects">Projects</a></li>
+        <li><a href="#achievements" class="nav-link" data-section="achievements">Achievements</a></li>
+        <li><a href="#education" class="nav-link" data-section="education">Education</a></li>
+        <li><a href="#contact" class="nav-link" data-section="contact">Contact</a></li>
+      </ul>
 
-      <!-- ➕ Coming Soon -->
-      <div class="project-card reveal coming-soon">
-        <div class="project-thumbnail coming-thumb">
-          +
-        </div>
-        <div class="project-body">
-          <h3>More Projects Coming Soon</h3>
-          <p>
-            I'm actively working on new projects that will be added here soon. Stay tuned for updates!
-          </p>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
- 
-<!-- CONTACT -->
-<section id="contact">
-  <div class="section">
-    <div class="section-label reveal">Contact</div>
-    <h2 class="section-title reveal">Let's <span class="highlight">work together</span></h2>
- 
-    <div class="contact-inner">
-      <div class="contact-info">
-        <h3 class="reveal">Open to new opportunities</h3>
-        <p class="reveal">Whether you have a project in mind, a role to offer, or just want to say hello — my inbox is always open. I'll get back to you as soon as possible.</p>
- 
-        <div class="social-links">
-          <a href="https://github.com/ajitkumarsaini02" target="_blank" class="social-link reveal">
-            <div class="social-icon">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-            </div>
-            <div>
-              <div style="font-size:13px;color:var(--muted);margin-bottom:2px;">GitHub</div>
-              <div>ajitkumarsaini02</div>
-            </div>
-          </a>
- 
-          <a href="mailto:ajit@example.com" class="social-link reveal">
-            <div class="social-icon">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
-            </div>
-            <div>
-              <div style="font-size:13px;color:var(--muted);margin-bottom:2px;">Email</div>
-              <div>Get in touch</div>
-            </div>
-          </a>
-        </div>
-      </div>
- 
-      <div class="contact-form reveal">
-        <div class="form-group">
-          <label>Your Name</label>
-          <input type="text" placeholder="John Doe">
-        </div>
-        <div class="form-group">
-          <label>Email Address</label>
-          <input type="email" placeholder="john@example.com">
-        </div>
-        <div class="form-group">
-          <label>Message</label>
-          <textarea placeholder="Tell me about your project or opportunity…"></textarea>
-        </div>
-        <button class="form-submit">
-          Send Message
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+      <div class="nav-actions">
+        <button id="themeToggle" class="icon-btn" aria-label="Toggle light and dark theme">
+          <i class="fa-solid fa-moon"></i>
         </button>
+        <a href="assets/Ajit_Kumar_Saini_Resume.pdf" download="Ajit_Kumar_Saini_Resume.pdf"
+          class="btn btn-primary btn-nav">Resume</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="home">
+
+    <!-- ============ HERO ============ -->
+    <section class="hero" aria-label="Introduction">
+      <div class="hero-bg" aria-hidden="true">
+        <span class="blob blob-1"></span>
+        <span class="blob blob-2"></span>
+        <span class="blob blob-3"></span>
+        <canvas id="particles"></canvas>
+      </div>
+
+      <div class="hero-container">
+        <div class="hero-text" data-aos="fade-right">
+          <p class="eyebrow"><i class="fa-solid fa-location-dot"></i> GHAZIABAD, UTTAR PRADESH, INDIA</p>
+          <h1>Hi, I'm <span class="gradient-text">Ajit Kumar Saini</span></h1>
+          <h2 class="typing-wrap">
+            <span class="typing-prefix">&gt;</span><span id="typedText"></span><span class="cursor-blink">|</span>
+          </h2>
+          <p class="hero-desc">
+            B.Tech CSE student at ABES Engineering College focused on frontend development, DSA, and competitive
+            programming. Open to internships, open-source collaborations, and software opportunities.
+          </p>
+
+          <div class="hero-buttons">
+            <a href="#projects" class="btn btn-primary">
+              View My Work
+            </a>
+            <a href="assets/Ajit_Kumar_Saini_Resume.pdf" download="Ajit_Kumar_Saini_Resume.pdf" class="btn btn-outline">
+              Download Resume
+            </a>
+            <div class="hero-socials">
+              <a href="https://github.com/ajitkumarsaini02" target="_blank" rel="noopener" aria-label="GitHub"><i
+                  class="fa-brands fa-github"></i></a>
+              <a href="https://www.linkedin.com/in/ajit-kumar-saini-74340932b/" target="_blank" rel="noopener"
+                aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+              <a href="https://leetcode.com/ajitkumarsaini02" target="_blank" rel="noopener" aria-label="LeetCode"><i
+                  class="fa-solid fa-code"></i></a>
+              <a href="https://ajit-kumar-saini-portfolio.netlify.app/" target="_blank" rel="noopener"
+                aria-label="Portfolio"><i class="fa-solid fa-globe"></i></a>
+            </div>
+          </div>
+
+          <div class="hero-quick-stats">
+            <div class="quick-stat-item">
+              <h3><span class="counter" data-target="475">0</span></h3>
+              <p>LeetCode Problems</p>
+            </div>
+            <div class="quick-stat-item">
+              <h3>1492</h3>
+              <p>LeetCode Contest Rating</p>
+            </div>
+            <div class="quick-stat-item">
+              <h3>8.48/10</h3>
+              <p>CGPA</p>
+            </div>
+            <div class="quick-stat-item">
+              <h3>1394</h3>
+              <p>CodeChef Rating</p>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="hero-visual" data-aos="fade-left">
+          <div class="terminal-window">
+            <div class="terminal-header">
+              <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+              <span class="terminal-title">about-me.js</span>
+            </div>
+            <pre class="terminal-body"><code><span class="tk-key">const</span> <span class="tk-var">ajit</span> = {
+  <span class="tk-prop">role</span>: <span class="tk-str">'B.Tech CSE Student'</span>,
+  <span class="tk-prop">focus</span>: [<span class="tk-str">'Frontend'</span>, <span class="tk-str">'DSA'</span>, <span class="tk-str">'Competitive Programming'</span>],
+  <span class="tk-prop">college</span>: <span class="tk-str">'ABES Engineering College'</span>,
+  <span class="tk-prop">cgpa</span>: <span class="tk-fn">8.48</span>,
+  <span class="tk-prop">leetcode</span>: <span class="tk-str">'475+'</span>,
+  <span class="tk-prop">codechef</span>: <span class="tk-str">'1394'</span>,
+};</code></pre>
+          </div>
+        </div>
+      </div>
+
+      <a href="#about" class="scroll-indicator" aria-label="Scroll to About section">
+        <span></span>
+      </a>
+    </section>
+
+    <!-- ============ ABOUT ============ -->
+    <section class="section" id="about">
+      <div class="container">
+        <p class="section-eyebrow" data-aos="fade-up">01 / About</p>
+        <h2 class="section-title" data-aos="fade-up">Know Me Better</h2>
+
+        <div class="about-grid">
+          <div class="about-image" data-aos="fade-right">
+            <div class="about-frame">
+              <img src="assets/photo.png" alt="Ajit Kumar Saini" class="about-img">
+            </div>
+            <div class="about-badge">
+              <i class="fa-solid fa-graduation-cap"></i>
+              <span>B.Tech CSE (AKTU) • 8.48 CGPA</span>
+            </div>
+          </div>
+
+          <div class="about-content" data-aos="fade-left">
+            <h3>B.Tech CSE Student &amp; Frontend Developer</h3>
+            <p>
+              I am a Computer Science and Engineering student at ABES Engineering College with a strong interest in
+              frontend development, problem solving, and competitive programming.
+            </p>
+            <p>
+              I work with HTML, CSS, JavaScript, C, C++, Java, Python, and MySQL. I am actively looking for
+              internships, open-source contributions, and real-world software development opportunities.
+            </p>
+
+            <ul class="about-list">
+              <li><i class="fa-solid fa-check"></i> Pursuing B.Tech in Computer Science &amp; Engineering at ABES
+                Engineering College, Ghaziabad</li>
+              <li><i class="fa-solid fa-check"></i> Scored 8.48/10 CGPA in college</li>
+              <li><i class="fa-solid fa-check"></i> Solved 475+ LeetCode DSA problems</li>
+              <li><i class="fa-solid fa-check"></i> Built responsive projects using HTML, CSS, and JavaScript</li>
+              <li><i class="fa-solid fa-check"></i> Comfortable with Git, GitHub, VS Code, and MySQL</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="stats-grid" data-aos="fade-up">
+          <div class="stat-card">
+            <i class="fa-solid fa-diagram-project"></i>
+            <h3 class="counter" data-target="475">0</h3>
+            <p>LeetCode Problems</p>
+          </div>
+          <div class="stat-card">
+            <i class="fa-solid fa-fire"></i>
+            <h3>1492</h3>
+            <p>LeetCode Contest Rating</p>
+          </div>
+          <div class="stat-card">
+            <i class="fa-solid fa-award"></i>
+            <h3>1394</h3>
+            <p>CodeChef Rating</p>
+          </div>
+          <div class="stat-card">
+            <i class="fa-solid fa-star"></i>
+            <h3>1577</h3>
+            <p>LeetCode Highest Rating</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SKILLS ============ -->
+    <section class="section section-alt" id="skills">
+      <div class="container">
+        <p class="section-eyebrow" data-aos="fade-up">02 / Skills</p>
+        <h2 class="section-title" data-aos="fade-up">Tools &amp; Technologies</h2>
+
+        <div class="skills-grid">
+
+          <div class="skill-category" data-aos="fade-up">
+            <h3><i class="fa-solid fa-terminal"></i> Languages</h3>
+            <div class="skill-bar">
+              <div class="skill-bar-top"><span>C</span><span>90%</span></div>
+              <div class="bar">
+                <div class="bar-fill" data-width="90"></div>
+              </div>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-bar-top"><span>C++</span><span>90%</span></div>
+              <div class="bar">
+                <div class="bar-fill" data-width="90"></div>
+              </div>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-bar-top"><span>Java</span><span>88%</span></div>
+              <div class="bar">
+                <div class="bar-fill" data-width="88"></div>
+              </div>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-bar-top"><span>Python</span><span>80%</span></div>
+              <div class="bar">
+                <div class="bar-fill" data-width="80"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="skill-category" data-aos="fade-up" data-aos-delay="100">
+            <h3><i class="fa-solid fa-display"></i> Frontend</h3>
+            <div class="skill-bar">
+              <div class="skill-bar-top"><span>HTML</span><span>95%</span></div>
+              <div class="bar">
+                <div class="bar-fill" data-width="95"></div>
+              </div>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-bar-top"><span>CSS</span><span>90%</span></div>
+              <div class="bar">
+                <div class="bar-fill" data-width="90"></div>
+              </div>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-bar-top"><span>JavaScript</span><span>85%</span></div>
+              <div class="bar">
+                <div class="bar-fill" data-width="85"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="skill-category" data-aos="fade-up" data-aos-delay="200">
+            <h3><i class="fa-solid fa-laptop-code"></i> Core</h3>
+            <div class="skill-bar">
+              <div class="skill-bar-top"><span>DSA</span><span>92%</span></div>
+              <div class="bar">
+                <div class="bar-fill" data-width="92"></div>
+              </div>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-bar-top"><span>OOP</span><span>90%</span></div>
+              <div class="bar">
+                <div class="bar-fill" data-width="90"></div>
+              </div>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-bar-top"><span>DBMS</span><span>85%</span></div>
+              <div class="bar">
+                <div class="bar-fill" data-width="85"></div>
+              </div>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-bar-top"><span>Operating Systems</span><span>88%</span></div>
+              <div class="bar">
+                <div class="bar-fill" data-width="88"></div>
+              </div>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-bar-top"><span>Computer Networks</span><span>88%</span></div>
+              <div class="bar">
+                <div class="bar-fill" data-width="88"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="skill-category" data-aos="fade-up" data-aos-delay="300" style="grid-column: span 2;">
+            <h3><i class="fa-solid fa-toolbox"></i> Developer Tools &amp; Platforms</h3>
+            <div class="tool-chip-row">
+              <span class="tool-chip"><i class="fa-brands fa-git-alt"></i> Git</span>
+              <span class="tool-chip"><i class="fa-brands fa-github"></i> GitHub</span>
+              <span class="tool-chip"><i class="fa-solid fa-code"></i> VS Code</span>
+              <span class="tool-chip"><i class="fa-solid fa-cloud"></i> Netlify</span>
+              <span class="tool-chip"><i class="fa-solid fa-cloud"></i> Vercel</span>
+            </div>
+          </div>
+
+          <div class="skill-category" data-aos="fade-up" data-aos-delay="400">
+            <h3><i class="fa-solid fa-database"></i> Database</h3>
+            <div class="tool-chip-row">
+              <span class="tool-chip"><i class="fa-solid fa-database"></i> MySQL</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ EXPERIENCE ============ -->
+    <section class="section" id="experience">
+      <div class="container">
+        <p class="section-eyebrow" data-aos="fade-up">03 / Experience</p>
+        <h2 class="section-title" data-aos="fade-up">Open Source &amp; Work</h2>
+
+        <div class="timeline">
+          <div class="timeline-item" data-aos="fade-up">
+            <div class="timeline-dot"></div>
+            <div class="timeline-card">
+              <div class="timeline-header">
+                <span class="timeline-year">2024 — PRESENT</span>
+                <span class="cgpa-chip">Open Source</span>
+              </div>
+              <h3>Open Source Contributor</h3>
+              <p class="timeline-sub">GSSoC 2026 &amp; Global GitHub Repositories</p>
+              <ul class="about-list" style="margin-top: 14px;">
+                <li><i class="fa-solid fa-check"></i> Contributed to multiple high-impact open-source GitHub
+                  repositories.</li>
+                <li><i class="fa-solid fa-check"></i> Implemented user interface improvements, dark mode features, and
+                  responsive layouts.</li>
+                <li><i class="fa-solid fa-check"></i> Worked on web performance optimization, DOM efficiency, and
+                  accessibility (a11y) enhancements.</li>
+                <li><i class="fa-solid fa-check"></i> Authored modular frontend features, resolved code bugs, and
+                  participated in peer pull-request reviews.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PROJECTS ============ -->
+    <section class="section section-alt" id="projects">
+      <div class="container">
+        <p class="section-eyebrow" data-aos="fade-up">04 / Projects</p>
+        <h2 class="section-title" data-aos="fade-up">Things I've Built</h2>
+
+        <div class="filter-bar" data-aos="fade-up">
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="web">Web Apps</button>
+        </div>
+
+        <div class="projects-grid">
+
+          <article class="project-card" data-category="web" data-aos="fade-up">
+            <div class="project-img"><i class="fa-solid fa-list-check"></i></div>
+            <div class="project-body">
+              <h3>TaskMaster</h3>
+              <p>A full-featured task management web app with CRUD operations, keyword search, filtering, and
+                priority-based sorting.</p>
+              <div class="tech-stack">
+                <span>HTML5</span><span>CSS3</span><span>JavaScript</span><span>LocalStorage</span>
+              </div>
+              <div class="project-links">
+                <a href="https://github.com/ajitkumarsaini02" target="_blank" rel="noopener"><i
+                    class="fa-brands fa-github"></i> GitHub</a>
+                <a href="https://taskmaster-ajit.netlify.app" target="_blank" rel="noopener"><i
+                    class="fa-solid fa-arrow-up-right-from-square"></i> Live Demo</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card" data-category="web" data-aos="fade-up" data-aos-delay="100">
+            <div class="project-img"><i class="fa-solid fa-music"></i></div>
+            <div class="project-body">
+              <h3>EchoStream Media Player</h3>
+              <p>A responsive multimedia player with playback control, fullscreen mode, seek functionality, and
+                adjustable playback speed.</p>
+              <div class="tech-stack"><span>HTML5</span><span>CSS3</span><span>JavaScript</span><span>Audio API</span>
+              </div>
+              <div class="project-links">
+                <a href="https://github.com/ajitkumarsaini02/EchoStream-Media-Player" target="_blank" rel="noopener"><i
+                    class="fa-brands fa-github"></i> GitHub</a>
+                <a href="https://ajitkumarsaini02.github.io/EchoStream-Media-Player/" target="_blank" rel="noopener"><i
+                    class="fa-solid fa-arrow-up-right-from-square"></i> Live Demo</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card" data-category="web" data-aos="fade-up" data-aos-delay="200">
+            <div class="project-img"><i class="fa-solid fa-laptop-code"></i></div>
+            <div class="project-body">
+              <h3>Personal Portfolio</h3>
+              <p>A responsive personal portfolio site showcasing projects, skills, and achievements with a modern
+                mobile-first UI.</p>
+              <div class="tech-stack"><span>HTML5</span><span>CSS3</span><span>JavaScript</span><span>AOS</span></div>
+              <div class="project-links">
+                <a href="https://github.com/ajitkumarsaini02" target="_blank" rel="noopener"><i
+                    class="fa-brands fa-github"></i> GitHub</a>
+                <a href="https://ajit-kumar-saini-portfolio.netlify.app/" target="_blank" rel="noopener"><i
+                    class="fa-solid fa-arrow-up-right-from-square"></i> Live Demo</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card" data-category="web" data-aos="fade-up" data-aos-delay="300">
+            <div class="project-img"><i class="fa-solid fa-folder-plus"></i></div>
+            <div class="project-body">
+              <h3>Coming Soon</h3>
+              <p>New project details will be added here soon.</p>
+              <div class="tech-stack"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
+            </div>
+          </article>
+
+          <article class="project-card" data-category="web" data-aos="fade-up" data-aos-delay="400">
+            <div class="project-img"><i class="fa-solid fa-folder-plus"></i></div>
+            <div class="project-body">
+              <h3>Coming Soon</h3>
+              <p>New project details will be added here soon.</p>
+              <div class="tech-stack"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ ACHIEVEMENTS ============ -->
+    <section class="section" id="achievements">
+      <div class="container">
+        <p class="section-eyebrow" data-aos="fade-up">05 / Achievements</p>
+        <h2 class="section-title" data-aos="fade-up">Milestones &amp; Honors</h2>
+
+        <div class="achievements-grid">
+          <div class="achievement-card" data-aos="zoom-in">
+            <i class="fa-solid fa-trophy"></i>
+            <h3>475+ LeetCode Problems</h3>
+            <p>Solved 475+ Data Structures and Algorithms problems on LeetCode.</p>
+          </div>
+          <div class="achievement-card" data-aos="zoom-in" data-aos-delay="100">
+            <i class="fa-solid fa-medal"></i>
+            <h3>LeetCode Rating 1492</h3>
+            <p>Achieved a LeetCode contest rating of 1492 with a highest rating of 1577.</p>
+          </div>
+          <div class="achievement-card" data-aos="zoom-in" data-aos-delay="200">
+            <i class="fa-solid fa-fire"></i>
+            <h3>CodeChef Rating 1394</h3>
+            <p>Attained a CodeChef rating of 1394 with a highest rating of 1461.</p>
+          </div>
+          <div class="achievement-card" data-aos="zoom-in" data-aos-delay="300">
+            <i class="fa-solid fa-code-branch"></i>
+            <h3>LeetCode Gold Badge</h3>
+            <p>Earned the LeetCode Problem Solver Gold Badge.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ EDUCATION ============ -->
+    <section class="section section-alt" id="education">
+      <div class="container">
+        <p class="section-eyebrow" data-aos="fade-up">06 / Education</p>
+        <h2 class="section-title" data-aos="fade-up">Academic Journey</h2>
+
+        <div class="timeline">
+          <div class="timeline-item" data-aos="fade-up">
+            <div class="timeline-dot"></div>
+            <div class="timeline-card">
+              <span class="timeline-year">SEP '24 — PRESENT</span>
+              <h3>B.Tech in Computer Science &amp; Engineering (AKTU)</h3>
+              <p class="timeline-sub">ABES Engineering College</p>
+              <p><i class="fa-solid fa-building-columns"></i> Ghaziabad</p>
+              <span class="cgpa-chip">CGPA: 8.48 / 10</span>
+            </div>
+          </div>
+
+          <div class="timeline-item" data-aos="fade-up" data-aos-delay="100">
+            <div class="timeline-dot"></div>
+            <div class="timeline-card">
+              <span class="timeline-year">APR '23</span>
+              <h3>Class XII (UP Board)</h3>
+              <p class="timeline-sub">Sushil Poswal Inter College</p>
+              <p><i class="fa-solid fa-school"></i> Amroha</p>
+              <span class="cgpa-chip">77.4%</span>
+            </div>
+          </div>
+
+          <div class="timeline-item" data-aos="fade-up" data-aos-delay="200">
+            <div class="timeline-dot"></div>
+            <div class="timeline-card">
+              <span class="timeline-year">JUL '21</span>
+              <h3>Class X (UP Board)</h3>
+              <p class="timeline-sub">L.F. Academy Inter College</p>
+              <p><i class="fa-solid fa-school"></i> Sambhal</p>
+              <span class="cgpa-chip">79.16%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CODING PROFILES ============ -->
+    <section class="section" id="profiles">
+      <div class="container">
+        <p class="section-eyebrow" data-aos="fade-up">07 / Profiles</p>
+        <h2 class="section-title" data-aos="fade-up">Find Me Online</h2>
+
+        <div class="profiles-grid">
+          <div class="profile-card" data-aos="fade-up">
+            <i class="fa-brands fa-github"></i>
+            <h3>GitHub</h3>
+            <p>@ajitkumarsaini02</p>
+            <a href="https://github.com/ajitkumarsaini02" target="_blank" rel="noopener"
+              class="btn btn-sm btn-outline">Visit Profile</a>
+          </div>
+          <div class="profile-card" data-aos="fade-up" data-aos-delay="80">
+            <i class="fa-solid fa-code"></i>
+            <h3>LeetCode</h3>
+            <p>@ajitkumarsaini02</p>
+            <a href="https://leetcode.com/ajitkumarsaini02" target="_blank" rel="noopener"
+              class="btn btn-sm btn-outline">Visit Profile</a>
+          </div>
+          <div class="profile-card" data-aos="fade-up" data-aos-delay="160">
+            <i class="fa-brands fa-linkedin"></i>
+            <h3>LinkedIn</h3>
+            <p>ajit-kumar-saini-74340932b</p>
+            <a href="https://www.linkedin.com/in/ajit-kumar-saini-74340932b/" target="_blank" rel="noopener"
+              class="btn btn-sm btn-outline">Visit Profile</a>
+          </div>
+          <div class="profile-card" data-aos="fade-up" data-aos-delay="240">
+            <i class="fa-solid fa-globe"></i>
+            <h3>Portfolio</h3>
+            <p>ajit-kumar-saini-portfolio</p>
+            <a href="https://ajit-kumar-saini-portfolio.netlify.app/" target="_blank" rel="noopener"
+              class="btn btn-sm btn-outline">Visit Site</a>
+          </div>
+          <div class="profile-card" data-aos="fade-up" data-aos-delay="320">
+            <i class="fa-solid fa-crown"></i>
+            <h3>CodeChef</h3>
+            <p>@ajitsaini94</p>
+            <a href="https://www.codechef.com/users/ajitsaini94" target="_blank" rel="noopener"
+              class="btn btn-sm btn-outline">Visit Profile</a>
+          </div>
+          <div class="profile-card" data-aos="fade-up" data-aos-delay="400">
+            <i class="fa-solid fa-graduation-cap"></i>
+            <h3>GeeksforGeeks</h3>
+            <p>@ajitkumarsaini02</p>
+            <a href="https://www.geeksforgeeks.org/user/ajitkumarsain02/" target="_blank" rel="noopener"
+              class="btn btn-sm btn-outline">Visit Profile</a>
+          </div>
+        </div>
+
+        <div class="stats-panel" data-aos="fade-up">
+          <div class="stats-panel-card">
+            <h4><i class="fa-brands fa-github"></i> GitHub Contribution Activity</h4>
+            <div class="contribution-graph" id="contributionGraph" aria-label="GitHub contribution graph visualization">
+            </div>
+          </div>
+          <div class="stats-panel-card">
+            <h4><i class="fa-solid fa-code"></i> LeetCode Problem Solved Stats</h4>
+            <div class="leetcode-stats">
+              <div class="lc-ring">
+                <svg viewBox="0 0 120 120">
+                  <circle class="lc-ring-bg" cx="60" cy="60" r="52"></circle>
+                  <circle class="lc-ring-fill" cx="60" cy="60" r="52"></circle>
+                </svg>
+                <span>475+<small>solved</small></span>
+              </div>
+              <ul class="lc-breakdown">
+                <li><span class="dot-easy"></span> Contest Rating <b>1492</b></li>
+                <li><span class="dot-medium"></span> Highest <b>1577</b></li>
+                <li><span class="dot-hard"></span> CodeChef <b>1394</b></li>
+                <li><span class="dot-streak"></span> Highest <b>1461</b></li>
+                <li><span class="dot-streak"></span> Badge <b>Gold</b></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CERTIFICATES ============ -->
+    <section class="section section-alt" id="certificates">
+      <div class="container">
+        <p class="section-eyebrow" data-aos="fade-up">08 / Certificates</p>
+        <h2 class="section-title" data-aos="fade-up">Certifications &amp; Courses</h2>
+
+        <div class="cert-gallery">
+          <div class="cert-item" data-aos="zoom-in" data-aos-delay="400">
+            <div class="cert-thumb"><i class="fa-brands fa-aws"></i><span>AWS Academy Graduate – Cloud Foundations –
+                Training Badge</span></div>
+          </div>
+          <div class="cert-item" data-aos="zoom-in" data-aos-delay="480">
+            <div class="cert-thumb"><i class="fa-solid fa-brain"></i><span>India AI Impact Buildathon – Certificate of
+                Participation</span></div>
+          </div>
+          <div class="cert-item" data-aos="zoom-in" data-aos-delay="640">
+            <div class="cert-thumb"><i class="fa-brands fa-python"></i><span>Python Essentials 2 – Cisco Networking
+                Academy / Python Institute</span></div>
+          </div>
+          <div class="cert-item" data-aos="zoom-in" data-aos-delay="720">
+            <div class="cert-thumb"><i class="fa-solid fa-code"></i><span>Learn C++ Programming – Beginner to Advance
+                – Deep Dive in C++ (Udemy)</span></div>
+          </div>
+          <div class="cert-item" data-aos="zoom-in" data-aos-delay="800">
+            <div class="cert-thumb"><i class="fa-solid fa-display"></i><span>HTML and CSS for Beginners From Basic to
+                Advance (Udemy)</span></div>
+          </div>
+          <div class="cert-item" data-aos="zoom-in" data-aos-delay="880">
+            <div class="cert-thumb"><i class="fa-solid fa-chart-line"></i><span>Data Analytics Job Simulation – Deloitte
+                Forage</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ TESTIMONIALS ============ -->
+    <section class="section" id="testimonials">
+      <div class="container">
+        <p class="section-eyebrow" data-aos="fade-up">09 / Testimonials</p>
+        <h2 class="section-title" data-aos="fade-up">Recommendations &amp; Feedback</h2>
+
+        <div class="testimonial-track" data-aos="fade-up">
+          <div class="testimonial-card">
+            <i class="fa-solid fa-quote-left"></i>
+            <p>Ajit has exceptional problem-solving abilities and a strong foundation in Data Structures and Algorithms.
+              He writes clean, efficient code and grasps complex software concepts rapidly.</p>
+            <div class="testimonial-person"><span class="avatar">A</span>
+              <div><strong>Faculty Mentor</strong><small>ABES Engineering College</small></div>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <i class="fa-solid fa-quote-left"></i>
+            <p>Collaborating with Ajit during open-source projects was a seamless experience. He takes complete
+              ownership of UI components, optimization, and responsive design.</p>
+            <div class="testimonial-person"><span class="avatar">O</span>
+              <div><strong>Open Source Collaborator</strong><small>GSSoC Contributor</small></div>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <i class="fa-solid fa-quote-left"></i>
+            <p>His mastery over C++, Java, HTML, CSS, JavaScript, and 475+ competitive programming solutions makes him
+              a strong software candidate.</p>
+            <div class="testimonial-person"><span class="avatar">T</span>
+              <div><strong>Tech Reviewer</strong><small>Coding Community</small></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ BLOG ============ -->
+    <section class="section section-alt" id="blog">
+      <div class="container">
+        <p class="section-eyebrow" data-aos="fade-up">10 / Blog</p>
+        <h2 class="section-title" data-aos="fade-up">Technical Articles &amp; Insights</h2>
+        <p class="section-desc" data-aos="fade-up">Technical write-ups on Data Structures, Algorithms, React.js
+          architecture, and modern web application development.</p>
+
+        <div class="blog-grid">
+          <div class="blog-card" data-aos="fade-up">
+            <span class="blog-tag">DSA &amp; CP</span>
+            <h3>Cracking 475+ Algorithmic Problems</h3>
+            <p>A systematic breakdown of Dynamic Programming, Graph algorithms, and Tree traversals with optimized
+              memory patterns.</p>
+            <span class="blog-meta"><i class="fa-regular fa-clock"></i> 5 min read</span>
+          </div>
+          <div class="blog-card" data-aos="fade-up" data-aos-delay="100">
+            <span class="blog-tag">Frontend</span>
+            <h3>Building Interactive Apps with React &amp; JavaScript</h3>
+            <p>Best practices for component architecture, state management hooks, and responsive design patterns.</p>
+            <span class="blog-meta"><i class="fa-regular fa-clock"></i> 7 min read</span>
+          </div>
+          <div class="blog-card" data-aos="fade-up" data-aos-delay="200">
+            <span class="blog-tag">Open Source</span>
+            <h3>Lessons Learned from GSSoC 2026 Contributions</h3>
+            <p>Insights on navigating large codebase architecture, crafting impactful pull requests, and optimizing web
+              performance.</p>
+            <span class="blog-meta"><i class="fa-regular fa-clock"></i> 4 min read</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FAQ ============ -->
+    <section class="section" id="faq">
+      <div class="container">
+        <p class="section-eyebrow" data-aos="fade-up">11 / FAQ</p>
+        <h2 class="section-title" data-aos="fade-up">Frequently Asked Questions</h2>
+
+        <div class="faq-list" data-aos="fade-up">
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              What technologies do you specialize in?
+              <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div class="faq-answer">
+              <p>I specialize in C, C++, Java, Python, HTML, CSS, JavaScript, DSA, DBMS, Operating Systems, Computer
+                Networks, Git, GitHub, VS Code, and MySQL.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              What are your current education details?
+              <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div class="faq-answer">
+              <p>I am pursuing a B.Tech in Computer Science &amp; Engineering (AKTU) at ABES Engineering College,
+                Ghaziabad with an 8.48/10 CGPA.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              Are you open for internships and software roles?
+              <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div class="faq-answer">
+              <p>Yes! I am actively looking for Frontend Engineering, Software Engineering internships, open-source
+                programs, and developer opportunities where I can contribute.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              What are your competitive programming statistics?
+              <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div class="faq-answer">
+              <p>I have solved 475+ LeetCode problems, earned a LeetCode contest rating of 1483, and reached a CodeChef
+                rating of 1374.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CONTACT ============ -->
+    <section class="section section-alt" id="contact">
+      <div class="container">
+        <p class="section-eyebrow" data-aos="fade-up">12 / Contact</p>
+        <h2 class="section-title" data-aos="fade-up">Let's Connect &amp; Collaborate</h2>
+
+        <div class="contact-grid">
+          <div class="contact-info" data-aos="fade-right">
+            <p>I am actively open to internship opportunities, open-source contributions, hackathons, and software
+              engineering projects. Feel free to reach out directly via email or phone!</p>
+            <ul>
+              <li><i class="fa-solid fa-phone"></i> +91-9455599322</li>
+              <li><i class="fa-solid fa-envelope"></i> ajitkumarsaini02@gmail.com</li>
+              <li><i class="fa-solid fa-location-dot"></i> Ghaziabad, Uttar Pradesh</li>
+              <li><i class="fa-solid fa-graduation-cap"></i> ABES Engineering College (AKTU)</li>
+            </ul>
+            <div class="contact-socials">
+              <a href="https://github.com/ajitkumarsaini02" target="_blank" rel="noopener" aria-label="GitHub"><i
+                  class="fa-brands fa-github"></i></a>
+              <a href="https://www.linkedin.com/in/ajit-kumar-saini-74340932b/" target="_blank" rel="noopener"
+                aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+              <a href="https://leetcode.com/ajitkumarsaini02" target="_blank" rel="noopener" aria-label="LeetCode"><i
+                  class="fa-solid fa-code"></i></a>
+              <a href="https://ajit-kumar-saini-portfolio.netlify.app/" target="_blank" rel="noopener"
+                aria-label="Portfolio Website"><i class="fa-solid fa-globe"></i></a>
+              <a href="mailto:ajitkumarsaini02@gmail.com" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+            </div>
+          </div>
+
+          <form class="contact-form" id="contactForm" data-aos="fade-left" novalidate>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" placeholder="Your name" required>
+                <span class="form-error" id="nameError"></span>
+              </div>
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="you@example.com" required>
+                <span class="form-error" id="emailError"></span>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="subject">Subject</label>
+              <input type="text" id="subject" name="subject" placeholder="What's this about?" required>
+              <span class="form-error" id="subjectError"></span>
+            </div>
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" rows="5" placeholder="Write your message..." required></textarea>
+              <span class="form-error" id="messageError"></span>
+            </div>
+            <button type="submit" class="btn btn-primary btn-full" id="sendBtn">
+              <span class="btn-label"><i class="fa-regular fa-paper-plane"></i> Send Message</span>
+              <span class="btn-loader" aria-hidden="true"></span>
+            </button>
+            <p class="form-success" id="formSuccess" role="status"></p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a href="#home" class="logo">
+          <span class="logo-bracket">&lt;</span> Ajit <span class="logo-bracket">/&gt;</span>
+        </a>
+        <p style="font-weight: 700; color: var(--text); margin-top: 6px; font-size: 1.1rem; letter-spacing: 0.5px;">AJIT
+          KUMAR SAINI</p>
+        <p>B.Tech CSE student building responsive web apps, solving DSA problems, and sharing project work.</p>
+      </div>
+
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#education">Education</a>
+        <a href="#contact">Contact</a>
+      </div>
+
+      <div class="footer-socials">
+        <h4>Connect</h4>
+        <div class="social-row">
+          <a href="https://github.com/ajitkumarsaini02" target="_blank" rel="noopener" aria-label="GitHub"><i
+              class="fa-brands fa-github"></i></a>
+          <a href="https://www.linkedin.com/in/ajit-kumar-saini-74340932b/" target="_blank" rel="noopener"
+            aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+          <a href="https://leetcode.com/ajitkumarsaini02" target="_blank" rel="noopener" aria-label="LeetCode"><i
+              class="fa-solid fa-code"></i></a>
+          <a href="https://ajit-kumar-saini-portfolio.netlify.app/" target="_blank" rel="noopener"
+            aria-label="Portfolio Website"><i class="fa-solid fa-globe"></i></a>
+          <a href="mailto:ajitkumarsaini02@gmail.com" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+        </div>
       </div>
     </div>
-  </div>
-</section>
- 
-<!-- FOOTER -->
-<footer>
-  <div class="footer-logo">Ajit.</div>
-  <p>© 2026 Ajit Kumar Saini — Built with passion</p>
-  <p style="font-size:12px; color: rgba(124,92,255,0.6);">Ghaziabad, UP</p>
-</footer>
- 
-<script src="script.js"></script>
+    <div class="footer-bottom">
+      <p>&copy; <span id="year"></span> AJIT KUMAR SAINI. All rights reserved.</p>
+      <p>Designed &amp; Developed by Ajit Kumar Saini</p>
+    </div>
+  </footer>
+
+  <button id="scrollTop" class="scroll-top" aria-label="Scroll to top">
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.1/aos.js"></script>
+  <script src="js/script.js"></script>
 </body>
+
 </html>
