@@ -67,18 +67,30 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   if (navToggle && navMenu) {
-    navToggle.addEventListener('click', () => {
-      const isOpen = navMenu.classList.toggle('open');
+    const toggleMenu = (open) => {
+      const isOpen = open !== undefined ? open : !navMenu.classList.contains('open');
+      navMenu.classList.toggle('open', isOpen);
       navToggle.classList.toggle('open', isOpen);
       navToggle.setAttribute('aria-expanded', isOpen);
-    });
+      document.body.style.overflow = (isOpen && window.innerWidth <= 768) ? 'hidden' : '';
+    };
+
+    navToggle.addEventListener('click', () => toggleMenu());
 
     navLinks.forEach(link => {
-      link.addEventListener('click', () => {
-        navMenu.classList.remove('open');
-        navToggle.classList.remove('open');
-        navToggle.setAttribute('aria-expanded', 'false');
-      });
+      link.addEventListener('click', () => toggleMenu(false));
+    });
+
+    document.addEventListener('click', (e) => {
+      if (navMenu.classList.contains('open') && !navMenu.contains(e.target) && !navToggle.contains(e.target)) {
+        toggleMenu(false);
+      }
+    });
+
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 768 && navMenu.classList.contains('open')) {
+        toggleMenu(false);
+      }
     });
   }
 
@@ -116,20 +128,36 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  /* ---------- Central Coding Stats Model ---------- */
+  window.codingStats = {
+    leetcode: 501,
+    gfg: 95,
+    codechef: 600,
+    codeforces: 14
+  };
+
+  function getTotalProblemsSolved() {
+    return (
+      (window.codingStats.leetcode || 0) +
+      (window.codingStats.gfg || 0) +
+      (window.codingStats.codechef || 0) +
+      (window.codingStats.codeforces || 0)
+    );
+  }
+
   /* ---------- 5. Typing effect ---------- */
   const roles = [
-    'B.Tech CSE Student',
-    'Frontend Developer',
-    'C, C++, Java & Python Programmer',
-    'DSA Enthusiast',
-    'Competitive Programmer (475+ Solved)'
+    'Full Stack Developer',
+    'Competitive Programmer',
+    'Software Engineering Learner',
+    'DSA Enthusiast'
   ];
   const typedEl = document.getElementById('typedText');
   if (typedEl) {
     let roleIndex = 0, charIndex = 0, deleting = false;
 
     function typeLoop() {
-      const current = roles[roleIndex];
+      const current = roles[roleIndex % roles.length];
       if (!deleting) {
         charIndex++;
         typedEl.textContent = current.slice(0, charIndex);
@@ -197,25 +225,30 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* ---------- 7. Animated counters ---------- */
+  function runCounterAnimation(el, customTarget) {
+    const target = customTarget !== undefined ? customTarget : parseInt(el.dataset.target, 10);
+    if (isNaN(target)) return;
+    el.dataset.target = target;
+    let current = 0;
+    const step = Math.max(1, Math.ceil(target / 60));
+    const tick = () => {
+      current += step;
+      if (current >= target) {
+        el.textContent = target + (target >= 400 ? '+' : '');
+      } else {
+        el.textContent = current;
+        requestAnimationFrame(tick);
+      }
+    };
+    tick();
+  }
+
   const counters = document.querySelectorAll('.counter');
   const counterObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        const el = entry.target;
-        const target = parseInt(el.dataset.target, 10);
-        let current = 0;
-        const step = Math.max(1, Math.ceil(target / 60));
-        const tick = () => {
-          current += step;
-          if (current >= target) {
-            el.textContent = target + (target >= 475 ? '+' : '');
-          } else {
-            el.textContent = current;
-            requestAnimationFrame(tick);
-          }
-        };
-        tick();
-        counterObserver.unobserve(el);
+        runCounterAnimation(entry.target);
+        counterObserver.unobserve(entry.target);
       }
     });
   }, { threshold: 0.5 });
@@ -367,6 +400,179 @@ document.addEventListener('DOMContentLoaded', () => {
   if (yearEl) {
     yearEl.textContent = new Date().getFullYear();
   }
+
+  /* ---------- 15. Live Coding Profile Stats Auto-Sync ---------- */
+  async function fetchLiveCodingStats() {
+    const LEETCODE_USER = 'ajitkumarsaini02';
+
+    function updateStatElements(type, val) {
+      document.querySelectorAll(`[data-stat="${type}"]`).forEach(el => {
+        if (el.classList.contains('counter')) {
+          runCounterAnimation(el, val);
+        } else {
+          el.textContent = val + (type === 'lc-solved' ? '+' : '');
+        }
+      });
+
+      if (type === 'lc-solved') {
+        if (window.codingStats) window.codingStats.leetcode = parseInt(val, 10) || val;
+        document.querySelectorAll('[data-stat="lc-solved-title"]').forEach(el => el.textContent = `${val}+ LeetCode Problems`);
+        document.querySelectorAll('[data-stat="lc-solved-desc"]').forEach(el => el.textContent = `Solved ${val}+ Data Structures and Algorithms problems on LeetCode.`);
+        document.querySelectorAll('[data-stat="lc-solved-list"]').forEach(el => el.innerHTML = `<i class="fa-solid fa-check"></i> Solved ${val}+ LeetCode DSA problems`);
+        document.querySelectorAll('[data-stat="lc-solved-ring"]').forEach(el => el.innerHTML = `${val}+<small>solved (live)</small>`);
+      }
+
+      if (type === 'lc-rating') {
+        document.querySelectorAll('[data-stat="lc-rating-title"]').forEach(el => el.textContent = `LeetCode Rating ${val}`);
+        document.querySelectorAll('[data-stat="lc-rating-val"]').forEach(el => el.textContent = val);
+      }
+
+      if (type === 'lc-highest') {
+        document.querySelectorAll('[data-stat="lc-highest-val"]').forEach(el => el.textContent = val);
+      }
+
+      if (type === 'cc-rating') {
+        const num = parseInt(val, 10);
+        const stars = num >= 2500 ? '7★' : num >= 2200 ? '6★' : num >= 2000 ? '5★' : num >= 1800 ? '4★' : num >= 1600 ? '3★' : num >= 1400 ? '2★' : '1★';
+        document.querySelectorAll('[data-stat="cc-rating-title"]').forEach(el => el.textContent = `CodeChef ${stars} Coder (${val})`);
+        document.querySelectorAll('[data-stat="cc-rating-val"]').forEach(el => el.textContent = val);
+        document.querySelectorAll('[data-stat="cc-stars-val"]').forEach(el => el.textContent = stars);
+      }
+
+      if (type === 'gfg-solved') {
+        const count = parseInt(val, 10);
+        if (window.codingStats) window.codingStats.gfg = count;
+        document.querySelectorAll('[data-stat="gfg-solved-ring"]').forEach(el => el.innerHTML = `${count}+<small>solved (live)</small>`);
+        document.querySelectorAll('[data-stat="gfg-solved-val"]').forEach(el => el.textContent = count);
+      }
+    }
+
+    // 1. Fetch LeetCode Solved Count & Difficulty breakdown with multiple endpoints
+    try {
+      const res = await fetch(`https://alfa-leetcode-api.onrender.com/${LEETCODE_USER}/solved`);
+      if (res.ok) {
+        const data = await res.json();
+        if (data && (data.solvedProblem || data.totalSolved)) {
+          const solved = data.solvedProblem || data.totalSolved;
+          updateStatElements('lc-solved', solved);
+          if (data.easySolved) document.querySelectorAll('[data-stat="lc-easy-val"]').forEach(el => el.textContent = data.easySolved);
+          if (data.mediumSolved) document.querySelectorAll('[data-stat="lc-medium-val"]').forEach(el => el.textContent = data.mediumSolved);
+          if (data.hardSolved) document.querySelectorAll('[data-stat="lc-hard-val"]').forEach(el => el.textContent = data.hardSolved);
+        }
+      } else {
+        throw new Error('primary solved api failed');
+      }
+    } catch (e) {
+      try {
+        const res2 = await fetch(`https://leetcode-stats-api.herokuapp.com/${LEETCODE_USER}`);
+        if (res2.ok) {
+          const data2 = await res2.json();
+          if (data2 && data2.totalSolved) updateStatElements('lc-solved', data2.totalSolved);
+        }
+      } catch (err) {
+        console.log('LeetCode solved auto-sync using fallback');
+      }
+    }
+
+    // 2. Fetch LeetCode Contest Rating & Highest Rating
+    try {
+      const contestResponse = await fetch(`https://alfa-leetcode-api.onrender.com/${LEETCODE_USER}/contest`);
+      if (contestResponse.ok) {
+        const contestData = await contestResponse.json();
+        if (contestData && contestData.contestRating) {
+          const rating = Math.round(contestData.contestRating);
+          updateStatElements('lc-rating', rating);
+        }
+        if (contestData && Array.isArray(contestData.contestParticipation)) {
+          const attended = contestData.contestParticipation.filter(c => c.attended && c.rating);
+          if (attended.length > 0) {
+            const highest = Math.round(Math.max(...attended.map(c => c.rating)));
+            updateStatElements('lc-highest', highest);
+          }
+        }
+      }
+    } catch (err) {
+      console.log('LeetCode contest auto-sync using fallback');
+    }
+
+    // Fetch LeetCode Badges Live
+    try {
+      const badgeRes = await fetch(`https://alfa-leetcode-api.onrender.com/${LEETCODE_USER}/badges`);
+      if (badgeRes.ok) {
+        const badgeData = await badgeRes.json();
+        let latestBadgeName = '';
+        if (badgeData && Array.isArray(badgeData.badges) && badgeData.badges.length > 0) {
+          latestBadgeName = badgeData.badges[0].displayName;
+        } else if (badgeData && badgeData.activeBadge && badgeData.activeBadge.displayName) {
+          latestBadgeName = badgeData.activeBadge.displayName;
+        }
+
+        if (latestBadgeName) {
+          document.querySelectorAll('[data-stat="lc-badge-title"]').forEach(el => el.textContent = `LeetCode ${latestBadgeName}`);
+          document.querySelectorAll('[data-stat="lc-badge-desc"]').forEach(el => el.textContent = `Earned the LeetCode ${latestBadgeName} award.`);
+          document.querySelectorAll('[data-stat="lc-badge-val"]').forEach(el => el.textContent = latestBadgeName);
+        }
+      }
+    } catch (err) {
+      console.log('LeetCode badges live fetch fallback');
+    }
+
+    // 3. Fetch CodeChef Rating Live
+    const CODECHEF_USER = 'ajitsaini94';
+    try {
+      const ccRes = await fetch(`https://api.allorigins.win/get?url=${encodeURIComponent('https://www.codechef.com/users/' + CODECHEF_USER)}`);
+      if (ccRes.ok) {
+        const ccJson = await ccRes.json();
+        if (ccJson && ccJson.contents) {
+          const html = ccJson.contents;
+          const ratingMatch = html.match(/rating-number[^>]*>(\d+)/i) || html.match(/(\d{4})<\/div>\s*<span[^>]*>\s*\(Div/i);
+          if (ratingMatch && ratingMatch[1]) {
+            const ccRating = parseInt(ratingMatch[1], 10);
+            updateStatElements('cc-rating', ccRating);
+          }
+          const highestMatch = html.match(/Highest Rating[^0-9]*(\d+)/i);
+          if (highestMatch && highestMatch[1]) {
+            const ccHighest = parseInt(highestMatch[1], 10);
+            updateStatElements('cc-highest', ccHighest);
+          }
+        }
+      }
+    } catch (err) {
+      console.log('CodeChef live fetch fallback');
+    }
+
+    // 4. Fetch Codeforces Live Solved Count
+    try {
+      const cfRes = await fetch('https://codeforces.com/api/user.status?handle=ajitkumarsaini02');
+      if (cfRes.ok) {
+        const cfData = await cfRes.json();
+        if (cfData.status === 'OK' && Array.isArray(cfData.result)) {
+          const cfSolved = new Set(cfData.result.filter(s => s.verdict === 'OK').map(s => s.problem.contestId + s.problem.index)).size;
+          window.codingStats.codeforces = cfSolved;
+        }
+      }
+    } catch (err) {
+      console.log('Codeforces live fetch fallback');
+    }
+
+    // 5. Fetch GeeksforGeeks Live Solved Count
+    const GFG_USER = 'ajitkumarsaini02';
+    try {
+      const gfgRes = await fetch(`https://api.allorigins.win/raw?url=${encodeURIComponent('https://www.geeksforgeeks.org/user/' + GFG_USER + '/')}`);
+      if (gfgRes.ok) {
+        const gfgHtml = await gfgRes.text();
+        const solvedMatch = gfgHtml.match(/Problems\s*Solved[\s\S]*?(\d+)/i) || gfgHtml.match(/(\d+)\s*<\/div>\s*<div[^>]*>Problems\s*Solved/i) || gfgHtml.match(/score_card_left[^>]*>(\d+)/i);
+        if (solvedMatch && solvedMatch[1]) {
+          const gfgSolved = parseInt(solvedMatch[1], 10);
+          updateStatElements('gfg-solved', gfgSolved);
+        }
+      }
+    } catch (err) {
+      console.log('GFG live fetch fallback');
+    }
+  }
+
+  fetchLiveCodingStats();
 
   /* ---------- 14. AOS init ---------- */
   if (window.AOS) {

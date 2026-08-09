@@ -20,7 +20,7 @@
 
   <!-- Favicon -->
   <link rel="icon"
-    href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22 fill=%22%23E5B842%22>&lt;/&gt;</text></svg>">
+    href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22 fill=%22%2300F2FE%22>&lt;/&gt;</text></svg>">
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -62,11 +62,6 @@
         <span class="logo-bracket">&lt;</span> Ajit <span class="logo-bracket">/&gt;</span>
       </a>
 
-      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation menu" aria-expanded="false"
-        aria-controls="navMenu">
-        <span></span><span></span><span></span>
-      </button>
-
       <ul class="nav-menu" id="navMenu">
         <li><a href="#about" class="nav-link" data-section="about">About</a></li>
         <li><a href="#skills" class="nav-link" data-section="skills">Skills</a></li>
@@ -75,6 +70,10 @@
         <li><a href="#achievements" class="nav-link" data-section="achievements">Achievements</a></li>
         <li><a href="#education" class="nav-link" data-section="education">Education</a></li>
         <li><a href="#contact" class="nav-link" data-section="contact">Contact</a></li>
+        <li class="nav-menu-resume">
+          <a href="assets/Ajit_Kumar_Saini_Resume.pdf" download="Ajit_Kumar_Saini_Resume.pdf"
+            class="btn btn-primary btn-sm">Resume</a>
+        </li>
       </ul>
 
       <div class="nav-actions">
@@ -83,6 +82,10 @@
         </button>
         <a href="assets/Ajit_Kumar_Saini_Resume.pdf" download="Ajit_Kumar_Saini_Resume.pdf"
           class="btn btn-primary btn-nav">Resume</a>
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation menu" aria-expanded="false"
+          aria-controls="navMenu">
+          <span></span><span></span><span></span>
+        </button>
       </div>
     </nav>
   </header>
@@ -106,7 +109,7 @@
             <span class="typing-prefix">&gt;</span><span id="typedText"></span><span class="cursor-blink">|</span>
           </h2>
           <p class="hero-desc">
-            B.Tech CSE student at ABES Engineering College focused on frontend development, DSA, and competitive
+            B.Tech CSE student at ABES Engineering College focused on full stack development, DSA, and competitive
             programming. Open to internships, open-source collaborations, and software opportunities.
           </p>
 
@@ -131,11 +134,11 @@
 
           <div class="hero-quick-stats">
             <div class="quick-stat-item">
-              <h3><span class="counter" data-target="475">0</span></h3>
+              <h3><span class="counter" data-stat="lc-solved" data-target="501">0</span></h3>
               <p>LeetCode Problems</p>
             </div>
             <div class="quick-stat-item">
-              <h3>1492</h3>
+              <h3 data-stat="lc-rating">1527</h3>
               <p>LeetCode Contest Rating</p>
             </div>
             <div class="quick-stat-item">
@@ -143,7 +146,7 @@
               <p>CGPA</p>
             </div>
             <div class="quick-stat-item">
-              <h3>1394</h3>
+              <h3 data-stat="cc-rating">1408</h3>
               <p>CodeChef Rating</p>
             </div>
           </div>
@@ -158,11 +161,11 @@
             </div>
             <pre class="terminal-body"><code><span class="tk-key">const</span> <span class="tk-var">ajit</span> = {
   <span class="tk-prop">role</span>: <span class="tk-str">'B.Tech CSE Student'</span>,
-  <span class="tk-prop">focus</span>: [<span class="tk-str">'Frontend'</span>, <span class="tk-str">'DSA'</span>, <span class="tk-str">'Competitive Programming'</span>],
+  <span class="tk-prop">focus</span>: [<span class="tk-str">'Full Stack'</span>, <span class="tk-str">'DSA'</span>, <span class="tk-str">'Competitive Programming'</span>],
   <span class="tk-prop">college</span>: <span class="tk-str">'ABES Engineering College'</span>,
   <span class="tk-prop">cgpa</span>: <span class="tk-fn">8.48</span>,
-  <span class="tk-prop">leetcode</span>: <span class="tk-str">'475+'</span>,
-  <span class="tk-prop">codechef</span>: <span class="tk-str">'1394'</span>,
+  <span class="tk-prop">leetcode</span>: <span class="tk-str">'501+ Questions'</span>,
+  <span class="tk-prop">codechef</span>: <span class="tk-str">'600+ Questions'</span>,
 };</code></pre>
           </div>
         </div>
@@ -191,10 +194,10 @@
           </div>
 
           <div class="about-content" data-aos="fade-left">
-            <h3>B.Tech CSE Student &amp; Frontend Developer</h3>
+            <h3>B.Tech CSE Student &amp; Full Stack Developer</h3>
             <p>
               I am a Computer Science and Engineering student at ABES Engineering College with a strong interest in
-              frontend development, problem solving, and competitive programming.
+              full stack development, problem solving, and competitive programming.
             </p>
             <p>
               I work with HTML, CSS, JavaScript, C, C++, Java, Python, and MySQL. I am actively looking for
@@ -205,7 +208,7 @@
               <li><i class="fa-solid fa-check"></i> Pursuing B.Tech in Computer Science &amp; Engineering at ABES
                 Engineering College, Ghaziabad</li>
               <li><i class="fa-solid fa-check"></i> Scored 8.48/10 CGPA in college</li>
-              <li><i class="fa-solid fa-check"></i> Solved 475+ LeetCode DSA problems</li>
+              <li data-stat="lc-solved-list"><i class="fa-solid fa-check"></i> Solved 501+ LeetCode DSA problems</li>
               <li><i class="fa-solid fa-check"></i> Built responsive projects using HTML, CSS, and JavaScript</li>
               <li><i class="fa-solid fa-check"></i> Comfortable with Git, GitHub, VS Code, and MySQL</li>
             </ul>
@@ -215,22 +218,22 @@
         <div class="stats-grid" data-aos="fade-up">
           <div class="stat-card">
             <i class="fa-solid fa-diagram-project"></i>
-            <h3 class="counter" data-target="475">0</h3>
+            <h3 class="counter" data-stat="lc-solved" data-target="501">0</h3>
             <p>LeetCode Problems</p>
           </div>
           <div class="stat-card">
             <i class="fa-solid fa-fire"></i>
-            <h3>1492</h3>
+            <h3 data-stat="lc-rating">1527</h3>
             <p>LeetCode Contest Rating</p>
           </div>
           <div class="stat-card">
             <i class="fa-solid fa-award"></i>
-            <h3>1394</h3>
+            <h3 data-stat="cc-rating">1408</h3>
             <p>CodeChef Rating</p>
           </div>
           <div class="stat-card">
             <i class="fa-solid fa-star"></i>
-            <h3>1577</h3>
+            <h3 data-stat="lc-highest">1577</h3>
             <p>LeetCode Highest Rating</p>
           </div>
         </div>
@@ -329,7 +332,7 @@
             </div>
           </div>
 
-          <div class="skill-category" data-aos="fade-up" data-aos-delay="300" style="grid-column: span 2;">
+          <div class="skill-category skill-category-wide" data-aos="fade-up" data-aos-delay="300">
             <h3><i class="fa-solid fa-toolbox"></i> Developer Tools &amp; Platforms</h3>
             <div class="tool-chip-row">
               <span class="tool-chip"><i class="fa-brands fa-git-alt"></i> Git</span>
@@ -478,23 +481,23 @@
         <div class="achievements-grid">
           <div class="achievement-card" data-aos="zoom-in">
             <i class="fa-solid fa-trophy"></i>
-            <h3>475+ LeetCode Problems</h3>
-            <p>Solved 475+ Data Structures and Algorithms problems on LeetCode.</p>
+            <h3 data-stat="lc-solved-title">501+ LeetCode Problems</h3>
+            <p data-stat="lc-solved-desc">Solved 501+ Data Structures and Algorithms problems on LeetCode.</p>
           </div>
           <div class="achievement-card" data-aos="zoom-in" data-aos-delay="100">
             <i class="fa-solid fa-medal"></i>
-            <h3>LeetCode Rating 1492</h3>
-            <p>Achieved a LeetCode contest rating of 1492 with a highest rating of 1577.</p>
+            <h3 data-stat="lc-rating-title">LeetCode Rating 1527</h3>
+            <p data-stat="lc-rating-desc">Achieved a LeetCode contest rating of <span data-stat="lc-rating-val">1527</span> with a highest rating of <span data-stat="lc-highest-val">1577</span>.</p>
           </div>
           <div class="achievement-card" data-aos="zoom-in" data-aos-delay="200">
-            <i class="fa-solid fa-fire"></i>
-            <h3>CodeChef Rating 1394</h3>
-            <p>Attained a CodeChef rating of 1394 with a highest rating of 1461.</p>
+            <i class="fa-solid fa-star"></i>
+            <h3 data-stat="cc-rating-title">CodeChef 2★ Coder (1408)</h3>
+            <p data-stat="cc-rating-desc">Achieved <span data-stat="cc-stars-val">2★</span> Coder status on CodeChef with a rating of <span data-stat="cc-rating-val">1408</span> (Highest: <span data-stat="cc-highest-val">1461</span>).</p>
           </div>
           <div class="achievement-card" data-aos="zoom-in" data-aos-delay="300">
-            <i class="fa-solid fa-code-branch"></i>
-            <h3>LeetCode Gold Badge</h3>
-            <p>Earned the LeetCode Problem Solver Gold Badge.</p>
+            <i class="fa-solid fa-award"></i>
+            <h3 data-stat="lc-badge-title">LeetCode 100 Days Badge 2026</h3>
+            <p data-stat="lc-badge-desc">Earned the LeetCode 100 Days Badge 2026 streak award.</p>
           </div>
         </div>
       </div>
@@ -589,7 +592,14 @@
             <i class="fa-solid fa-graduation-cap"></i>
             <h3>GeeksforGeeks</h3>
             <p>@ajitkumarsaini02</p>
-            <a href="https://www.geeksforgeeks.org/user/ajitkumarsain02/" target="_blank" rel="noopener"
+            <a href="https://www.geeksforgeeks.org/profile/ajitkumarsaini02?tab=activity" target="_blank" rel="noopener"
+              class="btn btn-sm btn-outline">Visit Profile</a>
+          </div>
+          <div class="profile-card" data-aos="fade-up" data-aos-delay="480">
+            <i class="fa-solid fa-chart-simple"></i>
+            <h3>Codeforces</h3>
+            <p>@ajitkumarsaini02</p>
+            <a href="https://codeforces.com/profile/ajitkumarsaini02" target="_blank" rel="noopener"
               class="btn btn-sm btn-outline">Visit Profile</a>
           </div>
         </div>
@@ -608,14 +618,51 @@
                   <circle class="lc-ring-bg" cx="60" cy="60" r="52"></circle>
                   <circle class="lc-ring-fill" cx="60" cy="60" r="52"></circle>
                 </svg>
-                <span>475+<small>solved</small></span>
+                <span data-stat="lc-solved-ring">501+<small>solved</small></span>
               </div>
               <ul class="lc-breakdown">
-                <li><span class="dot-easy"></span> Contest Rating <b>1492</b></li>
-                <li><span class="dot-medium"></span> Highest <b>1577</b></li>
-                <li><span class="dot-hard"></span> CodeChef <b>1394</b></li>
-                <li><span class="dot-streak"></span> Highest <b>1461</b></li>
-                <li><span class="dot-streak"></span> Badge <b>Gold</b></li>
+                <li><span class="dot-easy"></span> Easy Solved <b data-stat="lc-easy-val">277</b></li>
+                <li><span class="dot-medium"></span> Medium Solved <b data-stat="lc-medium-val">207</b></li>
+                <li><span class="dot-hard"></span> Hard Solved <b data-stat="lc-hard-val">17</b></li>
+                <li><span class="dot-streak"></span> Contest Rating <b data-stat="lc-rating-val">1527</b></li>
+                <li><span class="dot-streak"></span> Highest Rating <b data-stat="lc-highest-val">1577</b></li>
+                <li><span class="dot-streak"></span> Badge <b data-stat="lc-badge-val">100 Days Badge 2026</b></li>
+              </ul>
+            </div>
+          <div class="stats-panel-card" data-aos="fade-up" data-aos-delay="100">
+            <h4><i class="fa-solid fa-crown"></i> CodeChef Problem Solved Stats</h4>
+            <div class="leetcode-stats">
+              <div class="lc-ring">
+                <svg viewBox="0 0 120 120">
+                  <circle class="lc-ring-bg" cx="60" cy="60" r="52"></circle>
+                  <circle class="lc-ring-fill" cx="60" cy="60" r="52" style="stroke: #F59E0B;"></circle>
+                </svg>
+                <span data-stat="cc-solved-ring">600+<small>solved</small></span>
+              </div>
+              <ul class="lc-breakdown">
+                <li><span class="dot-streak" style="background: #F59E0B;"></span> Rating <b data-stat="cc-rating-val">1408 (2★)</b></li>
+                <li><span class="dot-medium"></span> Highest Rating <b data-stat="cc-highest-val">1461</b></li>
+                <li><span class="dot-easy"></span> Global Rank <b>42,530</b></li>
+                <li><span class="dot-hard"></span> Country Rank <b>40,028</b></li>
+                <li><span class="dot-streak"></span> Division <b>Div 3</b></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="stats-panel-card" data-aos="fade-up" data-aos-delay="200">
+            <h4><i class="fa-solid fa-graduation-cap"></i> GeeksforGeeks Problem Solved Stats</h4>
+            <div class="leetcode-stats">
+              <div class="lc-ring">
+                <svg viewBox="0 0 120 120">
+                  <circle class="lc-ring-bg" cx="60" cy="60" r="52"></circle>
+                  <circle class="lc-ring-fill" cx="60" cy="60" r="52" style="stroke: #10B981;"></circle>
+                </svg>
+                <span data-stat="gfg-solved-ring">95+<small>solved</small></span>
+              </div>
+              <ul class="lc-breakdown">
+                <li><span class="dot-easy"></span> Coding Score <b data-stat="gfg-score-val">266</b></li>
+                <li><span class="dot-streak" style="background: #10B981;"></span> Problems Solved <b data-stat="gfg-solved-val">95</b></li>
+                <li><span class="dot-medium"></span> Institute Rank <b data-stat="gfg-rank-val">1000</b></li>
               </ul>
             </div>
           </div>
@@ -683,7 +730,7 @@
           </div>
           <div class="testimonial-card">
             <i class="fa-solid fa-quote-left"></i>
-            <p>His mastery over C++, Java, HTML, CSS, JavaScript, and 475+ competitive programming solutions makes him
+            <p>His mastery over C++, Java, HTML, CSS, JavaScript, and 501+ competitive programming solutions makes him
               a strong software candidate.</p>
             <div class="testimonial-person"><span class="avatar">T</span>
               <div><strong>Tech Reviewer</strong><small>Coding Community</small></div>
@@ -704,7 +751,7 @@
         <div class="blog-grid">
           <div class="blog-card" data-aos="fade-up">
             <span class="blog-tag">DSA &amp; CP</span>
-            <h3>Cracking 475+ Algorithmic Problems</h3>
+            <h3>Cracking 501+ Algorithmic Problems</h3>
             <p>A systematic breakdown of Dynamic Programming, Graph algorithms, and Tree traversals with optimized
               memory patterns.</p>
             <span class="blog-meta"><i class="fa-regular fa-clock"></i> 5 min read</span>
@@ -769,8 +816,8 @@
               <i class="fa-solid fa-chevron-down"></i>
             </button>
             <div class="faq-answer">
-              <p>I have solved 475+ LeetCode problems, earned a LeetCode contest rating of 1483, and reached a CodeChef
-                rating of 1374.</p>
+              <p>I have solved 501+ LeetCode problems, earned a LeetCode contest rating of 1527, and reached a CodeChef
+                rating of 1408.</p>
             </div>
           </div>
         </div>
