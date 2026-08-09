@@ -487,12 +487,16 @@
           <div class="achievement-card" data-aos="zoom-in" data-aos-delay="100">
             <i class="fa-solid fa-medal"></i>
             <h3 data-stat="lc-rating-title">LeetCode Rating 1527</h3>
-            <p data-stat="lc-rating-desc">Achieved a LeetCode contest rating of <span data-stat="lc-rating-val">1527</span> with a highest rating of <span data-stat="lc-highest-val">1577</span>.</p>
+            <p data-stat="lc-rating-desc">Achieved a LeetCode contest rating of <span
+                data-stat="lc-rating-val">1527</span> with a highest rating of <span
+                data-stat="lc-highest-val">1577</span>.</p>
           </div>
           <div class="achievement-card" data-aos="zoom-in" data-aos-delay="200">
             <i class="fa-solid fa-star"></i>
             <h3 data-stat="cc-rating-title">CodeChef 2★ Coder (1408)</h3>
-            <p data-stat="cc-rating-desc">Achieved <span data-stat="cc-stars-val">2★</span> Coder status on CodeChef with a rating of <span data-stat="cc-rating-val">1408</span> (Highest: <span data-stat="cc-highest-val">1461</span>).</p>
+            <p data-stat="cc-rating-desc">Achieved <span data-stat="cc-stars-val">2★</span> Coder status on CodeChef
+              with a rating of <span data-stat="cc-rating-val">1408</span> (Highest: <span
+                data-stat="cc-highest-val">1461</span>).</p>
           </div>
           <div class="achievement-card" data-aos="zoom-in" data-aos-delay="300">
             <i class="fa-solid fa-award"></i>
@@ -595,30 +599,61 @@
             <a href="https://www.geeksforgeeks.org/profile/ajitkumarsaini02?tab=activity" target="_blank" rel="noopener"
               class="btn btn-sm btn-outline">Visit Profile</a>
           </div>
-          <div class="profile-card" data-aos="fade-up" data-aos-delay="480">
-            <i class="fa-solid fa-chart-simple"></i>
-            <h3>Codeforces</h3>
-            <p>@ajitkumarsaini02</p>
-            <a href="https://codeforces.com/profile/ajitkumarsaini02" target="_blank" rel="noopener"
-              class="btn btn-sm btn-outline">Visit Profile</a>
-          </div>
         </div>
 
-        <div class="stats-panel" data-aos="fade-up">
-          <div class="stats-panel-card">
-            <h4><i class="fa-brands fa-github"></i> GitHub Contribution Activity</h4>
-            <div class="contribution-graph" id="contributionGraph" aria-label="GitHub contribution graph visualization">
+
+
+        <div class="activity-3col-grid" data-aos="fade-up">
+          <!-- CARD 1: GitHub Contributions -->
+          <div class="activity-card">
+            <div class="activity-card-header">
+              <i class="fa-brands fa-github"></i>
+              <h4>GitHub Contributions</h4>
+            </div>
+            <div class="heatmap-wrapper">
+              <div class="heatmap-months">
+                <span>Mar</span><span>Apr</span><span>May</span><span>Jun</span><span>Jul</span><span>Aug</span>
+              </div>
+              <div class="heatmap-flex">
+                <div class="heatmap-days">
+                  <span>Mon</span>
+                  <span>Wed</span>
+                  <span>Fri</span>
+                </div>
+                <div class="contribution-graph" id="contributionGraph"
+                  aria-label="GitHub contribution graph visualization"></div>
+              </div>
+            </div>
+            <div class="github-card-footer">
+              <div class="heatmap-legend">
+                <span>Less</span>
+                <span class="legend-cell" style="background: rgba(255,255,255,0.06);"></span>
+                <span class="legend-cell" style="background: rgba(0, 242, 254, 0.25);"></span>
+                <span class="legend-cell" style="background: rgba(0, 242, 254, 0.5);"></span>
+                <span class="legend-cell" style="background: rgba(0, 242, 254, 0.75);"></span>
+                <span class="legend-cell" style="background: #00F2FE;"></span>
+                <span>More</span>
+              </div>
+              <div class="github-summary">
+                <h5><b data-stat="github-total">183</b> Total Contributions</h5>
+                <p>Consistent contributions over the year</p>
+              </div>
             </div>
           </div>
-          <div class="stats-panel-card">
-            <h4><i class="fa-solid fa-code"></i> LeetCode Problem Solved Stats</h4>
+
+          <!-- CARD 2: LeetCode Problems -->
+          <div class="activity-card">
+            <div class="activity-card-header">
+              <i class="fa-solid fa-code" style="color: var(--primary);"></i>
+              <h4>LeetCode Problems</h4>
+            </div>
             <div class="leetcode-stats">
               <div class="lc-ring">
                 <svg viewBox="0 0 120 120">
                   <circle class="lc-ring-bg" cx="60" cy="60" r="52"></circle>
                   <circle class="lc-ring-fill" cx="60" cy="60" r="52"></circle>
                 </svg>
-                <span data-stat="lc-solved-ring">501+<small>solved</small></span>
+                <span data-stat="lc-solved-ring">501+<small>Solved</small></span>
               </div>
               <ul class="lc-breakdown">
                 <li><span class="dot-easy"></span> Easy Solved <b data-stat="lc-easy-val">277</b></li>
@@ -626,44 +661,68 @@
                 <li><span class="dot-hard"></span> Hard Solved <b data-stat="lc-hard-val">17</b></li>
                 <li><span class="dot-streak"></span> Contest Rating <b data-stat="lc-rating-val">1527</b></li>
                 <li><span class="dot-streak"></span> Highest Rating <b data-stat="lc-highest-val">1577</b></li>
-                <li><span class="dot-streak"></span> Badge <b data-stat="lc-badge-val">100 Days Badge 2026</b></li>
+                <li><span class="dot-streak"></span> Badge <b data-stat="lc-badge-val" style="color: #00F2FE;">100 Days
+                    Badge 2026</b></li>
               </ul>
             </div>
-          <div class="stats-panel-card" data-aos="fade-up" data-aos-delay="100">
-            <h4><i class="fa-solid fa-crown"></i> CodeChef Problem Solved Stats</h4>
+            <div class="card-sub-header">
+              <i class="fa-solid fa-fire" style="color: var(--primary);"></i> Submission Activity
+            </div>
+            <div class="heatmap-wrapper">
+              <div class="heatmap-months">
+                <span>Mar</span><span>Apr</span><span>May</span><span>Jun</span><span>Jul</span><span>Aug</span>
+              </div>
+              <div class="heatmap-flex">
+                <div class="heatmap-days">
+                  <span>Mon</span>
+                  <span>Wed</span>
+                  <span>Fri</span>
+                </div>
+                <div class="contribution-graph" id="leetcodeContributionGraph"
+                  aria-label="LeetCode submission activity graph"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- CARD 3: CodeChef Problems -->
+          <div class="activity-card orange-accent" data-aos-delay="100">
+            <div class="activity-card-header">
+              <i class="fa-solid fa-crown" style="color: #F59E0B;"></i>
+              <h4>CodeChef Problems</h4>
+            </div>
             <div class="leetcode-stats">
               <div class="lc-ring">
                 <svg viewBox="0 0 120 120">
                   <circle class="lc-ring-bg" cx="60" cy="60" r="52"></circle>
                   <circle class="lc-ring-fill" cx="60" cy="60" r="52" style="stroke: #F59E0B;"></circle>
                 </svg>
-                <span data-stat="cc-solved-ring">600+<small>solved</small></span>
+                <span data-stat="cc-solved-ring">600+<small>Solved</small></span>
               </div>
               <ul class="lc-breakdown">
-                <li><span class="dot-streak" style="background: #F59E0B;"></span> Rating <b data-stat="cc-rating-val">1408 (2★)</b></li>
+                <li><span class="dot-streak" style="background: #F59E0B;"></span> Rating <b
+                    data-stat="cc-rating-val">1408 (2★)</b></li>
                 <li><span class="dot-medium"></span> Highest Rating <b data-stat="cc-highest-val">1461</b></li>
                 <li><span class="dot-easy"></span> Global Rank <b>42,530</b></li>
                 <li><span class="dot-hard"></span> Country Rank <b>40,028</b></li>
                 <li><span class="dot-streak"></span> Division <b>Div 3</b></li>
               </ul>
             </div>
-          </div>
-
-          <div class="stats-panel-card" data-aos="fade-up" data-aos-delay="200">
-            <h4><i class="fa-solid fa-graduation-cap"></i> GeeksforGeeks Problem Solved Stats</h4>
-            <div class="leetcode-stats">
-              <div class="lc-ring">
-                <svg viewBox="0 0 120 120">
-                  <circle class="lc-ring-bg" cx="60" cy="60" r="52"></circle>
-                  <circle class="lc-ring-fill" cx="60" cy="60" r="52" style="stroke: #10B981;"></circle>
-                </svg>
-                <span data-stat="gfg-solved-ring">95+<small>solved</small></span>
+            <div class="card-sub-header">
+              <i class="fa-solid fa-fire" style="color: #F59E0B;"></i> Contest &amp; Practice Activity
+            </div>
+            <div class="heatmap-wrapper">
+              <div class="heatmap-months">
+                <span>Mar</span><span>Apr</span><span>May</span><span>Jun</span><span>Jul</span><span>Aug</span>
               </div>
-              <ul class="lc-breakdown">
-                <li><span class="dot-easy"></span> Coding Score <b data-stat="gfg-score-val">266</b></li>
-                <li><span class="dot-streak" style="background: #10B981;"></span> Problems Solved <b data-stat="gfg-solved-val">95</b></li>
-                <li><span class="dot-medium"></span> Institute Rank <b data-stat="gfg-rank-val">1000</b></li>
-              </ul>
+              <div class="heatmap-flex">
+                <div class="heatmap-days">
+                  <span>Mon</span>
+                  <span>Wed</span>
+                  <span>Fri</span>
+                </div>
+                <div class="contribution-graph" id="codechefContributionGraph"
+                  aria-label="CodeChef submission activity graph"></div>
+              </div>
             </div>
           </div>
         </div>

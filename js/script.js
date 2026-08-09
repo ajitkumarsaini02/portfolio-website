@@ -132,16 +132,14 @@ document.addEventListener('DOMContentLoaded', () => {
   window.codingStats = {
     leetcode: 501,
     gfg: 95,
-    codechef: 600,
-    codeforces: 14
+    codechef: 600
   };
 
   function getTotalProblemsSolved() {
     return (
       (window.codingStats.leetcode || 0) +
       (window.codingStats.gfg || 0) +
-      (window.codingStats.codechef || 0) +
-      (window.codingStats.codeforces || 0)
+      (window.codingStats.codechef || 0)
     );
   }
 
@@ -283,28 +281,81 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  /* ---------- 10. Contribution graph generator ---------- */
-  const contribGraph = document.getElementById('contributionGraph');
-  if (contribGraph) {
-    const totalCells = 182; // 26 weeks * 7 days
-    const opacities = [0.06, 0.2, 0.4, 0.65, 0.9];
+  /* ---------- 10. Platform Heatmap Generator (User Handle Seeded & Live) ---------- */
+  function renderSeededHeatmapGraph(containerId, colorRGB, handle, totalSolved) {
+    const el = document.getElementById(containerId);
+    if (!el) return;
+    el.innerHTML = '';
+    const totalCells = 140; // 20 columns * 7 rows
+    const opacities = [0.05, 0.3, 0.55, 0.8, 1.0];
+
+    // Create deterministic hash from platform user handle
+    let hash = 0;
+    for (let i = 0; i < handle.length; i++) hash = (hash << 5) - hash + handle.charCodeAt(i);
+    hash = Math.abs(hash);
+
     for (let i = 0; i < totalCells; i++) {
       const span = document.createElement('span');
-      // Randomly populate realistic active GitHub contribution pattern
-      const rand = Math.random();
+      const pseudoRand = ((hash + i * 31 + (i % 7) * 17) % 100) / 100;
       let level = 0;
-      if (rand > 0.4) level = 1;
-      if (rand > 0.65) level = 2;
-      if (rand > 0.82) level = 3;
-      if (rand > 0.93) level = 4;
+      if (pseudoRand > 0.42) level = 1;
+      if (pseudoRand > 0.68) level = 2;
+      if (pseudoRand > 0.86) level = 3;
+      if (pseudoRand > 0.95) level = 4;
 
       if (level > 0) {
-        span.style.background = `rgba(56, 189, 248, ${opacities[level]})`;
-        span.style.boxShadow = `0 0 6px rgba(56, 189, 248, ${opacities[level] * 0.5})`;
+        span.style.background = `rgba(${colorRGB}, ${opacities[level]})`;
+        span.style.boxShadow = `0 0 6px rgba(${colorRGB}, ${opacities[level] * 0.4})`;
+      } else {
+        span.style.background = 'rgba(255, 255, 255, 0.05)';
       }
-      contribGraph.appendChild(span);
+      el.appendChild(span);
     }
   }
+
+  // Generate initial handle-seeded heatmaps matching user profile IDs
+  renderSeededHeatmapGraph('contributionGraph', '0, 242, 254', 'ajitkumarsaini02', 1136);      // GitHub
+  renderSeededHeatmapGraph('leetcodeContributionGraph', '245, 158, 11', 'ajitkumarsaini02', 501);  // LeetCode
+  renderSeededHeatmapGraph('codechefContributionGraph', '56, 189, 248', 'ajitsaini94', 600);     // CodeChef
+
+  // Live GitHub Contributions API for ajitkumarsaini02
+  async function fetchLiveGitHubContributions() {
+    try {
+      const res = await fetch('https://github-contributions-api.jogruber.de/v4/ajitkumarsaini02?y=last');
+      if (res.ok) {
+        const data = await res.json();
+        if (data && data.total && data.total.lastYear !== undefined) {
+          document.querySelectorAll('[data-stat="github-total"]').forEach(el => el.textContent = data.total.lastYear);
+        }
+        if (data && Array.isArray(data.contributions) && data.contributions.length > 0) {
+          const contribs = data.contributions.slice(-140); // Last 140 days
+          const ghEl = document.getElementById('contributionGraph');
+          if (ghEl) {
+            ghEl.innerHTML = '';
+            contribs.forEach(c => {
+              const span = document.createElement('span');
+              const count = c.count || 0;
+              if (count > 0) {
+                let opacity = 0.3;
+                if (count > 2) opacity = 0.55;
+                if (count > 5) opacity = 0.8;
+                if (count > 8) opacity = 1.0;
+                span.style.background = `rgba(0, 242, 254, ${opacity})`;
+                span.style.boxShadow = `0 0 6px rgba(0, 242, 254, ${opacity * 0.5})`;
+                span.title = `${c.date}: ${count} contributions`;
+              } else {
+                span.style.background = 'rgba(255, 255, 255, 0.05)';
+              }
+              ghEl.appendChild(span);
+            });
+          }
+        }
+      }
+    } catch (e) {
+      console.log('GitHub live contrib fetch fallback');
+    }
+  }
+  fetchLiveGitHubContributions();
 
   /* ---------- 11. FAQ accordion ---------- */
   document.querySelectorAll('.faq-question').forEach(btn => {
@@ -517,6 +568,49 @@ document.addEventListener('DOMContentLoaded', () => {
       console.log('LeetCode badges live fetch fallback');
     }
 
+    // Fetch Live LeetCode Submission Activity Heatmap
+    try {
+      const profRes = await fetch(`https://alfa-leetcode-api.onrender.com/userProfile/${LEETCODE_USER}`);
+      if (profRes.ok) {
+        const profData = await profRes.json();
+        if (profData && profData.submissionCalendar) {
+          const calObj = typeof profData.submissionCalendar === 'string' ? JSON.parse(profData.submissionCalendar) : profData.submissionCalendar;
+          const timestamps = Object.keys(calObj).map(Number).sort((a, b) => a - b);
+          if (timestamps.length > 0) {
+            const lcEl = document.getElementById('leetcodeContributionGraph');
+            if (lcEl) {
+              lcEl.innerHTML = '';
+              const totalCells = 182;
+              const nowSec = Math.floor(Date.now() / 1000);
+              const daySec = 86400;
+              const startSec = nowSec - (totalCells * daySec);
+
+              for (let i = 0; i < totalCells; i++) {
+                const cellStart = startSec + (i * daySec);
+                const cellEnd = cellStart + daySec;
+                const activeCount = timestamps.filter(t => t >= cellStart && t < cellEnd).reduce((sum, t) => sum + (calObj[t] || 1), 0);
+
+                const span = document.createElement('span');
+                if (activeCount > 0) {
+                  let alpha = 0.3;
+                  if (activeCount > 2) alpha = 0.55;
+                  if (activeCount > 5) alpha = 0.85;
+                  if (activeCount > 9) alpha = 1.0;
+                  span.style.background = `rgba(245, 158, 11, ${alpha})`;
+                  span.style.boxShadow = `0 0 6px rgba(245, 158, 11, ${alpha * 0.5})`;
+                } else {
+                  span.style.background = 'rgba(255, 255, 255, 0.05)';
+                }
+                lcEl.appendChild(span);
+              }
+            }
+          }
+        }
+      }
+    } catch (err) {
+      console.log('LeetCode calendar live fetch fallback');
+    }
+
     // 3. Fetch CodeChef Rating Live
     const CODECHEF_USER = 'ajitsaini94';
     try {
@@ -541,19 +635,7 @@ document.addEventListener('DOMContentLoaded', () => {
       console.log('CodeChef live fetch fallback');
     }
 
-    // 4. Fetch Codeforces Live Solved Count
-    try {
-      const cfRes = await fetch('https://codeforces.com/api/user.status?handle=ajitkumarsaini02');
-      if (cfRes.ok) {
-        const cfData = await cfRes.json();
-        if (cfData.status === 'OK' && Array.isArray(cfData.result)) {
-          const cfSolved = new Set(cfData.result.filter(s => s.verdict === 'OK').map(s => s.problem.contestId + s.problem.index)).size;
-          window.codingStats.codeforces = cfSolved;
-        }
-      }
-    } catch (err) {
-      console.log('Codeforces live fetch fallback');
-    }
+
 
     // 5. Fetch GeeksforGeeks Live Solved Count
     const GFG_USER = 'ajitkumarsaini02';
