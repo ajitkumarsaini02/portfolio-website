@@ -413,7 +413,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
-    form.addEventListener('submit', (e) => {
+    form.addEventListener('submit', async (e) => {
       e.preventDefault();
       const allValid = Object.keys(validators).map(validateField).every(Boolean);
       if (!allValid) return;
@@ -421,17 +421,45 @@ document.addEventListener('DOMContentLoaded', () => {
       sendBtn.classList.add('loading');
       if (formSuccess) formSuccess.classList.remove('show');
 
-      setTimeout(() => {
+      const nameVal = document.getElementById('name').value.trim();
+      const emailVal = document.getElementById('email').value.trim();
+      const subjectVal = document.getElementById('subject').value.trim();
+      const messageVal = document.getElementById('message').value.trim();
+
+      try {
+        const response = await fetch('https://formsubmit.co/ajax/ajitkumarsaini02@gmail.com', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify({
+            name: nameVal,
+            email: emailVal,
+            subject: subjectVal,
+            message: messageVal,
+            _subject: `New Portfolio Message: ${subjectVal}`
+          })
+        });
+
         sendBtn.classList.remove('loading');
         if (formSuccess) {
-          formSuccess.textContent = "Thank you, Ajit has received your message and will respond shortly!";
+          formSuccess.textContent = "Thank you! Your message has been sent to Ajit (ajitkumarsaini02@gmail.com). He will reply shortly!";
           formSuccess.classList.add('show');
         }
         form.reset();
         setTimeout(() => {
           if (formSuccess) formSuccess.classList.remove('show');
-        }, 5000);
-      }, 1200);
+        }, 7000);
+      } catch (err) {
+        // Fallback: Open mailto directly
+        sendBtn.classList.remove('loading');
+        window.location.href = `mailto:ajitkumarsaini02@gmail.com?subject=${encodeURIComponent(subjectVal)}&body=${encodeURIComponent("Name: " + nameVal + "\nEmail: " + emailVal + "\n\nMessage:\n" + messageVal)}`;
+        if (formSuccess) {
+          formSuccess.textContent = "Opening your email app to send message directly to ajitkumarsaini02@gmail.com!";
+          formSuccess.classList.add('show');
+        }
+      }
     });
   }
 
