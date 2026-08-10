@@ -413,55 +413,64 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
-    form.addEventListener('submit', async (e) => {
+    form.addEventListener('submit', (e) => {
       e.preventDefault();
       const allValid = Object.keys(validators).map(validateField).every(Boolean);
       if (!allValid) return;
-
-      sendBtn.classList.add('loading');
-      if (formSuccess) formSuccess.classList.remove('show');
 
       const nameVal = document.getElementById('name').value.trim();
       const emailVal = document.getElementById('email').value.trim();
       const subjectVal = document.getElementById('subject').value.trim();
       const messageVal = document.getElementById('message').value.trim();
 
-      try {
-        const response = await fetch('https://formsubmit.co/ajax/ajitkumarsaini02@gmail.com', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json'
-          },
-          body: JSON.stringify({
-            name: nameVal,
-            email: emailVal,
-            subject: subjectVal,
-            message: messageVal,
-            _subject: `New Portfolio Message: ${subjectVal}`
-          })
-        });
+      const bodyContent = `Name: ${nameVal}\nEmail: ${emailVal}\n\nMessage:\n${messageVal}`;
+      const mailtoUrl = `mailto:ajitkumarsaini02@gmail.com?subject=${encodeURIComponent(subjectVal)}&body=${encodeURIComponent(bodyContent)}`;
+      const gmailWebUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=ajitkumarsaini02@gmail.com&su=${encodeURIComponent(subjectVal)}&body=${encodeURIComponent(bodyContent)}`;
 
-        sendBtn.classList.remove('loading');
-        if (formSuccess) {
-          formSuccess.textContent = "Thank you! Your message has been sent to Ajit (ajitkumarsaini02@gmail.com). He will reply shortly!";
-          formSuccess.classList.add('show');
-        }
-        form.reset();
-        setTimeout(() => {
-          if (formSuccess) formSuccess.classList.remove('show');
-        }, 7000);
-      } catch (err) {
-        // Fallback: Open mailto directly
-        sendBtn.classList.remove('loading');
-        window.location.href = `mailto:ajitkumarsaini02@gmail.com?subject=${encodeURIComponent(subjectVal)}&body=${encodeURIComponent("Name: " + nameVal + "\nEmail: " + emailVal + "\n\nMessage:\n" + messageVal)}`;
-        if (formSuccess) {
-          formSuccess.textContent = "Opening your email app to send message directly to ajitkumarsaini02@gmail.com!";
-          formSuccess.classList.add('show');
-        }
+      // 1. Try launching native system email app
+      const mailLink = document.createElement('a');
+      mailLink.href = mailtoUrl;
+      mailLink.click();
+
+      // 2. Display success/fallback message with direct Gmail web link
+      if (formSuccess) {
+        formSuccess.innerHTML = `
+          Opening email app...<br>
+          <small style="margin-top: 6px; display: block; opacity: 0.9;">
+            If your email app didn't open: 
+            <a href="${gmailWebUrl}" target="_blank" rel="noopener" style="color: #00F2FE; text-decoration: underline; font-weight: 600;">Click here to open in Gmail (Web)</a> 
+            or email directly to <b>ajitkumarsaini02@gmail.com</b>
+          </small>
+        `;
+        formSuccess.classList.add('show');
       }
+
+      form.reset();
     });
   }
+
+  /* ---------- Mailto link handler for mail icons & links ---------- */
+  document.querySelectorAll('a[href^="mailto:"]').forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const href = link.getAttribute('href');
+      const email = href.replace('mailto:', '').split('?')[0];
+      const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(email)}`;
+      
+      // Attempt system mail app launch
+      window.location.href = href;
+
+      // Fallback to Gmail Web if desktop has no default mail app
+      let appOpened = false;
+      const handleBlur = () => { appOpened = true; };
+      window.addEventListener('blur', handleBlur, { once: true });
+      setTimeout(() => {
+        if (!appOpened) {
+          window.open(gmailUrl, '_blank');
+        }
+      }, 500);
+    });
+  });
 
   /* ---------- 13. Scroll to top ---------- */
   const scrollTopBtn = document.getElementById('scrollTop');

@@ -2797,3 +2797,14 @@ h4 {
     grid-template-columns: 1fr;
   }
 }
+
+.contact-email-link {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.contact-email-link:hover {
+  color: var(--primary);
+  text-decoration: underline;
+}
