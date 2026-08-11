@@ -130,7 +130,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /* ---------- Central Coding Stats Model ---------- */
   window.codingStats = {
-    leetcode: 501,
+    leetcode: 502,
     gfg: 95,
     codechef: 600
   };
@@ -535,117 +535,145 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
-    // 1. Fetch LeetCode Solved Count & Difficulty breakdown with multiple endpoints
-    try {
-      const res = await fetch(`https://alfa-leetcode-api.onrender.com/${LEETCODE_USER}/solved`);
-      if (res.ok) {
-        const data = await res.json();
-        if (data && (data.solvedProblem || data.totalSolved)) {
-          const solved = data.solvedProblem || data.totalSolved;
-          updateStatElements('lc-solved', solved);
-          if (data.easySolved) document.querySelectorAll('[data-stat="lc-easy-val"]').forEach(el => el.textContent = data.easySolved);
-          if (data.mediumSolved) document.querySelectorAll('[data-stat="lc-medium-val"]').forEach(el => el.textContent = data.mediumSolved);
-          if (data.hardSolved) document.querySelectorAll('[data-stat="lc-hard-val"]').forEach(el => el.textContent = data.hardSolved);
-        }
-      } else {
-        throw new Error('primary solved api failed');
-      }
-    } catch (e) {
+    // 1. Fetch LeetCode Solved Count & Difficulty breakdown with robust multi-tier APIs
+    const solvedEndpoints = [
+      `https://alfa-leetcode-api-three.vercel.app/${LEETCODE_USER}/solved`,
+      `https://leetcode-api-faisalshohag.vercel.app/${LEETCODE_USER}`,
+      `https://alfa-leetcode-api.onrender.com/${LEETCODE_USER}/solved`
+    ];
+
+    for (const url of solvedEndpoints) {
       try {
-        const res2 = await fetch(`https://leetcode-stats-api.herokuapp.com/${LEETCODE_USER}`);
-        if (res2.ok) {
-          const data2 = await res2.json();
-          if (data2 && data2.totalSolved) updateStatElements('lc-solved', data2.totalSolved);
+        const res = await fetch(url);
+        if (res.ok) {
+          const data = await res.json();
+          const solved = data.solvedProblem || data.totalSolved;
+          if (solved) {
+            updateStatElements('lc-solved', solved);
+            if (data.easySolved !== undefined) document.querySelectorAll('[data-stat="lc-easy-val"]').forEach(el => el.textContent = data.easySolved);
+            if (data.mediumSolved !== undefined) document.querySelectorAll('[data-stat="lc-medium-val"]').forEach(el => el.textContent = data.mediumSolved);
+            if (data.hardSolved !== undefined) document.querySelectorAll('[data-stat="lc-hard-val"]').forEach(el => el.textContent = data.hardSolved);
+            console.log('LeetCode solved auto-sync successful via:', url);
+            break;
+          }
         }
-      } catch (err) {
-        console.log('LeetCode solved auto-sync using fallback');
+      } catch (e) {
+        // try next endpoint
       }
     }
 
     // 2. Fetch LeetCode Contest Rating & Highest Rating
-    try {
-      const contestResponse = await fetch(`https://alfa-leetcode-api.onrender.com/${LEETCODE_USER}/contest`);
-      if (contestResponse.ok) {
-        const contestData = await contestResponse.json();
-        if (contestData && contestData.contestRating) {
-          const rating = Math.round(contestData.contestRating);
-          updateStatElements('lc-rating', rating);
+    const contestEndpoints = [
+      `https://alfa-leetcode-api-three.vercel.app/${LEETCODE_USER}/contest`,
+      `https://alfa-leetcode-api.onrender.com/${LEETCODE_USER}/contest`
+    ];
+
+    for (const url of contestEndpoints) {
+      try {
+        const contestResponse = await fetch(url);
+        if (contestResponse.ok) {
+          const contestData = await contestResponse.json();
+          if (contestData && contestData.contestRating) {
+            const rating = Math.round(contestData.contestRating);
+            updateStatElements('lc-rating', rating);
+          }
+          if (contestData && Array.isArray(contestData.contestParticipation)) {
+            const attended = contestData.contestParticipation.filter(c => c.attended && c.rating);
+            if (attended.length > 0) {
+              const highest = Math.round(Math.max(...attended.map(c => c.rating)));
+              updateStatElements('lc-highest', highest);
+            }
+          }
+          console.log('LeetCode contest auto-sync successful via:', url);
+          break;
         }
-        if (contestData && Array.isArray(contestData.contestParticipation)) {
-          const attended = contestData.contestParticipation.filter(c => c.attended && c.rating);
-          if (attended.length > 0) {
-            const highest = Math.round(Math.max(...attended.map(c => c.rating)));
-            updateStatElements('lc-highest', highest);
+      } catch (err) {
+        // try next endpoint
+      }
+    }
+
+    // 3. Fetch LeetCode Badges Live
+    const badgeEndpoints = [
+      `https://alfa-leetcode-api-three.vercel.app/${LEETCODE_USER}/badges`,
+      `https://alfa-leetcode-api.onrender.com/${LEETCODE_USER}/badges`
+    ];
+
+    for (const url of badgeEndpoints) {
+      try {
+        const badgeRes = await fetch(url);
+        if (badgeRes.ok) {
+          const badgeData = await badgeRes.json();
+          let latestBadgeName = '';
+          if (badgeData && Array.isArray(badgeData.badges) && badgeData.badges.length > 0) {
+            latestBadgeName = badgeData.badges[0].displayName;
+          } else if (badgeData && badgeData.activeBadge && badgeData.activeBadge.displayName) {
+            latestBadgeName = badgeData.activeBadge.displayName;
+          }
+
+          if (latestBadgeName) {
+            document.querySelectorAll('[data-stat="lc-badge-title"]').forEach(el => el.textContent = `LeetCode ${latestBadgeName}`);
+            document.querySelectorAll('[data-stat="lc-badge-desc"]').forEach(el => el.textContent = `Earned the LeetCode ${latestBadgeName} award.`);
+            document.querySelectorAll('[data-stat="lc-badge-val"]').forEach(el => el.textContent = latestBadgeName);
+            console.log('LeetCode badges auto-sync successful via:', url);
+            break;
           }
         }
+      } catch (err) {
+        // try next endpoint
       }
-    } catch (err) {
-      console.log('LeetCode contest auto-sync using fallback');
     }
 
-    // Fetch LeetCode Badges Live
-    try {
-      const badgeRes = await fetch(`https://alfa-leetcode-api.onrender.com/${LEETCODE_USER}/badges`);
-      if (badgeRes.ok) {
-        const badgeData = await badgeRes.json();
-        let latestBadgeName = '';
-        if (badgeData && Array.isArray(badgeData.badges) && badgeData.badges.length > 0) {
-          latestBadgeName = badgeData.badges[0].displayName;
-        } else if (badgeData && badgeData.activeBadge && badgeData.activeBadge.displayName) {
-          latestBadgeName = badgeData.activeBadge.displayName;
-        }
+    // 4. Fetch Live LeetCode Submission Activity Heatmap
+    const calendarEndpoints = [
+      `https://alfa-leetcode-api-three.vercel.app/userProfile/${LEETCODE_USER}`,
+      `https://leetcode-api-faisalshohag.vercel.app/${LEETCODE_USER}`,
+      `https://alfa-leetcode-api.onrender.com/userProfile/${LEETCODE_USER}`
+    ];
 
-        if (latestBadgeName) {
-          document.querySelectorAll('[data-stat="lc-badge-title"]').forEach(el => el.textContent = `LeetCode ${latestBadgeName}`);
-          document.querySelectorAll('[data-stat="lc-badge-desc"]').forEach(el => el.textContent = `Earned the LeetCode ${latestBadgeName} award.`);
-          document.querySelectorAll('[data-stat="lc-badge-val"]').forEach(el => el.textContent = latestBadgeName);
-        }
-      }
-    } catch (err) {
-      console.log('LeetCode badges live fetch fallback');
-    }
+    for (const url of calendarEndpoints) {
+      try {
+        const profRes = await fetch(url);
+        if (profRes.ok) {
+          const profData = await profRes.json();
+          if (profData && profData.submissionCalendar) {
+            const calObj = typeof profData.submissionCalendar === 'string' ? JSON.parse(profData.submissionCalendar) : profData.submissionCalendar;
+            const timestamps = Object.keys(calObj).map(Number).sort((a, b) => a - b);
+            if (timestamps.length > 0) {
+              const lcEl = document.getElementById('leetcodeContributionGraph');
+              if (lcEl) {
+                lcEl.innerHTML = '';
+                const totalCells = 182;
+                const nowSec = Math.floor(Date.now() / 1000);
+                const daySec = 86400;
+                const startSec = nowSec - (totalCells * daySec);
 
-    // Fetch Live LeetCode Submission Activity Heatmap
-    try {
-      const profRes = await fetch(`https://alfa-leetcode-api.onrender.com/userProfile/${LEETCODE_USER}`);
-      if (profRes.ok) {
-        const profData = await profRes.json();
-        if (profData && profData.submissionCalendar) {
-          const calObj = typeof profData.submissionCalendar === 'string' ? JSON.parse(profData.submissionCalendar) : profData.submissionCalendar;
-          const timestamps = Object.keys(calObj).map(Number).sort((a, b) => a - b);
-          if (timestamps.length > 0) {
-            const lcEl = document.getElementById('leetcodeContributionGraph');
-            if (lcEl) {
-              lcEl.innerHTML = '';
-              const totalCells = 182;
-              const nowSec = Math.floor(Date.now() / 1000);
-              const daySec = 86400;
-              const startSec = nowSec - (totalCells * daySec);
+                for (let i = 0; i < totalCells; i++) {
+                  const cellStart = startSec + (i * daySec);
+                  const cellEnd = cellStart + daySec;
+                  const activeCount = timestamps.filter(t => t >= cellStart && t < cellEnd).reduce((sum, t) => sum + (calObj[t] || 1), 0);
 
-              for (let i = 0; i < totalCells; i++) {
-                const cellStart = startSec + (i * daySec);
-                const cellEnd = cellStart + daySec;
-                const activeCount = timestamps.filter(t => t >= cellStart && t < cellEnd).reduce((sum, t) => sum + (calObj[t] || 1), 0);
-
-                const span = document.createElement('span');
-                if (activeCount > 0) {
-                  let alpha = 0.3;
-                  if (activeCount > 2) alpha = 0.55;
-                  if (activeCount > 5) alpha = 0.85;
-                  if (activeCount > 9) alpha = 1.0;
-                  span.style.background = `rgba(245, 158, 11, ${alpha})`;
-                  span.style.boxShadow = `0 0 6px rgba(245, 158, 11, ${alpha * 0.5})`;
-                } else {
-                  span.style.background = 'rgba(255, 255, 255, 0.05)';
+                  const span = document.createElement('span');
+                  if (activeCount > 0) {
+                    let alpha = 0.3;
+                    if (activeCount > 2) alpha = 0.55;
+                    if (activeCount > 5) alpha = 0.85;
+                    if (activeCount > 9) alpha = 1.0;
+                    span.style.background = `rgba(245, 158, 11, ${alpha})`;
+                    span.style.boxShadow = `0 0 6px rgba(245, 158, 11, ${alpha * 0.5})`;
+                  } else {
+                    span.style.background = 'rgba(255, 255, 255, 0.05)';
+                  }
+                  lcEl.appendChild(span);
                 }
-                lcEl.appendChild(span);
               }
+              console.log('LeetCode submission calendar auto-sync successful via:', url);
+              break;
             }
           }
         }
+      } catch (err) {
+        // try next endpoint
       }
-    } catch (err) {
-      console.log('LeetCode calendar live fetch fallback');
     }
 
     // 3. Fetch CodeChef Rating Live
