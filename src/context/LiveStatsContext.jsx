@@ -1,6 +1,8 @@
 import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
 
-const API_URL = 'https://coding-profile-service-v2-0.onrender.com/stats?leetcode=ajitkumarsaini02&codechef=ajitsaini94&gfg=ajitkumarsaini02';
+const STATS_API_URL =
+  'https://coding-profile-service-v2-0.onrender.com/stats?leetcode=ajitkumarsaini02&codechef=ajitsaini94&gfg=ajitkumarsaini02&codeforces=ajitkumarsaini02';
+const GITHUB_API_URL = 'https://api.github.com/users/ajitkumarsaini02';
 
 const fallbackStats = {
   leetcode: {
@@ -28,7 +30,21 @@ const fallbackStats = {
     mediumSolved: 45,
     hardSolved: 5
   },
-  totalSolvedAll: 1468
+  codeforces: {
+    totalSolved: 26,
+    rating: 668,
+    maxRating: 668,
+    contestsParticipated: 2,
+    easy: 23,
+    medium: 3
+  },
+  github: {
+    username: 'ajitkumarsaini02',
+    publicRepos: 25,
+    followers: 4,
+    pullRequests: '10+ Merged'
+  },
+  totalSolvedAll: 1494
 };
 
 const LiveStatsContext = createContext({
@@ -51,51 +67,83 @@ export function LiveStatsProvider({ children }) {
       const controller = new AbortController();
       const timeoutId = setTimeout(() => controller.abort(), 12000);
 
-      const res = await fetch(API_URL, { signal: controller.signal });
+      // Fetch coding profile stats & github stats in parallel
+      const [statsRes, githubRes] = await Promise.allSettled([
+        fetch(STATS_API_URL, { signal: controller.signal }),
+        fetch(GITHUB_API_URL, { signal: controller.signal })
+      ]);
+
       clearTimeout(timeoutId);
 
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      let parsedStats = { ...fallbackStats };
 
-      const data = await res.json();
-      if (data && Array.isArray(data.profiles)) {
-        const lc = data.profiles.find((p) => p.platform === 'leetcode') || fallbackStats.leetcode;
-        const cc = data.profiles.find((p) => p.platform === 'codechef') || fallbackStats.codechef;
-        const gfg = data.profiles.find((p) => p.platform === 'gfg') || fallbackStats.gfg;
+      if (statsRes.status === 'fulfilled' && statsRes.value.ok) {
+        const data = await statsRes.value.json();
+        if (data && Array.isArray(data.profiles)) {
+          const lc = data.profiles.find((p) => p.platform === 'leetcode') || fallbackStats.leetcode;
+          const cc = data.profiles.find((p) => p.platform === 'codechef') || fallbackStats.codechef;
+          const gfg = data.profiles.find((p) => p.platform === 'gfg') || fallbackStats.gfg;
+          const cf = data.profiles.find((p) => p.platform === 'codeforces') || fallbackStats.codeforces;
 
-        const total = (lc.totalSolved || 0) + (cc.totalSolved || 0) + (gfg.totalSolved || 0);
+          const total =
+            (lc.totalSolved || 0) +
+            (cc.totalSolved || 0) +
+            (gfg.totalSolved || 0) +
+            (cf.totalSolved || 0);
 
-        setStats({
-          leetcode: {
-            totalSolved: lc.totalSolved || fallbackStats.leetcode.totalSolved,
-            rating: lc.rating || fallbackStats.leetcode.rating,
-            easySolved: lc.easySolved || fallbackStats.leetcode.easySolved,
-            mediumSolved: lc.mediumSolved || fallbackStats.leetcode.mediumSolved,
-            hardSolved: lc.hardSolved || fallbackStats.leetcode.hardSolved,
-            maxRating: lc.maxRating || fallbackStats.leetcode.maxRating,
-            contestsParticipated: lc.contestsParticipated || fallbackStats.leetcode.contestsParticipated,
-            globalRank: lc.globalRank || fallbackStats.leetcode.globalRank
-          },
-          codechef: {
-            totalSolved: cc.totalSolved || fallbackStats.codechef.totalSolved,
-            rating: cc.rating || fallbackStats.codechef.rating,
-            maxRating: cc.maxRating || fallbackStats.codechef.maxRating,
-            contestsParticipated: cc.contestsParticipated || fallbackStats.codechef.contestsParticipated,
-            stars: cc.stars || fallbackStats.codechef.stars,
-            globalRank: cc.globalRank || fallbackStats.codechef.globalRank,
-            countryRank: cc.countryRank || fallbackStats.codechef.countryRank
-          },
-          gfg: {
-            totalSolved: gfg.totalSolved || fallbackStats.gfg.totalSolved,
-            easySolved: gfg.easySolved || fallbackStats.gfg.easySolved,
-            mediumSolved: gfg.mediumSolved || fallbackStats.gfg.mediumSolved,
-            hardSolved: gfg.hardSolved || fallbackStats.gfg.hardSolved
-          },
-          totalSolvedAll: total || fallbackStats.totalSolvedAll
-        });
-
-        setIsLive(true);
-        setLastUpdated(new Date().toLocaleTimeString());
+          parsedStats = {
+            ...parsedStats,
+            leetcode: {
+              totalSolved: lc.totalSolved || fallbackStats.leetcode.totalSolved,
+              rating: lc.rating || fallbackStats.leetcode.rating,
+              easySolved: lc.easySolved || fallbackStats.leetcode.easySolved,
+              mediumSolved: lc.mediumSolved || fallbackStats.leetcode.mediumSolved,
+              hardSolved: lc.hardSolved || fallbackStats.leetcode.hardSolved,
+              maxRating: lc.maxRating || fallbackStats.leetcode.maxRating,
+              contestsParticipated: lc.contestsParticipated || fallbackStats.leetcode.contestsParticipated,
+              globalRank: lc.globalRank || fallbackStats.leetcode.globalRank
+            },
+            codechef: {
+              totalSolved: cc.totalSolved || fallbackStats.codechef.totalSolved,
+              rating: cc.rating || fallbackStats.codechef.rating,
+              maxRating: cc.maxRating || fallbackStats.codechef.maxRating,
+              contestsParticipated: cc.contestsParticipated || fallbackStats.codechef.contestsParticipated,
+              stars: cc.stars || fallbackStats.codechef.stars,
+              globalRank: cc.globalRank || fallbackStats.codechef.globalRank,
+              countryRank: cc.countryRank || fallbackStats.codechef.countryRank
+            },
+            gfg: {
+              totalSolved: gfg.totalSolved || fallbackStats.gfg.totalSolved,
+              easySolved: gfg.easySolved || fallbackStats.gfg.easySolved,
+              mediumSolved: gfg.mediumSolved || fallbackStats.gfg.mediumSolved,
+              hardSolved: gfg.hardSolved || fallbackStats.gfg.hardSolved
+            },
+            codeforces: {
+              totalSolved: cf.totalSolved || fallbackStats.codeforces.totalSolved,
+              rating: cf.rating || fallbackStats.codeforces.rating,
+              maxRating: cf.maxRating || fallbackStats.codeforces.maxRating,
+              contestsParticipated: cf.contestsParticipated || fallbackStats.codeforces.contestsParticipated,
+              easy: cf.questionsByType?.easy || fallbackStats.codeforces.easy,
+              medium: cf.questionsByType?.medium || fallbackStats.codeforces.medium
+            },
+            totalSolvedAll: total || fallbackStats.totalSolvedAll
+          };
+          setIsLive(true);
+        }
       }
+
+      if (githubRes.status === 'fulfilled' && githubRes.value.ok) {
+        const ghData = await githubRes.value.json();
+        parsedStats.github = {
+          username: ghData.login || 'ajitkumarsaini02',
+          publicRepos: ghData.public_repos || 25,
+          followers: ghData.followers || 4,
+          pullRequests: '10+ Merged (GSSoC)'
+        };
+      }
+
+      setStats(parsedStats);
+      setLastUpdated(new Date().toLocaleTimeString());
     } catch (err) {
       console.warn('Live coding stats fetch failed, using fallback cache:', err);
       setIsLive(false);

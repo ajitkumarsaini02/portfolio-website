@@ -15,6 +15,7 @@ export const personalInfo = {
     linkedin: "https://www.linkedin.com/in/ajit-kumar-saini-74340932b/",
     leetcode: "https://leetcode.com/u/ajitkumarsaini02",
     codechef: "https://www.codechef.com/users/ajitsaini94",
+    codeforces: "https://codeforces.com/profile/ajitkumarsaini02",
     portfolio: "https://ajit-kumar-saini-portfolio.netlify.app/",
     geeksforgeeks: "https://www.geeksforgeeks.org/profile/ajitkumarsaini02?tab=activity"
   },
@@ -276,23 +277,37 @@ export const codingProfiles = [
   {
     name: "LeetCode",
     handle: "@ajitkumarsaini02",
-    stats: "500+ Solved • Rating 1527",
+    stats: "690+ Solved • Rating 1664",
     url: "https://leetcode.com/u/ajitkumarsaini02",
     icon: "Code"
   },
   {
     name: "GitHub",
     handle: "@ajitkumarsaini02",
-    stats: "10+ Open Source PRs • MERN Projects",
+    stats: "25 Repos • 10+ Merged PRs",
     url: "https://github.com/ajitkumarsaini02",
     icon: "GitBranch"
   },
   {
     name: "CodeChef",
     handle: "@ajitsaini94",
-    stats: "2★ Coder • Rating 1408",
+    stats: "2★ Coder • Rating 1455",
     url: "https://www.codechef.com/users/ajitsaini94",
     icon: "Crown"
+  },
+  {
+    name: "Codeforces",
+    handle: "@ajitkumarsaini02",
+    stats: "Rating 668 • 26 Solved",
+    url: "https://codeforces.com/profile/ajitkumarsaini02",
+    icon: "Terminal"
+  },
+  {
+    name: "GeeksforGeeks",
+    handle: "@ajitkumarsaini02",
+    stats: "89 Solved • Active Practice",
+    url: "https://www.geeksforgeeks.org/profile/ajitkumarsaini02?tab=activity",
+    icon: "BookMarked"
   },
   {
     name: "LinkedIn",
@@ -300,13 +315,6 @@ export const codingProfiles = [
     stats: "Professional Network",
     url: "https://www.linkedin.com/in/ajit-kumar-saini-74340932b/",
     icon: "Linkedin"
-  },
-  {
-    name: "GeeksforGeeks",
-    handle: "@ajitkumarsaini02",
-    stats: "Practice & Articles",
-    url: "https://www.geeksforgeeks.org/profile/ajitkumarsaini02?tab=activity",
-    icon: "BookMarked"
   }
 ];
 
