@@ -84,17 +84,19 @@ export default function Navbar({ theme, toggleTheme }) {
               </li>
             ))}
             {/* Displayed ONLY inside the open mobile dropdown drawer */}
-            <li className="mobile-only-resume">
-              <a
-                href={personalInfo.resumePath}
-                download="Ajit_Kumar_Saini_Resume.pdf"
-                className="btn btn-primary btn-sm"
-                style={{ width: '100%', marginTop: '8px' }}
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                <FileText size={16} /> Download Resume
-              </a>
-            </li>
+            {mobileMenuOpen && (
+              <li className="mobile-only-resume">
+                <a
+                  href={personalInfo.resumePath}
+                  download="Ajit_Kumar_Saini_Resume.pdf"
+                  className="btn btn-primary btn-sm"
+                  style={{ width: '100%', marginTop: '8px' }}
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  <FileText size={16} /> Download Resume
+                </a>
+              </li>
+            )}
           </ul>
 
           <div className="nav-actions">

@@ -48,22 +48,22 @@ export default function ParticleBackground({ theme }) {
     window.addEventListener('mouseleave', handleMouseLeave);
     window.addEventListener('click', handleClick);
 
-    const particleCount = Math.min(Math.floor(width / 18), 75);
+    const particleCount = Math.min(Math.floor(width / 13), 105);
     const particles = [];
 
     const isDark = theme === 'dark';
-    const dotColor = isDark ? 'rgba(0, 242, 254, 0.6)' : 'rgba(2, 132, 199, 0.45)';
-    const lineColor = isDark ? 'rgba(0, 242, 254, 0.12)' : 'rgba(2, 132, 199, 0.08)';
-    const mouseLineColor = isDark ? 'rgba(0, 242, 254, 0.28)' : 'rgba(2, 132, 199, 0.2)';
+    const dotColor = isDark ? 'rgba(0, 242, 254, 0.7)' : 'rgba(2, 132, 199, 0.55)';
+    const lineColor = isDark ? 'rgba(0, 242, 254, 0.15)' : 'rgba(2, 132, 199, 0.1)';
+    const mouseLineColor = isDark ? 'rgba(0, 242, 254, 0.35)' : 'rgba(2, 132, 199, 0.25)';
 
     for (let i = 0; i < particleCount; i++) {
       particles.push({
         x: Math.random() * width,
         y: Math.random() * height,
-        vx: (Math.random() - 0.5) * 0.7,
-        vy: (Math.random() - 0.5) * 0.7,
-        radius: Math.random() * 2 + 1,
-        baseRadius: Math.random() * 2 + 1
+        vx: (Math.random() - 0.5) * 0.75,
+        vy: (Math.random() - 0.5) * 0.75,
+        radius: Math.random() * 2.2 + 0.8,
+        baseRadius: Math.random() * 2.2 + 0.8
       });
     }
 
