@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Github, Linkedin, Code2, Globe, FileDown, ArrowRight, Sparkles, Terminal, Copy, Check } from 'lucide-react';
 import { personalInfo } from '../data/portfolioData';
 import { useLiveStats } from '../context/LiveStatsContext';
+import MagneticButton from './MagneticButton';
 import AnimatedCounter from './AnimatedCounter';
 
 export default function Hero() {
@@ -114,23 +115,28 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6, duration: 0.6 }}
           >
-            <motion.a
-              href="#projects"
-              className="btn btn-primary"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.96 }}
-            >
-              View My Work <ArrowRight size={18} />
-            </motion.a>
-            <motion.a
-              href={personalInfo.resumePath}
-              download="Ajit_Kumar_Saini_Resume.pdf"
-              className="btn btn-outline"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.96 }}
-            >
-              <FileDown size={18} /> Download Resume
-            </motion.a>
+            <MagneticButton>
+              <motion.a
+                href="#projects"
+                className="btn btn-primary"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.96 }}
+              >
+                View My Work <ArrowRight size={18} />
+              </motion.a>
+            </MagneticButton>
+
+            <MagneticButton>
+              <motion.a
+                href={personalInfo.resumePath}
+                download="Ajit_Kumar_Saini_Resume.pdf"
+                className="btn btn-outline"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.96 }}
+              >
+                <FileDown size={18} /> Download Resume
+              </motion.a>
+            </MagneticButton>
           </motion.div>
 
           <motion.div

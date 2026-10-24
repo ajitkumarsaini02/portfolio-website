@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { LiveStatsProvider } from './context/LiveStatsContext';
 import CustomCursor from './components/CustomCursor';
+import ClickShockwave from './components/ClickShockwave';
 import AmbientGlow from './components/AmbientGlow';
 import ParticleBackground from './components/ParticleBackground';
 import Navbar from './components/Navbar';
@@ -35,6 +36,9 @@ export default function App() {
       <div className="portfolio-app">
         {/* Interactive Custom Spring Cursor */}
         <CustomCursor />
+
+        {/* Interactive Click Shockwave Waves */}
+        <ClickShockwave />
 
         {/* Floating Cyber Ambient Glow Orbs */}
         <AmbientGlow />

@@ -4,6 +4,7 @@ import { FolderGit2, ExternalLink, Github, Sparkles, Cpu, CheckSquare, Music } f
 import { projects } from '../data/portfolioData';
 import ScrollReveal from './ScrollReveal';
 import TiltCard from './TiltCard';
+import MagneticButton from './MagneticButton';
 
 export default function Projects() {
   const [filter, setFilter] = useState('all');
@@ -42,24 +43,32 @@ export default function Projects() {
         {/* Project Filters */}
         <ScrollReveal delay={0.1}>
           <div className="project-filters">
-            <button
-              className={`filter-btn ${filter === 'all' ? 'active' : ''}`}
-              onClick={() => setFilter('all')}
-            >
-              All Work ({projects.length})
-            </button>
-            <button
-              className={`filter-btn ${filter === 'fullstack' ? 'active' : ''}`}
-              onClick={() => setFilter('fullstack')}
-            >
-              Full-Stack MERN
-            </button>
-            <button
-              className={`filter-btn ${filter === 'frontend' ? 'active' : ''}`}
-              onClick={() => setFilter('frontend')}
-            >
-              Frontend &amp; Web Apps
-            </button>
+            <MagneticButton strength={0.3}>
+              <button
+                className={`filter-btn ${filter === 'all' ? 'active' : ''}`}
+                onClick={() => setFilter('all')}
+              >
+                All Work ({projects.length})
+              </button>
+            </MagneticButton>
+
+            <MagneticButton strength={0.3}>
+              <button
+                className={`filter-btn ${filter === 'fullstack' ? 'active' : ''}`}
+                onClick={() => setFilter('fullstack')}
+              >
+                Full-Stack MERN
+              </button>
+            </MagneticButton>
+
+            <MagneticButton strength={0.3}>
+              <button
+                className={`filter-btn ${filter === 'frontend' ? 'active' : ''}`}
+                onClick={() => setFilter('frontend')}
+              >
+                Frontend &amp; Web Apps
+              </button>
+            </MagneticButton>
           </div>
         </ScrollReveal>
 

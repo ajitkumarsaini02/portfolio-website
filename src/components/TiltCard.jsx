@@ -4,8 +4,10 @@ export default function TiltCard({ children, className = '', maxTilt = 10, ...pr
   const cardRef = useRef(null);
   const [style, setStyle] = useState({});
   const [glareStyle, setGlareStyle] = useState({ opacity: 0 });
+  const [borderGlow, setBorderGlow] = useState({ opacity: 0 });
 
   const handleMouseMove = (e) => {
+    if (window.matchMedia('(hover: none)').matches) return;
     const card = cardRef.current;
     if (!card) return;
 
@@ -21,24 +23,33 @@ export default function TiltCard({ children, className = '', maxTilt = 10, ...pr
 
     setStyle({
       transform: `perspective(1000px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) scale3d(1.02, 1.02, 1.02)`,
-      transition: 'transform 0.1s ease-out'
+      transition: 'transform 0.08s ease-out'
     });
 
     setGlareStyle({
-      opacity: 0.15,
-      background: `radial-gradient(circle at ${x}px ${y}px, rgba(0, 242, 254, 0.45), transparent 70%)`,
-      transition: 'opacity 0.2s ease-out'
+      opacity: 0.22,
+      background: `radial-gradient(400px circle at ${x}px ${y}px, rgba(0, 242, 254, 0.35), transparent 70%)`,
+      transition: 'opacity 0.15s ease-out'
+    });
+
+    setBorderGlow({
+      opacity: 1,
+      background: `radial-gradient(280px circle at ${x}px ${y}px, rgba(0, 242, 254, 0.65), transparent 70%)`
     });
   };
 
   const handleMouseLeave = () => {
     setStyle({
       transform: 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)',
-      transition: 'transform 0.5s ease-out'
+      transition: 'transform 0.45s ease-out'
     });
     setGlareStyle({
       opacity: 0,
-      transition: 'opacity 0.5s ease-out'
+      transition: 'opacity 0.45s ease-out'
+    });
+    setBorderGlow({
+      opacity: 0,
+      transition: 'opacity 0.45s ease-out'
     });
   };
 
@@ -51,6 +62,7 @@ export default function TiltCard({ children, className = '', maxTilt = 10, ...pr
       style={{ position: 'relative', willChange: 'transform', ...style }}
       {...props}
     >
+      {/* Dynamic Cursor Spotlight Glare */}
       <div
         className="tilt-glare"
         style={{
@@ -66,6 +78,26 @@ export default function TiltCard({ children, className = '', maxTilt = 10, ...pr
         }}
         aria-hidden="true"
       />
+
+      {/* Dynamic Border Spotlight Glow */}
+      <div
+        className="tilt-border-spotlight"
+        style={{
+          position: 'absolute',
+          inset: '-1px',
+          borderRadius: 'inherit',
+          pointerEvents: 'none',
+          zIndex: 1,
+          mask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
+          WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
+          maskComposite: 'exclude',
+          WebkitMaskComposite: 'xor',
+          padding: '1px',
+          ...borderGlow
+        }}
+        aria-hidden="true"
+      />
+
       {children}
     </div>
   );

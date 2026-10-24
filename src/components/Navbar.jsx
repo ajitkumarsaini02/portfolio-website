@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, useScroll, useSpring } from 'framer-motion';
 import { Sun, Moon, Menu, X, FileText } from 'lucide-react';
 import { personalInfo } from '../data/portfolioData';
+import MagneticButton from './MagneticButton';
 
 export default function Navbar({ theme, toggleTheme }) {
   const [scrolled, setScrolled] = useState(false);
@@ -100,28 +101,32 @@ export default function Navbar({ theme, toggleTheme }) {
           </ul>
 
           <div className="nav-actions">
-            <motion.button
-              onClick={toggleTheme}
-              className="icon-btn"
-              aria-label="Toggle dark/light theme"
-              title={`Switch to ${theme === 'dark' ? 'Light' : 'Dark'} Mode`}
-              whileHover={{ scale: 1.1, rotate: 180 }}
-              whileTap={{ scale: 0.9 }}
-              transition={{ duration: 0.3 }}
-            >
-              {theme === 'dark' ? <Moon size={18} /> : <Sun size={18} />}
-            </motion.button>
+            <MagneticButton strength={0.4}>
+              <motion.button
+                onClick={toggleTheme}
+                className="icon-btn"
+                aria-label="Toggle dark/light theme"
+                title={`Switch to ${theme === 'dark' ? 'Light' : 'Dark'} Mode`}
+                whileHover={{ scale: 1.1, rotate: 180 }}
+                whileTap={{ scale: 0.9 }}
+                transition={{ duration: 0.3 }}
+              >
+                {theme === 'dark' ? <Moon size={18} /> : <Sun size={18} />}
+              </motion.button>
+            </MagneticButton>
 
             {/* Single primary Resume button */}
-            <motion.a
-              href={personalInfo.resumePath}
-              download="Ajit_Kumar_Saini_Resume.pdf"
-              className="btn btn-primary btn-sm desktop-resume-btn"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <FileText size={16} /> Resume
-            </motion.a>
+            <MagneticButton strength={0.25}>
+              <motion.a
+                href={personalInfo.resumePath}
+                download="Ajit_Kumar_Saini_Resume.pdf"
+                className="btn btn-primary btn-sm desktop-resume-btn"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <FileText size={16} /> Resume
+              </motion.a>
+            </MagneticButton>
 
             <button
               className="icon-btn mobile-toggle"
