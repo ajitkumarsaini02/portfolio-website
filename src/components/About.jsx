@@ -1,10 +1,33 @@
-import React from "react";
-import { motion } from "framer-motion";
-import { CheckCircle2, GraduationCap, Award, Code, MapPin } from "lucide-react";
-import { personalInfo } from "../data/portfolioData";
-import ScrollReveal from "./ScrollReveal";
+import React from 'react';
+import { motion } from 'framer-motion';
+import { GraduationCap, Award, Code, MapPin, GitPullRequest } from 'lucide-react';
+import { personalInfo } from '../data/portfolioData';
+import ScrollReveal from './ScrollReveal';
 
 export default function About() {
+  const highlights = [
+    {
+      icon: GraduationCap,
+      text: 'Pursuing B.Tech in CSE at ABES Engineering College, Ghaziabad with 8.48/10 CGPA.',
+    },
+    {
+      icon: Code,
+      text: 'Mastery in React.js, Node.js, Express, MongoDB, REST API design, and JWT authentication.',
+    },
+    {
+      icon: Award,
+      text: 'Solved 500+ LeetCode DSA problems (Rating 1527, Peak 1577) with 100 Days streak badge.',
+    },
+    {
+      icon: GitPullRequest,
+      text: '20+ open-source pull requests submitted and merged across active repositories in GSSoC 2026.',
+    },
+    {
+      icon: MapPin,
+      text: 'Based in Ghaziabad, Uttar Pradesh — ready for hybrid and remote developer positions.',
+    },
+  ];
+
   return (
     <section id="about" className="section section-alt">
       <div className="container">
@@ -14,13 +37,11 @@ export default function About() {
               <GraduationCap size={15} /> 01 / Know Me
             </span>
             <h2 className="section-title">
-              Passionate About{" "}
-              <span className="gradient-text">Scalable Code</span> &amp; Modern
-              UIs
+              Passionate About{' '}
+              <span className="gradient-text">Scalable Code</span> &amp; Modern UIs
             </h2>
             <p className="section-subtitle">
-              A glimpse into my background, academic standing, and engineering
-              philosophy.
+              A glimpse into my background, academic standing, and engineering philosophy.
             </p>
           </div>
         </ScrollReveal>
@@ -40,16 +61,13 @@ export default function About() {
                 src={personalInfo.photoPath}
                 alt={personalInfo.name}
                 className="photo-img"
-                onError={(e) => {
-                  e.target.src =
-                    "https://images.unsplash.com/photo-1534972195531-a756b1126f24?auto=format&fit=crop&w=800&q=80";
-                }}
+                loading="lazy"
               />
             </motion.div>
             <motion.div
               className="photo-badge"
               animate={{ y: [0, -5, 0] }}
-              transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
+              transition={{ repeat: Infinity, duration: 4, ease: 'easeInOut' }}
             >
               <GraduationCap size={18} color="var(--primary)" />
               <span>B.Tech CSE • 8.48 CGPA</span>
@@ -66,24 +84,21 @@ export default function About() {
             ))}
 
             <ul className="about-highlights">
-              {[
-                `Pursuing B.Tech in CSE at ABES Engineering College, Ghaziabad with 8.48/10 CGPA.`,
-                `Mastery in React.js, Node.js, Express, MongoDB, REST API design, and JWT authentication.`,
-                `Solved 500+ LeetCode DSA problems (Rating 1527, Peak 1577) with 100 Days streak badge.`,
-                `20+ open-source pull requests submitted and merged across active repositories in GSSoC 2026.`,
-                `Based in Ghaziabad, Uttar Pradesh — ready for hybrid and remote developer positions.`,
-              ].map((text, i) => (
-                <motion.li
-                  key={i}
-                  initial={{ opacity: 0, x: 20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.2 + i * 0.1, duration: 0.5 }}
-                >
-                  <CheckCircle2 size={18} className="check-icon" />
-                  <span>{text}</span>
-                </motion.li>
-              ))}
+              {highlights.map((item, i) => {
+                const IconComponent = item.icon;
+                return (
+                  <motion.li
+                    key={i}
+                    initial={{ opacity: 0, x: 20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.2 + i * 0.1, duration: 0.5 }}
+                  >
+                    <IconComponent size={18} className="check-icon" />
+                    <span>{item.text}</span>
+                  </motion.li>
+                );
+              })}
             </ul>
           </ScrollReveal>
         </div>
