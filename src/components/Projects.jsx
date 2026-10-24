@@ -78,73 +78,84 @@ export default function Projects() {
               <motion.div
                 key={project.id}
                 layout
-                initial={{ opacity: 0, scale: 0.9 }}
+                initial={{ opacity: 0, scale: 0.92 }}
                 animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.9 }}
-                transition={{ duration: 0.4, delay: idx * 0.05 }}
-                style={{
-                  gridColumn: project.featured ? '1 / -1' : 'auto'
-                }}
+                exit={{ opacity: 0, scale: 0.92 }}
+                transition={{ duration: 0.35, delay: idx * 0.05 }}
+                className="project-grid-item"
               >
-                <TiltCard maxTilt={8}>
-                  <article className={`glass-card project-card ${project.featured ? 'featured-card' : ''}`}>
-                    <div className="project-top">
-                      <div className="project-icon-box">
-                        {iconMap[project.icon] || <Cpu size={24} />}
-                      </div>
-                      <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
-                        <span className={`badge ${project.featured ? 'badge-cyan' : 'badge-purple'}`}>
+                <TiltCard maxTilt={6} className="project-tilt-wrapper">
+                  <article className="glass-card project-card">
+                    {/* Project Preview Image Banner */}
+                    <div className="project-image-wrapper">
+                      <img
+                        src={project.image}
+                        alt={`${project.title} Preview`}
+                        className="project-image"
+                        loading="lazy"
+                      />
+                      <div className="project-image-gradient" />
+                      <div className="project-image-badge">
+                        <span className="badge badge-cyan">
                           {project.badge}
                         </span>
                       </div>
                     </div>
 
-                    <h3 className="project-title">{project.title}</h3>
-                    <p className="project-desc">{project.description}</p>
+                    {/* Card Content Body */}
+                    <div className="project-card-body">
+                      <div className="project-top">
+                        <div className="project-icon-box">
+                          {iconMap[project.icon] || <Cpu size={22} />}
+                        </div>
+                        <h3 className="project-title">{project.title}</h3>
+                      </div>
 
-                    {project.bullets && project.bullets.length > 0 && (
-                      <ul className="project-bullets">
-                        {project.bullets.map((b, i) => (
-                          <li key={i}>
-                            <span className="bullet-arrow">▸</span>
-                            <span>{b}</span>
-                          </li>
+                      <p className="project-desc">{project.description}</p>
+
+                      {project.bullets && project.bullets.length > 0 && (
+                        <ul className="project-bullets">
+                          {project.bullets.map((b, i) => (
+                            <li key={i}>
+                              <span className="bullet-arrow">▸</span>
+                              <span>{b}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      )}
+
+                      <div className="project-tech">
+                        {project.tech.map((t, i) => (
+                          <span key={i} className="tech-tag">
+                            {t}
+                          </span>
                         ))}
-                      </ul>
-                    )}
+                      </div>
 
-                    <div className="project-tech">
-                      {project.tech.map((t, i) => (
-                        <span key={i} className="tech-tag">
-                          {t}
-                        </span>
-                      ))}
-                    </div>
-
-                    <div className="project-links">
-                      {project.links.github && (
-                        <motion.a
-                          href={project.links.github}
-                          target="_blank"
-                          rel="noreferrer"
-                          className="project-link-item"
-                          whileHover={{ x: 3 }}
-                        >
-                          <Github size={16} /> Source Code
-                        </motion.a>
-                      )}
-                      {project.links.demo && (
-                        <motion.a
-                          href={project.links.demo}
-                          target="_blank"
-                          rel="noreferrer"
-                          className="project-link-item"
-                          style={{ color: 'var(--primary)' }}
-                          whileHover={{ x: 3 }}
-                        >
-                          <ExternalLink size={16} /> Live Demo
-                        </motion.a>
-                      )}
+                      <div className="project-links">
+                        {project.links.github && (
+                          <motion.a
+                            href={project.links.github}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="project-link-item"
+                            whileHover={{ x: 3 }}
+                          >
+                            <Github size={16} /> Source Code
+                          </motion.a>
+                        )}
+                        {project.links.demo && (
+                          <motion.a
+                            href={project.links.demo}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="project-link-item project-link-demo"
+                            whileHover={{ x: 3 }}
+                          >
+                            <ExternalLink size={16} /> Live Demo
+                          </motion.a>
+                        )}
+                      </div>
                     </div>
                   </article>
                 </TiltCard>

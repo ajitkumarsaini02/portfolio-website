@@ -109,19 +109,19 @@ export const projects = [
   {
     id: "codetrack",
     title: "CodeTrack",
-    badge: "Featured MERN Stack",
-    featured: true,
+    badge: "MERN Stack",
+    featured: false,
     category: "fullstack",
     icon: "Cpu",
+    image: "/assets/projects/codetrack.jpg",
     description:
-      "A comprehensive full-stack MERN dashboard that tracks user ratings, solved problem counts, and daily streaks across 5 major coding platforms (LeetCode, Codeforces, CodeChef, GeeksforGeeks, GitHub), eliminating manual site-by-site checks.",
+      "A comprehensive full-stack MERN dashboard that syncs user ratings, solved problem counts, and daily streaks across LeetCode, Codeforces, CodeChef, GFG, and GitHub in real time.",
     bullets: [
-      "Secured Node.js and Express 5 REST API with JWT authentication, bcrypt hashing (12 rounds), Helmet security headers, and rate limiting across 10 MongoDB data models.",
-      "Engineered parallel sync architecture for 5 platform APIs with timeouts and fallback scrapers so external platform downtime never breaks a user's dashboard.",
-      "Curated 2,500+ problems into an interactive 22-phase, 116-topic DSA roadmap with live progress tracking and leaderboard.",
-      "Live deployment on Vercel (React Frontend), Render (Node Backend), and MongoDB Atlas."
+      "Secured REST API with JWT auth, bcrypt hashing, Helmet, and rate limiting across 10 MongoDB models.",
+      "Engineered parallel sync architecture for 5 platform APIs with timeouts and fallback scrapers.",
+      "Curated 2,500+ problems into an interactive 22-phase, 116-topic DSA roadmap with live progress tracking."
     ],
-    tech: ["React.js", "Node.js", "Express.js", "MongoDB", "REST API", "JWT Auth", "Vercel", "Render"],
+    tech: ["React.js", "Node.js", "Express.js", "MongoDB", "REST API", "JWT Auth", "Render"],
     links: {
       github: "https://github.com/ajitkumarsaini02",
       demo: "https://github.com/ajitkumarsaini02"
@@ -134,12 +134,13 @@ export const projects = [
     featured: false,
     category: "frontend",
     icon: "CheckSquare",
+    image: "/assets/projects/taskmaster.jpg",
     description:
       "A zero-backend productivity and task management web application that stores all state and preferences locally with high performance and zero external dependencies.",
     bullets: [
-      "Implemented 5+ core features: instant real-time filtering, keyword search, dark/light theme persistence, priority-based sorting, and custom tag categorization.",
-      "Improved maintainability by 40% by structuring the codebase into modular JavaScript modules with clean separation of concerns.",
-      "Deployed on Netlify and achieved 90+ Google Lighthouse performance scores on mobile and desktop devices."
+      "Implemented instant real-time filtering, keyword search, dark/light theme persistence, and priority sorting.",
+      "Engineered zero-backend modular architecture with LocalStorage persistence and clean separation of concerns.",
+      "Deployed on Netlify and achieved 90+ Google Lighthouse performance scores across all devices."
     ],
     tech: ["JavaScript (ES6+)", "HTML5", "CSS3", "LocalStorage", "Netlify"],
     links: {
@@ -154,12 +155,13 @@ export const projects = [
     featured: false,
     category: "frontend",
     icon: "Sparkles",
+    image: "/assets/projects/portfolio.jpg",
     description:
-      "High-performance personal developer portfolio re-engineered into modern React with Vite, custom interactive canvas particles, live coding stats cards, theme switching, and smooth micro-interactions.",
+      "High-performance personal developer portfolio re-engineered into modern React with Vite, custom interactive canvas particles, live coding stats cards, and theme switching.",
     bullets: [
-      "Built with reusable React components, custom hooks, and zero heavy bloated UI libraries.",
-      "Maintains 60fps across canvas particle animations, dynamic counters, and interactive coding activity visualizers.",
-      "Integrated instant contact system and direct resume downloads."
+      "Engineered with modern React and Vite, featuring custom interactive canvas particle physics.",
+      "Integrated live coding metrics API syncing real-time LeetCode, Codeforces, and CodeChef statistics.",
+      "Implemented smooth Framer Motion micro-interactions, magnetic buttons, and theme toggle."
     ],
     tech: ["React.js", "Vite", "Modern CSS", "HTML5 Canvas", "Lucide Icons"],
     links: {
@@ -169,17 +171,18 @@ export const projects = [
   },
   {
     id: "echostream",
-    title: "EchoStream Media Player",
+    title: "EchoStream Player",
     badge: "Audio App",
     featured: false,
     category: "frontend",
     icon: "Music",
+    image: "/assets/projects/echostream.jpg",
     description:
-      "Modern multimedia player web application featuring complete audio controls, track timeline seeking, playlist queueing, and responsive UI design.",
+      "Modern multimedia player web application featuring complete audio controls, track timeline seeking, playlist queueing, spectrum visualizer, and responsive UI design.",
     bullets: [
-      "Engineered responsive player controls utilizing HTML5 Web Audio API.",
-      "Includes playlist state management, volume slider, timeline scrubber, and keyboard shortcuts.",
-      "Responsive layout optimized across smartphone, tablet, and desktop viewports."
+      "Engineered responsive player controls and spectrum visualizer utilizing HTML5 Web Audio API.",
+      "Includes playlist state management, volume slider, track timeline scrubber, and keyboard shortcuts.",
+      "Responsive glassmorphism layout optimized across smartphone, tablet, and desktop viewports."
     ],
     tech: ["JavaScript", "HTML5 Audio API", "CSS3 Flexbox", "Netlify"],
     links: {
