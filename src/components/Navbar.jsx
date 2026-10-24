@@ -1,0 +1,132 @@
+import React, { useState, useEffect } from 'react';
+import { motion, useScroll, useSpring } from 'framer-motion';
+import { Sun, Moon, Menu, X, FileText } from 'lucide-react';
+import { personalInfo } from '../data/portfolioData';
+
+export default function Navbar({ theme, toggleTheme }) {
+  const [scrolled, setScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState('hero');
+
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001
+  });
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 40);
+
+      const sections = ['hero', 'about', 'skills', 'projects', 'experience', 'achievements', 'education', 'contact'];
+      const scrollPos = window.scrollY + 200;
+
+      for (let s of sections) {
+        const el = document.getElementById(s);
+        if (el) {
+          const top = el.offsetTop;
+          const height = el.offsetHeight;
+          if (scrollPos >= top && scrollPos < top + height) {
+            setActiveSection(s);
+            break;
+          }
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const navLinks = [
+    { name: 'About', href: '#about', id: 'about' },
+    { name: 'Skills', href: '#skills', id: 'skills' },
+    { name: 'Projects', href: '#projects', id: 'projects' },
+    { name: 'Experience', href: '#experience', id: 'experience' },
+    { name: 'Achievements', href: '#achievements', id: 'achievements' },
+    { name: 'Education', href: '#education', id: 'education' },
+    { name: 'Contact', href: '#contact', id: 'contact' },
+  ];
+
+  return (
+    <>
+      {/* Top Animated Scroll Progress Bar */}
+      <motion.div
+        className="scroll-progress-bar"
+        style={{ scaleX }}
+      />
+
+      <header className={`navbar ${scrolled ? 'scrolled' : ''}`}>
+        <div className="container nav-container">
+          <motion.a
+            href="#hero"
+            className="logo"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <span className="logo-tag">&lt;</span>
+            <span>Ajit</span>
+            <span className="logo-tag">/&gt;</span>
+          </motion.a>
+
+          <ul className={`nav-links ${mobileMenuOpen ? 'open' : ''}`}>
+            {navLinks.map((link) => (
+              <li key={link.id}>
+                <a
+                  href={link.href}
+                  className={`nav-link ${activeSection === link.id ? 'active' : ''}`}
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  {link.name}
+                </a>
+              </li>
+            ))}
+            <li className="mobile-resume-btn">
+              <a
+                href={personalInfo.resumePath}
+                download="Ajit_Kumar_Saini_Resume.pdf"
+                className="btn btn-primary btn-sm"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                <FileText size={16} /> Resume
+              </a>
+            </li>
+          </ul>
+
+          <div className="nav-actions">
+            <motion.button
+              onClick={toggleTheme}
+              className="icon-btn"
+              aria-label="Toggle dark/light theme"
+              title={`Switch to ${theme === 'dark' ? 'Light' : 'Dark'} Mode`}
+              whileHover={{ scale: 1.1, rotate: 180 }}
+              whileTap={{ scale: 0.9 }}
+              transition={{ duration: 0.3 }}
+            >
+              {theme === 'dark' ? <Moon size={18} /> : <Sun size={18} />}
+            </motion.button>
+
+            <motion.a
+              href={personalInfo.resumePath}
+              download="Ajit_Kumar_Saini_Resume.pdf"
+              className="btn btn-primary btn-sm desktop-only"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <FileText size={16} /> Resume
+            </motion.a>
+
+            <button
+              className="icon-btn mobile-toggle"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              aria-label="Toggle Navigation Menu"
+            >
+              {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+            </button>
+          </div>
+        </div>
+      </header>
+    </>
+  );
+}
