@@ -1248,7 +1248,7 @@ h1, h2, h3, h4, h5, h6 {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: top center;
+  object-position: center;
   transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), filter 0.5s ease;
 }
 
@@ -1259,12 +1259,12 @@ h1, h2, h3, h4, h5, h6 {
 .project-image-gradient {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(8, 11, 17, 0.1) 0%, rgba(8, 11, 17, 0.75) 100%);
+  background: linear-gradient(180deg, rgba(8, 11, 17, 0.02) 0%, rgba(8, 11, 17, 0.45) 100%);
   pointer-events: none;
 }
 
 [data-theme='light'] .project-image-gradient {
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.05) 0%, rgba(15, 23, 42, 0.4) 100%);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.02) 0%, rgba(15, 23, 42, 0.2) 100%);
 }
 
 .project-image-badge {
