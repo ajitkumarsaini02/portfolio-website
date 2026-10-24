@@ -106,7 +106,7 @@ export default function ProfilesAndCertifications() {
                     width: '40px',
                     height: '40px',
                     borderRadius: 'var(--radius-sm)',
-                    background: 'rgba(0, 242, 254, 0.1)',
+                    background: 'rgba(16, 185, 129, 0.1)',
                     color: 'var(--primary)',
                     display: 'flex',
                     alignItems: 'center',

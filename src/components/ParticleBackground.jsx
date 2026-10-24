@@ -52,9 +52,9 @@ export default function ParticleBackground({ theme }) {
     const particles = [];
 
     const isDark = theme === 'dark';
-    const dotColor = isDark ? 'rgba(0, 242, 254, 0.7)' : 'rgba(2, 132, 199, 0.55)';
-    const lineColor = isDark ? 'rgba(0, 242, 254, 0.15)' : 'rgba(2, 132, 199, 0.1)';
-    const mouseLineColor = isDark ? 'rgba(0, 242, 254, 0.35)' : 'rgba(2, 132, 199, 0.25)';
+    const dotColor = isDark ? 'rgba(16, 185, 129, 0.75)' : 'rgba(4, 120, 87, 0.6)';
+    const lineColor = isDark ? 'rgba(16, 185, 129, 0.16)' : 'rgba(4, 120, 87, 0.12)';
+    const mouseLineColor = isDark ? 'rgba(20, 184, 166, 0.4)' : 'rgba(13, 148, 136, 0.28)';
 
     for (let i = 0; i < particleCount; i++) {
       particles.push({

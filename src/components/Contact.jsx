@@ -102,7 +102,7 @@ export default function Contact() {
                   </li>
                 </ul>
 
-                <div style={{ padding: '16px', background: 'rgba(0, 242, 254, 0.05)', borderRadius: 'var(--radius-md)', border: '1px solid var(--border-color)' }}>
+                <div style={{ padding: '16px', background: 'rgba(16, 185, 129, 0.06)', borderRadius: 'var(--radius-md)', border: '1px solid var(--border-color)' }}>
                   <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>
                     ⚡ <strong>Quick Response Guarantee:</strong> Emails sent to <span style={{ color: 'var(--primary)' }}>{personalInfo.email}</span> receive a reply within 24 hours.
                   </p>

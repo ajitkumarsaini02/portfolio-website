@@ -39,7 +39,7 @@ export default function Achievements() {
               flexWrap: 'wrap',
               gap: '20px',
               marginBottom: '36px',
-              background: 'linear-gradient(135deg, rgba(0, 242, 254, 0.08) 0%, rgba(139, 92, 246, 0.08) 100%)',
+              background: 'linear-gradient(135deg, rgba(16, 185, 129, 0.08) 0%, rgba(20, 184, 166, 0.08) 100%)',
               border: '1px solid var(--border-color)'
             }}
           >

@@ -28,13 +28,13 @@ export default function TiltCard({ children, className = '', maxTilt = 10, ...pr
 
     setGlareStyle({
       opacity: 0.22,
-      background: `radial-gradient(400px circle at ${x}px ${y}px, rgba(0, 242, 254, 0.35), transparent 70%)`,
+      background: `radial-gradient(400px circle at ${x}px ${y}px, var(--primary-glow), transparent 70%)`,
       transition: 'opacity 0.15s ease-out'
     });
 
     setBorderGlow({
-      opacity: 1,
-      background: `radial-gradient(280px circle at ${x}px ${y}px, rgba(0, 242, 254, 0.65), transparent 70%)`
+      opacity: 0.9,
+      background: `radial-gradient(280px circle at ${x}px ${y}px, var(--primary), transparent 70%)`
     });
   };
 
