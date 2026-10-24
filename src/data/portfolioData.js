@@ -27,7 +27,7 @@ export const personalInfo = {
   ],
   bio: [
     "I am a Computer Science undergraduate (B.Tech, CGPA 8.48) with hands-on experience building full-stack MERN applications and high-performance, responsive front-end projects.",
-    "My key full-stack creation is CodeTrack — a DSA tracking platform syncing data from 5 coding platforms through a JWT-secured REST API. I have solved 500+ LeetCode problems (Contest Rating: 1527, Peak: 1577), achieved 2-Star status on CodeChef, and contributed 10+ pull requests to open-source organizations in GSSoC 2026.",
+    "My key full-stack creation is CodeTrack — a DSA tracking platform syncing data from 5 coding platforms through a JWT-secured REST API. I have solved 500+ LeetCode problems (Contest Rating: 1527, Peak: 1577), achieved 2-Star status on CodeChef, and contributed 20+ pull requests to open-source organizations in GSSoC 2026.",
     "I am actively looking for software engineering internships and developer opportunities where I can build reliable, scalable web applications."
   ]
 };
@@ -36,7 +36,7 @@ export const stats = [
   { label: "LeetCode Problems", value: 502, suffix: "+", icon: "Code", highlight: "Contest Rating 1527" },
   { label: "CodeChef Rating", value: 1408, suffix: "", icon: "Crown", highlight: "2★ Coder (Peak 1461)" },
   { label: "B.Tech CGPA", value: 8.48, isFloat: true, suffix: "/10", icon: "GraduationCap", highlight: "ABES Engg College" },
-  { label: "Open Source PRs", value: 10, suffix: "+", icon: "GitPullRequest", highlight: "GSSoC 2026 Contributor" }
+  { label: "Open Source PRs", value: 20, suffix: "+", icon: "GitPullRequest", highlight: "GSSoC 2026 Contributor" }
 ];
 
 export const skillCategories = [
@@ -98,7 +98,7 @@ export const experience = [
     type: "Remote",
     badge: "Open Source",
     points: [
-      "Submitted 10+ pull requests to open-source GitHub repositories, resolving bugs and improving overall code quality.",
+      "Submitted and successfully merged 20+ pull requests across open-source GitHub repositories in GSSoC 2026, resolving bugs and improving overall code quality.",
       "Implemented responsive UI features, dark mode toggling, DOM optimizations, and accessibility (a11y) improvements across 5+ repositories.",
       "Reduced reported issues by 30% by collaborating with maintainers on web performance improvements and modular JavaScript architecture."
     ]
@@ -213,7 +213,7 @@ export const achievements = [
   },
   {
     title: "GSSoC 2026 Contributor",
-    metric: "10+ Merged Pull Requests",
+    metric: "20+ Merged Pull Requests",
     icon: "GitPullRequest",
     desc: "Active open-source contributor improving accessibility, dark mode, and UI architecture in open source."
   }
@@ -287,7 +287,7 @@ export const codingProfiles = [
   {
     name: "GitHub",
     handle: "@ajitkumarsaini02",
-    stats: "25 Repos • 10+ Merged PRs",
+    stats: "25 Repos • 20+ Merged PRs",
     url: "https://github.com/ajitkumarsaini02",
     icon: "GitBranch"
   },

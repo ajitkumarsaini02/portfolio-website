@@ -70,7 +70,7 @@ export default function About() {
                 `Pursuing B.Tech in CSE at ABES Engineering College, Ghaziabad with 8.48/10 CGPA.`,
                 `Mastery in React.js, Node.js, Express, MongoDB, REST API design, and JWT authentication.`,
                 `Solved 500+ LeetCode DSA problems (Rating 1527, Peak 1577) with 100 Days streak badge.`,
-                `10+ open-source pull requests submitted and merged across active repositories in GSSoC 2026.`,
+                `20+ open-source pull requests submitted and merged across active repositories in GSSoC 2026.`,
                 `Based in Ghaziabad, Uttar Pradesh — ready for hybrid and remote developer positions.`,
               ].map((text, i) => (
                 <motion.li

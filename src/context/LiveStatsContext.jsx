@@ -42,7 +42,7 @@ const fallbackStats = {
     username: 'ajitkumarsaini02',
     publicRepos: 25,
     followers: 4,
-    pullRequests: '10+ Merged'
+    pullRequests: '20+ Merged'
   },
   totalSolvedAll: 1494
 };
@@ -138,7 +138,7 @@ export function LiveStatsProvider({ children }) {
           username: ghData.login || 'ajitkumarsaini02',
           publicRepos: ghData.public_repos || 25,
           followers: ghData.followers || 4,
-          pullRequests: '10+ Merged (GSSoC)'
+          pullRequests: '20+ Merged (GSSoC)'
         };
       }
 
