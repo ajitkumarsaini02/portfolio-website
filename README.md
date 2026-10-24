@@ -51,3 +51,15 @@ A modern, high-performance developer portfolio built with **React.js**, **Vite**
    ```bash
    npm run preview
    ```
+
+## Netlify deployment
+
+The repository's `netlify.toml` configures Netlify to build the React app with
+`npm run build` from the repository root and publish only the generated `dist/`
+directory using Node.js 22. Netlify installs dependencies from `package-lock.json`
+before building. The repository root is source code and should not be used as the
+publish directory.
+
+A fallback to `index.html` supports direct visits and refreshes on client-side
+URLs. Existing files, including the photo and resume copied from `public/assets/`,
+are served directly.
