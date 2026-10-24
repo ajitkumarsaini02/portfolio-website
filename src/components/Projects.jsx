@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FolderGit2, ExternalLink, Github, Sparkles, Cpu, CheckSquare, Music } from 'lucide-react';
+import { FolderGit2, ExternalLink, Github, Sparkles, Cpu, CheckSquare, Music, Headphones } from 'lucide-react';
 import { projects } from '../data/portfolioData';
 import ScrollReveal from './ScrollReveal';
 import TiltCard from './TiltCard';
@@ -20,7 +20,8 @@ export default function Projects() {
     Cpu: <Cpu size={24} />,
     CheckSquare: <CheckSquare size={24} />,
     Sparkles: <Sparkles size={24} />,
-    Music: <Music size={24} />
+    Music: <Music size={24} />,
+    Headphones: <Headphones size={24} />
   };
 
   return (
@@ -96,7 +97,7 @@ export default function Projects() {
                       />
                       <div className="project-image-gradient" />
                       <div className="project-image-badge">
-                        <span className="badge badge-cyan">
+                        <span className="project-badge-tag">
                           {project.badge}
                         </span>
                       </div>

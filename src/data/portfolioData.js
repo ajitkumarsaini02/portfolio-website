@@ -150,7 +150,7 @@ export const projects = [
   },
   {
     id: "portfolio",
-    title: "Personal Portfolio v2",
+    title: "Personal Portfolio",
     badge: "React & Vite",
     featured: false,
     category: "frontend",
@@ -171,8 +171,8 @@ export const projects = [
   },
   {
     id: "echostream",
-    title: "EchoStream Player",
-    badge: "Audio App",
+    title: "EchoStream Media Player",
+    badge: "Audio & Video Player",
     featured: false,
     category: "frontend",
     icon: "Music",
@@ -188,6 +188,27 @@ export const projects = [
     links: {
       github: "https://github.com/ajitkumarsaini02/EchoStream-Media-Player",
       demo: "https://echostream-media-player.netlify.app/"
+    }
+  },
+  {
+    id: "spotify-clone",
+    title: "Spotify Clone",
+    badge: "Web Player Clone",
+    featured: false,
+    category: "frontend",
+    icon: "Headphones",
+    image: "/assets/projects/spotify.png",
+    description:
+      "A responsive Spotify web player frontend clone replicating Spotify's desktop streaming interface, playlist navigation, search, and audio playback controls.",
+    bullets: [
+      "Replicated pixel-perfect Spotify dark-theme UI with library sidebar, search, and browse categories.",
+      "Implemented seamless audio playback engine with track seeker, volume control, play/pause state, and track queue.",
+      "Optimized for smooth 60fps performance and deployed live on Netlify."
+    ],
+    tech: ["JavaScript (ES6+)", "HTML5 Audio", "CSS3 Flexbox/Grid", "Netlify"],
+    links: {
+      github: "https://github.com/ajitkumarsaini02/Spotify-Clone",
+      demo: "https://spotify-music-cl.netlify.app/"
     }
   }
 ];
