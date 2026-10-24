@@ -1,8 +1,8 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { CheckCircle2, GraduationCap, Award, Code, MapPin } from 'lucide-react';
-import { personalInfo } from '../data/portfolioData';
-import ScrollReveal from './ScrollReveal';
+import React from "react";
+import { motion } from "framer-motion";
+import { CheckCircle2, GraduationCap, Award, Code, MapPin } from "lucide-react";
+import { personalInfo } from "../data/portfolioData";
+import ScrollReveal from "./ScrollReveal";
 
 export default function About() {
   return (
@@ -14,16 +14,23 @@ export default function About() {
               <GraduationCap size={15} /> 01 / Know Me
             </span>
             <h2 className="section-title">
-              Passionate About <span className="gradient-text">Scalable Code</span> &amp; Modern UIs
+              Passionate About{" "}
+              <span className="gradient-text">Scalable Code</span> &amp; Modern
+              UIs
             </h2>
             <p className="section-subtitle">
-              A glimpse into my background, academic standing, and engineering philosophy.
+              A glimpse into my background, academic standing, and engineering
+              philosophy.
             </p>
           </div>
         </ScrollReveal>
 
         <div className="about-grid">
-          <ScrollReveal direction="right" delay={0.2} className="about-photo-wrapper">
+          <ScrollReveal
+            direction="right"
+            delay={0.2}
+            className="about-photo-wrapper"
+          >
             <motion.div
               className="photo-frame"
               whileHover={{ scale: 1.03 }}
@@ -34,16 +41,17 @@ export default function About() {
                 alt={personalInfo.name}
                 className="photo-img"
                 onError={(e) => {
-                  e.target.src = 'https://images.unsplash.com/photo-1534972195531-a756b1126f24?auto=format&fit=crop&w=800&q=80';
+                  e.target.src =
+                    "https://images.unsplash.com/photo-1534972195531-a756b1126f24?auto=format&fit=crop&w=800&q=80";
                 }}
               />
             </motion.div>
             <motion.div
               className="photo-badge"
               animate={{ y: [0, -5, 0] }}
-              transition={{ repeat: Infinity, duration: 4, ease: 'easeInOut' }}
+              transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
             >
-              <GraduationCap size={18} color="#00F2FE" />
+              <GraduationCap size={18} color="var(--primary)" />
               <span>B.Tech CSE • 8.48 CGPA</span>
             </motion.div>
           </ScrollReveal>
@@ -63,7 +71,7 @@ export default function About() {
                 `Mastery in React.js, Node.js, Express, MongoDB, REST API design, and JWT authentication.`,
                 `Solved 500+ LeetCode DSA problems (Rating 1527, Peak 1577) with 100 Days streak badge.`,
                 `10+ open-source pull requests submitted and merged across active repositories in GSSoC 2026.`,
-                `Based in Ghaziabad, Uttar Pradesh — ready for hybrid and remote developer positions.`
+                `Based in Ghaziabad, Uttar Pradesh — ready for hybrid and remote developer positions.`,
               ].map((text, i) => (
                 <motion.li
                   key={i}
