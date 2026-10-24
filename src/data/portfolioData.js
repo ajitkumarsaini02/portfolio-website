@@ -113,7 +113,7 @@ export const projects = [
     featured: false,
     category: "fullstack",
     icon: "Cpu",
-    image: "/assets/projects/codetrack.jpg",
+    image: "/assets/projects/codetrack.png",
     description:
       "A comprehensive full-stack MERN dashboard that syncs user ratings, solved problem counts, and daily streaks across LeetCode, Codeforces, CodeChef, GFG, and GitHub in real time.",
     bullets: [
@@ -134,13 +134,13 @@ export const projects = [
     featured: false,
     category: "frontend",
     icon: "CheckSquare",
-    image: "/assets/projects/taskmaster.jpg",
+    image: "/assets/projects/taskmaster.png",
     description:
       "A zero-backend productivity and task management web application that stores all state and preferences locally with high performance and zero external dependencies.",
     bullets: [
       "Implemented instant real-time filtering, keyword search, dark/light theme persistence, and priority sorting.",
       "Engineered zero-backend modular architecture with LocalStorage persistence and clean separation of concerns.",
-      "Deployed on Netlify and achieved 90+ Google Lighthouse performance scores across all devices."
+      "Deployed on Netlify and achieved 90+ Google Lighthouse performance scores across all devices.",
     ],
     tech: ["JavaScript (ES6+)", "HTML5", "CSS3", "LocalStorage", "Netlify"],
     links: {
@@ -155,7 +155,7 @@ export const projects = [
     featured: false,
     category: "frontend",
     icon: "Sparkles",
-    image: "/assets/projects/portfolio.jpg",
+    image: "/assets/projects/portfolio.png",
     description:
       "High-performance personal developer portfolio re-engineered into modern React with Vite, custom interactive canvas particles, live coding stats cards, and theme switching.",
     bullets: [
@@ -176,7 +176,7 @@ export const projects = [
     featured: false,
     category: "frontend",
     icon: "Music",
-    image: "/assets/projects/echostream.jpg",
+    image: "/assets/projects/echostream.png",
     description:
       "Modern multimedia player web application featuring complete audio controls, track timeline seeking, playlist queueing, spectrum visualizer, and responsive UI design.",
     bullets: [
