@@ -70,6 +70,7 @@ export default function Navbar({ theme, toggleTheme }) {
             <span className="logo-tag">/&gt;</span>
           </motion.a>
 
+          {/* Desktop & Mobile Links */}
           <ul className={`nav-links ${mobileMenuOpen ? 'open' : ''}`}>
             {navLinks.map((link) => (
               <li key={link.id}>
@@ -82,14 +83,16 @@ export default function Navbar({ theme, toggleTheme }) {
                 </a>
               </li>
             ))}
-            <li className="mobile-resume-btn">
+            {/* Displayed ONLY inside the open mobile dropdown drawer */}
+            <li className="mobile-only-resume">
               <a
                 href={personalInfo.resumePath}
                 download="Ajit_Kumar_Saini_Resume.pdf"
                 className="btn btn-primary btn-sm"
+                style={{ width: '100%', marginTop: '8px' }}
                 onClick={() => setMobileMenuOpen(false)}
               >
-                <FileText size={16} /> Resume
+                <FileText size={16} /> Download Resume
               </a>
             </li>
           </ul>
@@ -107,10 +110,11 @@ export default function Navbar({ theme, toggleTheme }) {
               {theme === 'dark' ? <Moon size={18} /> : <Sun size={18} />}
             </motion.button>
 
+            {/* Single primary Resume button */}
             <motion.a
               href={personalInfo.resumePath}
               download="Ajit_Kumar_Saini_Resume.pdf"
-              className="btn btn-primary btn-sm desktop-only"
+              className="btn btn-primary btn-sm desktop-resume-btn"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Github, Linkedin, Code2, Globe, FileDown, ArrowRight, Sparkles, Terminal, Copy, Check, RefreshCw } from 'lucide-react';
+import { Github, Linkedin, Code2, Globe, FileDown, ArrowRight, Sparkles, Terminal, Copy, Check } from 'lucide-react';
 import { personalInfo } from '../data/portfolioData';
 import { useLiveStats } from '../context/LiveStatsContext';
 import AnimatedCounter from './AnimatedCounter';
@@ -11,7 +11,7 @@ export default function Hero() {
   const [isDeleting, setIsDeleting] = useState(false);
   const [copiedCode, setCopiedCode] = useState(false);
 
-  const { stats: liveData, isLive, loading, refreshStats } = useLiveStats();
+  const { stats: liveData } = useLiveStats();
 
   // Dynamic typing animation
   useEffect(() => {
@@ -40,9 +40,10 @@ export default function Hero() {
   name: "${personalInfo.name}",
   education: "B.Tech CSE @ ABESEC (8.48 CGPA)",
   stack: ["React.js", "Node.js", "Express", "MongoDB"],
-  dsaSolved: ${liveData.leetcode.totalSolved}, // Across all: ${liveData.totalSolvedAll}+
+  dsaSolved: ${liveData.leetcode.totalSolved}, // Total across all: ${liveData.totalSolvedAll}+
   lcRating: ${liveData.leetcode.rating},
-  codeChef: "${liveData.codechef.stars}★ (Rating ${liveData.codechef.rating})",
+  codeChef: "${liveData.codechef.stars}★ (${liveData.codechef.rating})",
+  codeforces: "Rating ${liveData.codeforces.rating}",
   featuredProject: "CodeTrack (Full-Stack MERN)"
 };`;
 
@@ -68,31 +69,19 @@ export default function Hero() {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         >
-          <div style={{ display: 'flex', gap: '10px', alignItems: 'center', flexWrap: 'wrap' }}>
-            <motion.div
-              className="status-badge"
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2, duration: 0.5 }}
-            >
-              <span className="pulse-dot"></span>
-              <span>AVAILABLE FOR INTERNSHIPS &amp; ROLES</span>
-            </motion.div>
-
-            {isLive && (
-              <motion.div
-                className="badge badge-cyan"
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                style={{ cursor: 'pointer' }}
-                onClick={refreshStats}
-                title="Click to sync live stats from coding-profile-service"
-              >
-                <RefreshCw size={11} className={loading ? 'animate-spin' : ''} style={{ marginRight: '4px' }} />
-                <span>Live Synced</span>
-              </motion.div>
-            )}
-          </div>
+          {/* Enhanced Elegant Status Pill */}
+          <motion.div
+            className="status-pill"
+            initial={{ opacity: 0, y: -15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2, duration: 0.5 }}
+          >
+            <span className="status-ping-wrapper">
+              <span className="status-ping"></span>
+              <span className="status-dot"></span>
+            </span>
+            <span className="status-text">Available for Internships &amp; Full-Time Roles</span>
+          </motion.div>
 
           <motion.h1
             className="hero-title"
@@ -116,7 +105,7 @@ export default function Hero() {
             transition={{ delay: 0.5, duration: 0.7 }}
           >
             I am a Computer Science student at <strong>ABES Engineering College</strong> with proven expertise
-            in <strong>React.js, Node.js, Express, MongoDB</strong>, and competitive programming with <strong>{liveData.totalSolvedAll}+ total problems solved</strong> across LeetCode, CodeChef, and GFG.
+            in <strong>React.js, Node.js, Express, MongoDB</strong>, and competitive programming with <strong>{liveData.totalSolvedAll}+ total problems solved</strong> across LeetCode, CodeChef, Codeforces, and GFG.
           </motion.p>
 
           <motion.div
@@ -253,7 +242,7 @@ export default function Hero() {
           >
             <Sparkles size={20} color="#00F2FE" />
             <div>
-              <p style={{ fontSize: '0.82rem', fontWeight: 700, color: 'var(--text-main)' }}>Live Stats Synced</p>
+              <p style={{ fontSize: '0.82rem', fontWeight: 700, color: 'var(--text-main)' }}>Open to Work</p>
               <p style={{ fontSize: '0.72rem', color: 'var(--primary)', fontFamily: 'var(--font-mono)' }}>{liveData.totalSolvedAll}+ Problems Solved</p>
             </div>
           </motion.div>

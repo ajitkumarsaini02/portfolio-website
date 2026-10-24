@@ -14,33 +14,14 @@ export default function Achievements() {
       <div className="container">
         <ScrollReveal>
           <div className="section-header">
-            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '10px', marginBottom: '12px' }}>
-              <span className="section-eyebrow" style={{ margin: 0 }}>
-                <Trophy size={15} /> 05 / Milestones
-              </span>
-              <button
-                onClick={refreshStats}
-                className="badge badge-cyan"
-                style={{ cursor: 'pointer', border: '1px solid rgba(0, 242, 254, 0.4)' }}
-                title="Refresh stats from live API service"
-              >
-                <RefreshCw size={12} className={loading ? 'animate-spin' : ''} style={{ marginRight: '4px' }} />
-                <span>{isLive ? `Live Synced (${lastUpdated || 'Now'})` : 'Sync Live Stats'}</span>
-              </button>
-            </div>
+            <span className="section-eyebrow">
+              <Trophy size={15} /> 05 / Milestones
+            </span>
             <h2 className="section-title">
-              Live Coding Profiles &amp; <span className="gradient-text">Milestones</span>
+              Coding Profiles &amp; <span className="gradient-text">Milestones</span>
             </h2>
             <p className="section-subtitle">
-              Live metrics fetched automatically from LeetCode, CodeChef, Codeforces, GitHub &amp; GFG via{' '}
-              <a
-                href="https://coding-profile-service-v2-0.onrender.com/"
-                target="_blank"
-                rel="noreferrer"
-                style={{ color: 'var(--primary)', textDecoration: 'underline' }}
-              >
-                coding-profile-service
-              </a>.
+              Comprehensive problem solving and contest performance across competitive programming platforms.
             </p>
           </div>
         </ScrollReveal>
