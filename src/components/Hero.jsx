@@ -54,6 +54,15 @@ export default function Hero() {
     setTimeout(() => setCopiedCode(false), 2000);
   };
 
+  const scrollToProjects = (e) => {
+    e.preventDefault();
+    window.history.pushState({}, '', '/projects');
+    const el = document.getElementById('projects');
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   const dynamicStats = [
     { label: "LeetCode Solved", value: liveData.leetcode.totalSolved, suffix: "+" },
     { label: "LeetCode Rating", value: liveData.leetcode.rating, suffix: "" },
@@ -117,7 +126,8 @@ export default function Hero() {
           >
             <MagneticButton>
               <motion.a
-                href="#projects"
+                href="/projects"
+                onClick={scrollToProjects}
                 className="btn btn-primary"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.96 }}

@@ -4,7 +4,22 @@ import { personalInfo } from '../data/portfolioData';
 
 export default function Footer() {
   const scrollToTop = () => {
+    window.history.pushState({}, '', '/');
     window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const scrollToSection = (e, id) => {
+    e.preventDefault();
+    const path = id === 'hero' ? '/' : `/${id}`;
+    window.history.pushState({}, '', path);
+    if (id === 'hero') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      const el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
   };
 
   return (
@@ -12,7 +27,12 @@ export default function Footer() {
       <div className="container footer-grid">
         {/* Brand Column */}
         <div className="footer-brand">
-          <a href="#hero" className="logo" style={{ textDecoration: 'none' }}>
+          <a
+            href="/"
+            className="logo"
+            style={{ textDecoration: 'none' }}
+            onClick={(e) => scrollToSection(e, 'hero')}
+          >
             <span className="logo-tag">&lt;</span>
             <span>Ajit</span>
             <span className="logo-tag">/&gt;</span>
@@ -30,15 +50,15 @@ export default function Footer() {
         <div className="footer-col">
           <h4>Navigation</h4>
           <ul className="footer-links">
-            <li><a href="#about">About Me</a></li>
-            <li><a href="#skills">Skills &amp; Tech Stack</a></li>
-            <li><a href="#projects">Featured Projects</a></li>
-            <li><a href="#experience">Open Source &amp; Experience</a></li>
-            <li><a href="#achievements">Milestones &amp; DSA</a></li>
-            <li><a href="#certifications">Certifications &amp; Credentials</a></li>
-            <li><a href="#education">Education</a></li>
-            <li><a href="#profiles">Coding Handles</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="/about" onClick={(e) => scrollToSection(e, 'about')}>About Me</a></li>
+            <li><a href="/skills" onClick={(e) => scrollToSection(e, 'skills')}>Skills &amp; Tech Stack</a></li>
+            <li><a href="/projects" onClick={(e) => scrollToSection(e, 'projects')}>Featured Projects</a></li>
+            <li><a href="/experience" onClick={(e) => scrollToSection(e, 'experience')}>Open Source &amp; Experience</a></li>
+            <li><a href="/achievements" onClick={(e) => scrollToSection(e, 'achievements')}>Milestones &amp; DSA</a></li>
+            <li><a href="/certifications" onClick={(e) => scrollToSection(e, 'certifications')}>Certifications &amp; Credentials</a></li>
+            <li><a href="/education" onClick={(e) => scrollToSection(e, 'education')}>Education</a></li>
+            <li><a href="/profiles" onClick={(e) => scrollToSection(e, 'profiles')}>Coding Handles</a></li>
+            <li><a href="/contact" onClick={(e) => scrollToSection(e, 'contact')}>Contact</a></li>
           </ul>
         </div>
 
