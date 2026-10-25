@@ -286,38 +286,8 @@ export const education = [
   }
 ];
 
-export const certifications = [
-  {
-    title: "Deloitte Technology Job Simulation",
-    issuer: "Forage",
-    year: "2026",
-    icon: "Briefcase"
-  },
-  {
-    title: "Python Essentials 2",
-    issuer: "Cisco Networking Academy / Python Institute",
-    year: "2026",
-    icon: "Code2"
-  },
-  {
-    title: "India AI Impact Buildathon",
-    issuer: "GUVI x HCL",
-    year: "2026",
-    icon: "Award"
-  },
-  {
-    title: "AWS Academy Graduate – Cloud Foundations",
-    issuer: "AWS Academy",
-    year: "2025",
-    icon: "Cloud"
-  },
-  {
-    title: "Learn C++ Programming – Beginner to Advance",
-    issuer: "Udemy",
-    year: "2025",
-    icon: "BookOpen"
-  }
-];
+import { certificatesData } from './certificatesData';
+export const certifications = certificatesData;
 
 export const codingProfiles = [
   {
