@@ -16,7 +16,7 @@ export default function About() {
     },
     {
       icon: Award,
-      text: 'Solved 500+ LeetCode DSA problems (Rating 1527, Peak 1577) with 100 Days streak badge.',
+      text: 'Solved 700+ LeetCode DSA problems (Rating 1664, Peak 1679) with 100 Days streak badge.',
     },
     {
       icon: GitPullRequest,

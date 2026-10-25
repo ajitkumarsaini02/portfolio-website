@@ -6,10 +6,10 @@ const GITHUB_API_URL = 'https://api.github.com/users/ajitkumarsaini02';
 
 const fallbackStats = {
   leetcode: {
-    totalSolved: 697,
+    totalSolved: 701,
     rating: 1664,
-    easySolved: 360,
-    mediumSolved: 310,
+    easySolved: 361,
+    mediumSolved: 313,
     hardSolved: 27,
     maxRating: 1679,
     contestsParticipated: 24,
@@ -44,7 +44,7 @@ const fallbackStats = {
     followers: 4,
     pullRequests: '20+ Merged'
   },
-  totalSolvedAll: 1494
+  totalSolvedAll: 1498
 };
 
 const LiveStatsContext = createContext({

@@ -78,7 +78,7 @@ export default function Footer() {
             </li>
             <li>
               <a href={personalInfo.socials.leetcode} target="_blank" rel="noreferrer">
-                LeetCode Profile (500+ Solved)
+                LeetCode Profile (700+ Solved)
               </a>
             </li>
             <li>

@@ -27,14 +27,14 @@ export const personalInfo = {
   ],
   bio: [
     "I am a Computer Science undergraduate (B.Tech, CGPA 8.48) with hands-on experience building full-stack MERN applications and high-performance, responsive front-end projects.",
-    "My key full-stack creation is CodeTrack — a DSA tracking platform syncing data from 5 coding platforms through a JWT-secured REST API. I have solved 500+ LeetCode problems (Contest Rating: 1527, Peak: 1577), achieved 2-Star status on CodeChef, and contributed 20+ pull requests to open-source organizations in GSSoC 2026.",
+    "My key full-stack creation is CodeTrack — a DSA tracking platform syncing data from 5 coding platforms through a JWT-secured REST API. I have solved 700+ LeetCode problems (Contest Rating: 1664, Peak: 1679), achieved 2-Star status on CodeChef (Rating 1455), and contributed 20+ pull requests to open-source organizations in GSSoC 2026.",
     "I am actively looking for software engineering internships and developer opportunities where I can build reliable, scalable web applications."
   ]
 };
 
 export const stats = [
-  { label: "LeetCode Problems", value: 502, suffix: "+", icon: "Code", highlight: "Contest Rating 1527" },
-  { label: "CodeChef Rating", value: 1408, suffix: "", icon: "Crown", highlight: "2★ Coder (Peak 1461)" },
+  { label: "LeetCode Problems", value: 701, suffix: "+", icon: "Code", highlight: "Contest Rating 1664" },
+  { label: "CodeChef Rating", value: 1455, suffix: "", icon: "Crown", highlight: "2★ Coder (Peak 1461)" },
   { label: "B.Tech CGPA", value: 8.48, isFloat: true, suffix: "/10", icon: "GraduationCap", highlight: "ABES Engg College" },
   { label: "Open Source PRs", value: 20, suffix: "+", icon: "GitPullRequest", highlight: "GSSoC 2026 Contributor" }
 ];
@@ -237,14 +237,14 @@ export const projects = [
 
 export const achievements = [
   {
-    title: "500+ LeetCode Solved",
-    metric: "Rating 1527 (Peak 1577)",
+    title: "700+ LeetCode Solved",
+    metric: "Rating 1664 (Peak 1679)",
     icon: "Trophy",
-    desc: "Solved 500+ DSA problems covering Arrays, Graphs, DP, Trees, and Strings with 100 Days Streak Badge."
+    desc: "Solved 700+ algorithmic challenges covering Arrays, Graphs, DP, Trees, and Strings with 100 Days Streak Badge."
   },
   {
-    title: "CodeChef 2-Star (1408)",
-    metric: "Peak 1461 | 600+ Solved",
+    title: "CodeChef 2-Star (1455)",
+    metric: "Peak 1461 | 680+ Solved",
     icon: "Crown",
     desc: "Achieved Division 3 2-Star Coder status with active participation in global algorithmic challenges."
   },
@@ -345,7 +345,7 @@ export const faqs = [
   },
   {
     q: "What are your competitive programming milestones?",
-    a: "I have solved 500+ problems on LeetCode with a contest rating of 1527 (Peak 1577) and earned the 100 Days Badge. On CodeChef, I am a 2-Star coder (Rating 1408, Peak 1461)."
+    a: "I have solved 700+ problems on LeetCode with a contest rating of 1664 (Peak 1679) and earned the 100 Days Badge. On CodeChef, I am a 2-Star coder (Rating 1455, Peak 1461)."
   },
   {
     q: "Are you available for software engineering internships?",
