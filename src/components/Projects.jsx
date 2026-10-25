@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FolderGit2, ExternalLink, Github, Sparkles, Cpu, CheckSquare, Music, Headphones } from 'lucide-react';
+import { FolderGit2, ExternalLink, Github, Sparkles, Cpu, CheckSquare, Music, Headphones, Boxes } from 'lucide-react';
 import { projects } from '../data/portfolioData';
 import ScrollReveal from './ScrollReveal';
 import TiltCard from './TiltCard';
@@ -21,7 +21,8 @@ export default function Projects() {
     CheckSquare: <CheckSquare size={24} />,
     Sparkles: <Sparkles size={24} />,
     Music: <Music size={24} />,
-    Headphones: <Headphones size={24} />
+    Headphones: <Headphones size={24} />,
+    Boxes: <Boxes size={24} />
   };
 
   return (
@@ -36,7 +37,7 @@ export default function Projects() {
               Featured Projects &amp; <span className="gradient-text">Applications</span>
             </h2>
             <p className="section-subtitle">
-              Real-world full-stack MERN systems, zero-backend web apps, and developer productivity tools.
+              Enterprise full-stack systems, MERN dashboards, and modern web applications.
             </p>
           </div>
         </ScrollReveal>
@@ -58,7 +59,7 @@ export default function Projects() {
                 className={`filter-btn ${filter === 'fullstack' ? 'active' : ''}`}
                 onClick={() => setFilter('fullstack')}
               >
-                Full-Stack MERN
+                Full-Stack Systems
               </button>
             </MagneticButton>
 

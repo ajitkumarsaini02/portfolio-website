@@ -107,6 +107,28 @@ export const experience = [
 
 export const projects = [
   {
+    id: "retail-inventory",
+    title: "Retail Inventory & Supply Chain ERP",
+    badge: "Full-Stack ERP",
+    featured: true,
+    category: "fullstack",
+    icon: "Boxes",
+    image: "/assets/projects/retail-inventory.png",
+    description:
+      "An enterprise-grade Retail Inventory and Supply Chain ERP system featuring multi-hub warehouse telemetry, role-based access control, supplier procurement pipelines, and automated stock replenishment.",
+    bullets: [
+      "Engineered Spring Boot REST backend with stateless JWT Spring Security and granular Role-Based Access Control (Admin & Operator workspaces).",
+      "Built multi-hub warehouse stock telemetry with real-time threshold reorder alerts, SKU catalog CRUD, and CSV report export.",
+      "Automated end-to-end sales order fulfillment lifecycle and procurement purchase orders with direct warehouse inventory synchronization.",
+      "Crafted high-performance responsive UI in React 19 + Vite + TailwindCSS v4 with dual-theme engine and instant Ctrl+K command palette."
+    ],
+    tech: ["Spring Boot", "Java 17", "Spring Security", "MySQL", "React 19", "Vite", "TailwindCSS v4", "JWT Auth", "REST API"],
+    links: {
+      github: "https://github.com/ajitkumarsaini02/retail-inventory-management-system",
+      demo: "https://rims-erp.vercel.app/login"
+    }
+  },
+  {
     id: "codetrack",
     title: "CodeTrack",
     badge: "MERN Stack",
