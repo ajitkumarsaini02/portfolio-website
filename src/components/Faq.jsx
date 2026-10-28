@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { HelpCircle, ChevronDown, ChevronUp } from 'lucide-react';
-import { faqs } from '../data/portfolioData';
-import ScrollReveal from './ScrollReveal';
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { HelpCircle, ChevronDown, ChevronUp } from "lucide-react";
+import { faqs } from "../data/portfolioData";
+import ScrollReveal from "./ScrollReveal";
 
 export default function Faq() {
   const [openIndex, setOpenIndex] = useState(0);
@@ -23,7 +23,8 @@ export default function Faq() {
               Frequently Asked <span className="gradient-text">Questions</span>
             </h2>
             <p className="section-subtitle">
-              Common questions regarding my full-stack capabilities, experience, and availability.
+              Common questions regarding my full-stack capabilities, experience,
+              and availability.
             </p>
           </div>
         </ScrollReveal>
@@ -44,7 +45,10 @@ export default function Faq() {
                       animate={{ rotate: isOpen ? 180 : 0 }}
                       transition={{ duration: 0.3 }}
                     >
-                      <ChevronDown size={20} color={isOpen ? 'var(--primary)' : 'currentColor'} />
+                      <ChevronDown
+                        size={20}
+                        color={isOpen ? "var(--primary)" : "currentColor"}
+                      />
                     </motion.div>
                   </button>
                   <AnimatePresence>
@@ -52,9 +56,9 @@ export default function Faq() {
                       <motion.div
                         className="faq-answer"
                         initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: 'auto' }}
+                        animate={{ opacity: 1, height: "auto" }}
                         exit={{ opacity: 0, height: 0 }}
-                        transition={{ duration: 0.35, ease: 'easeInOut' }}
+                        transition={{ duration: 0.35, ease: "easeInOut" }}
                       >
                         <p>{faq.a}</p>
                       </motion.div>

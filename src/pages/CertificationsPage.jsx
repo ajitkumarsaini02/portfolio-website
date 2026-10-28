@@ -1,31 +1,35 @@
-import React, { useState, useMemo } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { 
-  ArrowLeft, 
-  Search, 
-  Filter, 
-  ShieldCheck, 
-  Award, 
-  Sparkles, 
-  Sun, 
-  Moon, 
-  Info, 
-  Cloud, 
-  Terminal, 
-  TrendingUp, 
-  ExternalLink 
-} from 'lucide-react';
-import { 
-  certificatesData, 
-  certificateCategories 
-} from '../data/certificatesData';
-import CertificateCard from '../components/CertificateCard';
-import CertificateModal from '../components/CertificateModal';
-import MagneticButton from '../components/MagneticButton';
+import React, { useState, useMemo } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import {
+  ArrowLeft,
+  Search,
+  Filter,
+  ShieldCheck,
+  Award,
+  Sparkles,
+  Sun,
+  Moon,
+  Info,
+  Cloud,
+  Terminal,
+  TrendingUp,
+  ExternalLink,
+} from "lucide-react";
+import {
+  certificatesData,
+  certificateCategories,
+} from "../data/certificatesData";
+import CertificateCard from "../components/CertificateCard";
+import CertificateModal from "../components/CertificateModal";
+import MagneticButton from "../components/MagneticButton";
 
-export default function CertificationsPage({ theme, toggleTheme, onBackToHome }) {
-  const [selectedCategory, setSelectedCategory] = useState('all');
-  const [searchQuery, setSearchQuery] = useState('');
+export default function CertificationsPage({
+  theme,
+  toggleTheme,
+  onBackToHome,
+}) {
+  const [selectedCategory, setSelectedCategory] = useState("all");
+  const [searchQuery, setSearchQuery] = useState("");
   const [selectedCert, setSelectedCert] = useState(null);
 
   const handleBack = (e) => {
@@ -33,8 +37,8 @@ export default function CertificationsPage({ theme, toggleTheme, onBackToHome })
     if (onBackToHome) {
       onBackToHome();
     } else {
-      window.history.pushState({}, '', '/');
-      window.dispatchEvent(new PopStateEvent('popstate'));
+      window.history.pushState({}, "", "/");
+      window.dispatchEvent(new PopStateEvent("popstate"));
     }
   };
 
@@ -43,7 +47,7 @@ export default function CertificationsPage({ theme, toggleTheme, onBackToHome })
     return certificatesData.filter((cert) => {
       // Category match
       let matchesCategory = true;
-      if (selectedCategory !== 'all') {
+      if (selectedCategory !== "all") {
         matchesCategory = cert.category === selectedCategory;
       }
 
@@ -53,19 +57,25 @@ export default function CertificationsPage({ theme, toggleTheme, onBackToHome })
 
       const titleMatch = cert.title.toLowerCase().includes(query);
       const issuerMatch = cert.issuer.toLowerCase().includes(query);
-      const skillMatch = cert.skills && cert.skills.some(s => s.toLowerCase().includes(query));
+      const skillMatch =
+        cert.skills && cert.skills.some((s) => s.toLowerCase().includes(query));
       const typeMatch = cert.credentialType.toLowerCase().includes(query);
 
-      return matchesCategory && (titleMatch || issuerMatch || skillMatch || typeMatch);
+      return (
+        matchesCategory &&
+        (titleMatch || issuerMatch || skillMatch || typeMatch)
+      );
     });
   }, [selectedCategory, searchQuery]);
 
   // Dynamic category count map
   const categoryCounts = useMemo(() => {
     const counts = { all: certificatesData.length };
-    certificateCategories.forEach(cat => {
-      if (cat.id === 'all') return;
-      counts[cat.id] = certificatesData.filter(c => c.category === cat.id).length;
+    certificateCategories.forEach((cat) => {
+      if (cat.id === "all") return;
+      counts[cat.id] = certificatesData.filter(
+        (c) => c.category === cat.id,
+      ).length;
     });
     return counts;
   }, []);
@@ -94,7 +104,7 @@ export default function CertificationsPage({ theme, toggleTheme, onBackToHome })
                 whileTap={{ scale: 0.9 }}
                 transition={{ duration: 0.3 }}
               >
-                {theme === 'dark' ? <Moon size={18} /> : <Sun size={18} />}
+                {theme === "dark" ? <Moon size={18} /> : <Sun size={18} />}
               </motion.button>
             </MagneticButton>
           </div>
@@ -115,10 +125,13 @@ export default function CertificationsPage({ theme, toggleTheme, onBackToHome })
               <ShieldCheck size={16} /> Official Repository
             </span>
             <h1 className="cert-page-title">
-              Certifications &amp; <span className="gradient-text">Verified Credentials</span>
+              Certifications &amp;{" "}
+              <span className="gradient-text">Verified Credentials</span>
             </h1>
             <p className="cert-page-subtitle">
-              A curated catalog of verified industry credentials, cloud accreditations, software engineering simulations, and official course completions.
+              A curated catalog of verified industry credentials, cloud
+              accreditations, software engineering simulations, and official
+              course completions.
             </p>
 
             {/* Quick Stats Metrics */}
@@ -142,7 +155,11 @@ export default function CertificationsPage({ theme, toggleTheme, onBackToHome })
         {/* Filter and Search Bar Toolbar */}
         <section className="cert-toolbar-section">
           {/* Category Tabs */}
-          <div className="cert-category-tabs" role="tablist" aria-label="Certificate Categories">
+          <div
+            className="cert-category-tabs"
+            role="tablist"
+            aria-label="Certificate Categories"
+          >
             {certificateCategories.map((cat) => {
               const isActive = selectedCategory === cat.id;
               const count = categoryCounts[cat.id] || 0;
@@ -151,7 +168,7 @@ export default function CertificationsPage({ theme, toggleTheme, onBackToHome })
                   key={cat.id}
                   role="tab"
                   aria-selected={isActive}
-                  className={`cert-category-tab ${isActive ? 'active' : ''}`}
+                  className={`cert-category-tab ${isActive ? "active" : ""}`}
                   onClick={() => setSelectedCategory(cat.id)}
                 >
                   <span>{cat.label}</span>
@@ -176,7 +193,7 @@ export default function CertificationsPage({ theme, toggleTheme, onBackToHome })
               <button
                 type="button"
                 className="cert-search-clear"
-                onClick={() => setSearchQuery('')}
+                onClick={() => setSearchQuery("")}
                 aria-label="Clear search query"
               >
                 ✕
@@ -204,13 +221,16 @@ export default function CertificationsPage({ theme, toggleTheme, onBackToHome })
             <div className="cert-empty-state glass-card">
               <Filter size={36} className="cert-empty-icon" />
               <h3>No matching certificates found</h3>
-              <p>Try resetting the search query or selecting a different category filter.</p>
+              <p>
+                Try resetting the search query or selecting a different category
+                filter.
+              </p>
               <button
                 type="button"
                 className="btn btn-outline"
                 onClick={() => {
-                  setSelectedCategory('all');
-                  setSearchQuery('');
+                  setSelectedCategory("all");
+                  setSearchQuery("");
                 }}
               >
                 Reset All Filters
@@ -227,7 +247,9 @@ export default function CertificationsPage({ theme, toggleTheme, onBackToHome })
           <div className="cert-banner-text">
             <h4>Verified Certificate Archive</h4>
             <p>
-              All {certificatesData.length} credentials feature genuine certificate documents and official verification links where available.
+              All {certificatesData.length} credentials feature genuine
+              certificate documents and official verification links where
+              available.
             </p>
           </div>
         </section>

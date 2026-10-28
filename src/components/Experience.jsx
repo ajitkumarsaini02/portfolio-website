@@ -1,9 +1,9 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { Briefcase, CheckCircle2 } from 'lucide-react';
-import { experience } from '../data/portfolioData';
-import ScrollReveal from './ScrollReveal';
-import TiltCard from './TiltCard';
+import React from "react";
+import { motion } from "framer-motion";
+import { Briefcase, CheckCircle2 } from "lucide-react";
+import { experience } from "../data/portfolioData";
+import ScrollReveal from "./ScrollReveal";
+import TiltCard from "./TiltCard";
 
 export default function Experience() {
   return (
@@ -15,10 +15,12 @@ export default function Experience() {
               <Briefcase size={15} /> 04 / Experience
             </span>
             <h2 className="section-title">
-              Open Source &amp; <span className="gradient-text">Contributions</span>
+              Open Source &amp;{" "}
+              <span className="gradient-text">Contributions</span>
             </h2>
             <p className="section-subtitle">
-              Hands-on collaborative development in public repositories, bug triage, and UI engineering.
+              Hands-on collaborative development in public repositories, bug
+              triage, and UI engineering.
             </p>
           </div>
         </ScrollReveal>
@@ -29,7 +31,11 @@ export default function Experience() {
               <motion.div
                 className="timeline-dot"
                 animate={{ scale: [1, 1.25, 1] }}
-                transition={{ repeat: Infinity, duration: 3, ease: 'easeInOut' }}
+                transition={{
+                  repeat: Infinity,
+                  duration: 3,
+                  ease: "easeInOut",
+                }}
               />
               <TiltCard maxTilt={5}>
                 <div className="glass-card timeline-card">
@@ -37,10 +43,15 @@ export default function Experience() {
                     <div>
                       <h3 className="timeline-role">{exp.role}</h3>
                       <p className="timeline-org">
-                        {exp.organization} • <span style={{ color: 'var(--primary)' }}>{exp.type}</span>
+                        {exp.organization} •{" "}
+                        <span style={{ color: "var(--primary)" }}>
+                          {exp.type}
+                        </span>
                       </p>
                     </div>
-                    <span className="timeline-period badge badge-cyan">{exp.period}</span>
+                    <span className="timeline-period badge badge-cyan">
+                      {exp.period}
+                    </span>
                   </div>
 
                   <ul className="timeline-points">
@@ -52,7 +63,14 @@ export default function Experience() {
                         viewport={{ once: true }}
                         transition={{ delay: 0.2 + pIdx * 0.1 }}
                       >
-                        <CheckCircle2 size={16} style={{ color: 'var(--primary)', flexShrink: 0, marginTop: '3px' }} />
+                        <CheckCircle2
+                          size={16}
+                          style={{
+                            color: "var(--primary)",
+                            flexShrink: 0,
+                            marginTop: "3px",
+                          }}
+                        />
                         <span>{pt}</span>
                       </motion.li>
                     ))}

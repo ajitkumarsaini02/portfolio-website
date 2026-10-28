@@ -1,18 +1,18 @@
-import React, { useEffect, useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { 
-  X, 
-  ExternalLink, 
-  Calendar, 
-  Clock, 
-  ShieldCheck, 
-  Sparkles, 
-  AlertCircle, 
-  Download, 
+import React, { useEffect, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import {
+  X,
+  ExternalLink,
+  Calendar,
+  Clock,
+  ShieldCheck,
+  Sparkles,
+  AlertCircle,
+  Download,
   Maximize2,
   CheckCircle2,
-  Info
-} from 'lucide-react';
+  Info,
+} from "lucide-react";
 
 export default function CertificateModal({ cert, onClose }) {
   const [imageError, setImageError] = useState(false);
@@ -23,19 +23,19 @@ export default function CertificateModal({ cert, onClose }) {
     if (!cert) return;
 
     const handleKeyDown = (e) => {
-      if (e.key === 'Escape') {
+      if (e.key === "Escape") {
         onClose();
       }
     };
-    window.addEventListener('keydown', handleKeyDown);
+    window.addEventListener("keydown", handleKeyDown);
 
     // Save previous overflow and lock scrolling
     const originalOverflow = document.body.style.overflow;
-    document.body.style.overflow = 'hidden';
+    document.body.style.overflow = "hidden";
 
     return () => {
-      window.removeEventListener('keydown', handleKeyDown);
-      document.body.style.overflow = originalOverflow || 'auto';
+      window.removeEventListener("keydown", handleKeyDown);
+      document.body.style.overflow = originalOverflow || "auto";
     };
   }, [cert, onClose]);
 
@@ -43,13 +43,13 @@ export default function CertificateModal({ cert, onClose }) {
 
   return (
     <AnimatePresence>
-      <div 
-        className="cert-modal-backdrop" 
+      <div
+        className="cert-modal-backdrop"
         onClick={onClose}
         role="presentation"
       >
         <motion.div
-          className={`cert-modal-container ${isFullscreen ? 'fullscreen' : ''}`}
+          className={`cert-modal-container ${isFullscreen ? "fullscreen" : ""}`}
           onClick={(e) => e.stopPropagation()}
           initial={{ opacity: 0, scale: 0.94, y: 20 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -63,7 +63,8 @@ export default function CertificateModal({ cert, onClose }) {
           <div className="cert-modal-header">
             <div className="cert-modal-header-info">
               <span className="cert-modal-category-tag">
-                <ShieldCheck size={14} /> {cert.category} • {cert.credentialType}
+                <ShieldCheck size={14} /> {cert.category} •{" "}
+                {cert.credentialType}
               </span>
               <h2 id="cert-modal-title" className="cert-modal-title">
                 {cert.title}
@@ -74,7 +75,9 @@ export default function CertificateModal({ cert, onClose }) {
                 type="button"
                 className="cert-modal-icon-btn"
                 onClick={() => setIsFullscreen(!isFullscreen)}
-                title={isFullscreen ? "Exit Fullscreen" : "Toggle Expanded View"}
+                title={
+                  isFullscreen ? "Exit Fullscreen" : "Toggle Expanded View"
+                }
                 aria-label="Toggle expanded modal"
               >
                 <Maximize2 size={18} />
@@ -104,13 +107,16 @@ export default function CertificateModal({ cert, onClose }) {
                   />
                 ) : (
                   <div className="cert-modal-fallback-box">
-                    <ShieldCheck size={48} className="cert-modal-fallback-icon" />
+                    <ShieldCheck
+                      size={48}
+                      className="cert-modal-fallback-icon"
+                    />
                     <h3>{cert.issuer}</h3>
                     <p className="cert-modal-fallback-desc">{cert.title}</p>
                     <div className="cert-modal-asset-notice">
                       <Info size={16} />
                       <span>
-                        Asset mapping: Place certificate file at{' '}
+                        Asset mapping: Place certificate file at{" "}
                         <code>{cert.image}</code>
                       </span>
                     </div>
@@ -120,9 +126,11 @@ export default function CertificateModal({ cert, onClose }) {
 
               {cert.badgeImage && (
                 <div className="cert-modal-secondary-badge">
-                  <span className="cert-badge-label">Official Digital Badge:</span>
-                  <img 
-                    src={cert.badgeImage} 
+                  <span className="cert-badge-label">
+                    Official Digital Badge:
+                  </span>
+                  <img
+                    src={cert.badgeImage}
                     alt={`${cert.title} digital badge`}
                     className="cert-badge-thumbnail"
                   />
@@ -144,7 +152,9 @@ export default function CertificateModal({ cert, onClose }) {
               <div className="cert-modal-meta-grid">
                 {cert.issueDate ? (
                   <div className="cert-detail-group">
-                    <span className="cert-detail-label">Date of Issue / Completion</span>
+                    <span className="cert-detail-label">
+                      Date of Issue / Completion
+                    </span>
                     <div className="cert-detail-value">
                       <Calendar size={15} />
                       <span>{cert.issueDate}</span>
@@ -152,9 +162,14 @@ export default function CertificateModal({ cert, onClose }) {
                   </div>
                 ) : (
                   <div className="cert-detail-group">
-                    <span className="cert-detail-label">Certification Status</span>
+                    <span className="cert-detail-label">
+                      Certification Status
+                    </span>
                     <div className="cert-detail-value">
-                      <CheckCircle2 size={15} style={{ color: 'var(--primary)' }} />
+                      <CheckCircle2
+                        size={15}
+                        style={{ color: "var(--primary)" }}
+                      />
                       <span>Completed & Verified</span>
                     </div>
                   </div>
@@ -182,10 +197,22 @@ export default function CertificateModal({ cert, onClose }) {
 
                 {cert.credentialId && (
                   <div className="cert-detail-group">
-                    <span className="cert-detail-label">Credential / Certificate ID</span>
+                    <span className="cert-detail-label">
+                      Credential / Certificate ID
+                    </span>
                     <div className="cert-detail-value">
-                      <ShieldCheck size={15} style={{ color: 'var(--primary)' }} />
-                      <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.84rem' }}>{cert.credentialId}</span>
+                      <ShieldCheck
+                        size={15}
+                        style={{ color: "var(--primary)" }}
+                      />
+                      <span
+                        style={{
+                          fontFamily: "var(--font-mono)",
+                          fontSize: "0.84rem",
+                        }}
+                      >
+                        {cert.credentialId}
+                      </span>
                     </div>
                   </div>
                 )}
@@ -205,7 +232,9 @@ export default function CertificateModal({ cert, onClose }) {
               {/* Description */}
               {cert.description && (
                 <div className="cert-detail-group">
-                  <span className="cert-detail-label">Overview & Competencies</span>
+                  <span className="cert-detail-label">
+                    Overview & Competencies
+                  </span>
                   <p className="cert-modal-description">{cert.description}</p>
                 </div>
               )}
@@ -213,7 +242,9 @@ export default function CertificateModal({ cert, onClose }) {
               {/* Skills Learned */}
               {cert.skills && cert.skills.length > 0 && (
                 <div className="cert-detail-group">
-                  <span className="cert-detail-label">Verified Skill Competencies</span>
+                  <span className="cert-detail-label">
+                    Verified Skill Competencies
+                  </span>
                   <div className="cert-modal-skills-list">
                     {cert.skills.map((skill, idx) => (
                       <span key={idx} className="cert-modal-skill-pill">
@@ -232,21 +263,27 @@ export default function CertificateModal({ cert, onClose }) {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="btn btn-primary"
-                    style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}
+                    style={{
+                      display: "inline-flex",
+                      alignItems: "center",
+                      gap: "8px",
+                    }}
                   >
                     <ExternalLink size={16} />
                     <span>
-                      {cert.verificationUrl.includes('credly') 
-                        ? 'Verify Credential on Credly' 
-                        : cert.verificationUrl.includes('udemy') 
-                          ? 'Verify Certificate on Udemy' 
-                          : 'Verify Official Credential'}
+                      {cert.verificationUrl.includes("credly")
+                        ? "Verify Credential on Credly"
+                        : cert.verificationUrl.includes("udemy")
+                          ? "Verify Certificate on Udemy"
+                          : "Verify Official Credential"}
                     </span>
                   </a>
                 ) : (
                   <div className="cert-unverified-note">
                     <ShieldCheck size={15} />
-                    <span>Verified via official academic & institutional record</span>
+                    <span>
+                      Verified via official academic & institutional record
+                    </span>
                   </div>
                 )}
               </div>

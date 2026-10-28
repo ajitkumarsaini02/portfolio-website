@@ -1,34 +1,34 @@
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
-import { 
-  Award, 
-  ExternalLink, 
-  Eye, 
-  Calendar, 
-  Clock, 
-  CheckCircle2, 
-  Sparkles, 
-  AlertCircle, 
-  ShieldCheck, 
-  Cloud, 
-  Terminal, 
-  BrainCircuit, 
+import React, { useState } from "react";
+import { motion } from "framer-motion";
+import {
+  Award,
+  ExternalLink,
+  Eye,
+  Calendar,
+  Clock,
+  CheckCircle2,
+  Sparkles,
+  AlertCircle,
+  ShieldCheck,
+  Cloud,
+  Terminal,
+  BrainCircuit,
   TrendingUp,
-  Cpu
-} from 'lucide-react';
+  Cpu,
+} from "lucide-react";
 
 export default function CertificateCard({ cert, onSelect, index = 0 }) {
   const [imageError, setImageError] = useState(false);
 
   const getCategoryIcon = (category) => {
     switch (category) {
-      case 'AI & Cloud':
+      case "AI & Cloud":
         return <Cloud size={14} />;
-      case 'Programming':
+      case "Programming":
         return <Terminal size={14} />;
-      case 'Data Analytics':
+      case "Data Analytics":
         return <TrendingUp size={14} />;
-      case 'Achievements':
+      case "Achievements":
         return <Award size={14} />;
       default:
         return <ShieldCheck size={14} />;
@@ -40,19 +40,23 @@ export default function CertificateCard({ cert, onSelect, index = 0 }) {
       className="cert-card glass-card"
       initial={{ opacity: 0, y: 24 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-40px' }}
-      transition={{ duration: 0.45, delay: index * 0.08, ease: [0.16, 1, 0.3, 1] }}
+      viewport={{ once: true, margin: "-40px" }}
+      transition={{
+        duration: 0.45,
+        delay: index * 0.08,
+        ease: [0.16, 1, 0.3, 1],
+      }}
       whileHover={{ y: -6 }}
     >
       {/* Top Image Thumbnail Container */}
-      <div 
+      <div
         className="cert-card-media"
         onClick={() => onSelect(cert)}
         role="button"
         tabIndex={0}
         aria-label={`View certificate for ${cert.title}`}
         onKeyDown={(e) => {
-          if (e.key === 'Enter' || e.key === ' ') {
+          if (e.key === "Enter" || e.key === " ") {
             e.preventDefault();
             onSelect(cert);
           }
@@ -75,7 +79,9 @@ export default function CertificateCard({ cert, onSelect, index = 0 }) {
               </span>
               <span className="cert-card-fallback-title">{cert.issuer}</span>
               <span className="cert-card-fallback-sub">{cert.title}</span>
-              <span className="cert-card-fallback-tag">Verified Credential</span>
+              <span className="cert-card-fallback-tag">
+                Verified Credential
+              </span>
             </div>
           </div>
         )}
@@ -95,13 +101,19 @@ export default function CertificateCard({ cert, onSelect, index = 0 }) {
           </span>
 
           {cert.isJobSimulation && (
-            <span className="cert-pill cert-pill-sim" title="Virtual Job Simulation Experience">
+            <span
+              className="cert-pill cert-pill-sim"
+              title="Virtual Job Simulation Experience"
+            >
               Job Simulation
             </span>
           )}
 
           {cert.percentile && (
-            <span className="cert-pill cert-pill-percentile" title="National Percentile">
+            <span
+              className="cert-pill cert-pill-percentile"
+              title="National Percentile"
+            >
               <Sparkles size={12} /> {cert.percentile}
             </span>
           )}
@@ -120,7 +132,7 @@ export default function CertificateCard({ cert, onSelect, index = 0 }) {
         </div>
 
         {/* Title */}
-        <h3 
+        <h3
           className="cert-card-title"
           onClick={() => onSelect(cert)}
           title={cert.title}
@@ -143,7 +155,10 @@ export default function CertificateCard({ cert, onSelect, index = 0 }) {
               <Calendar size={13} /> {cert.issueDate}
             </span>
           ) : (
-            <span className="cert-timeline-item cert-timeline-verified" title="Verified Cohort Completion">
+            <span
+              className="cert-timeline-item cert-timeline-verified"
+              title="Verified Cohort Completion"
+            >
               <CheckCircle2 size={13} /> Verified Completion
             </span>
           )}

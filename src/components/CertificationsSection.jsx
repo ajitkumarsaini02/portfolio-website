@@ -1,17 +1,20 @@
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
-import { ShieldCheck } from 'lucide-react';
-import { getFeaturedCertifications } from '../data/certificatesData';
-import CertificateCard from './CertificateCard';
-import CertificateModal from './CertificateModal';
-import ScrollReveal from './ScrollReveal';
+import React, { useState } from "react";
+import { motion } from "framer-motion";
+import { ShieldCheck } from "lucide-react";
+import { getFeaturedCertifications } from "../data/certificatesData";
+import CertificateCard from "./CertificateCard";
+import CertificateModal from "./CertificateModal";
+import ScrollReveal from "./ScrollReveal";
 
 export default function CertificationsSection() {
   const [selectedCert, setSelectedCert] = useState(null);
   const certs = getFeaturedCertifications();
 
   return (
-    <section id="certifications" className="section section-alt cert-section-wrapper">
+    <section
+      id="certifications"
+      className="section section-alt cert-section-wrapper"
+    >
       <div className="container">
         {/* Section Header */}
         <ScrollReveal>
@@ -23,7 +26,8 @@ export default function CertificationsSection() {
               Featured <span className="gradient-text">Certifications</span>
             </h2>
             <p className="section-subtitle">
-              Industry-standard accreditations, cloud certifications, and technical proficiencies verified by leading organizations.
+              Industry-standard accreditations, cloud certifications, and
+              technical proficiencies verified by leading organizations.
             </p>
           </div>
         </ScrollReveal>

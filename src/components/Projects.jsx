@@ -1,18 +1,28 @@
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { FolderGit2, ExternalLink, Github, Sparkles, Cpu, CheckSquare, Music, Headphones, Boxes } from 'lucide-react';
-import { projects } from '../data/portfolioData';
-import ScrollReveal from './ScrollReveal';
-import TiltCard from './TiltCard';
-import MagneticButton from './MagneticButton';
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import {
+  FolderGit2,
+  ExternalLink,
+  Github,
+  Sparkles,
+  Cpu,
+  CheckSquare,
+  Music,
+  Headphones,
+  Boxes,
+} from "lucide-react";
+import { projects } from "../data/portfolioData";
+import ScrollReveal from "./ScrollReveal";
+import TiltCard from "./TiltCard";
+import MagneticButton from "./MagneticButton";
 
 export default function Projects() {
-  const [filter, setFilter] = useState('all');
+  const [filter, setFilter] = useState("all");
 
   const filteredProjects = projects.filter((p) => {
-    if (filter === 'all') return true;
-    if (filter === 'fullstack') return p.category === 'fullstack';
-    if (filter === 'frontend') return p.category === 'frontend';
+    if (filter === "all") return true;
+    if (filter === "fullstack") return p.category === "fullstack";
+    if (filter === "frontend") return p.category === "frontend";
     return true;
   });
 
@@ -22,7 +32,7 @@ export default function Projects() {
     Sparkles: <Sparkles size={24} />,
     Music: <Music size={24} />,
     Headphones: <Headphones size={24} />,
-    Boxes: <Boxes size={24} />
+    Boxes: <Boxes size={24} />,
   };
 
   return (
@@ -34,10 +44,12 @@ export default function Projects() {
               <FolderGit2 size={15} /> 03 / Portfolio
             </span>
             <h2 className="section-title">
-              Featured Projects &amp; <span className="gradient-text">Applications</span>
+              Featured Projects &amp;{" "}
+              <span className="gradient-text">Applications</span>
             </h2>
             <p className="section-subtitle">
-              Enterprise full-stack systems, MERN dashboards, and modern web applications.
+              Enterprise full-stack systems, MERN dashboards, and modern web
+              applications.
             </p>
           </div>
         </ScrollReveal>
@@ -47,8 +59,8 @@ export default function Projects() {
           <div className="project-filters">
             <MagneticButton strength={0.3}>
               <button
-                className={`filter-btn ${filter === 'all' ? 'active' : ''}`}
-                onClick={() => setFilter('all')}
+                className={`filter-btn ${filter === "all" ? "active" : ""}`}
+                onClick={() => setFilter("all")}
               >
                 All Work ({projects.length})
               </button>
@@ -56,8 +68,8 @@ export default function Projects() {
 
             <MagneticButton strength={0.3}>
               <button
-                className={`filter-btn ${filter === 'fullstack' ? 'active' : ''}`}
-                onClick={() => setFilter('fullstack')}
+                className={`filter-btn ${filter === "fullstack" ? "active" : ""}`}
+                onClick={() => setFilter("fullstack")}
               >
                 Full-Stack Systems
               </button>
@@ -65,8 +77,8 @@ export default function Projects() {
 
             <MagneticButton strength={0.3}>
               <button
-                className={`filter-btn ${filter === 'frontend' ? 'active' : ''}`}
-                onClick={() => setFilter('frontend')}
+                className={`filter-btn ${filter === "frontend" ? "active" : ""}`}
+                onClick={() => setFilter("frontend")}
               >
                 Frontend &amp; Web Apps
               </button>

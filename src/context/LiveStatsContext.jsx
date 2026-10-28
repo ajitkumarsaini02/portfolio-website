@@ -6,17 +6,17 @@ const GITHUB_API_URL = 'https://api.github.com/users/ajitkumarsaini02';
 
 const fallbackStats = {
   leetcode: {
-    totalSolved: 701,
+    totalSolved: 711,
     rating: 1664,
-    easySolved: 361,
-    mediumSolved: 313,
+    easySolved: 363,
+    mediumSolved: 321,
     hardSolved: 27,
     maxRating: 1679,
     contestsParticipated: 24,
     globalRank: 150622
   },
   codechef: {
-    totalSolved: 682,
+    totalSolved: 686,
     rating: 1455,
     maxRating: 1461,
     contestsParticipated: 36,
@@ -25,9 +25,9 @@ const fallbackStats = {
     countryRank: 31146
   },
   gfg: {
-    totalSolved: 89,
+    totalSolved: 92,
     easySolved: 39,
-    mediumSolved: 45,
+    mediumSolved: 48,
     hardSolved: 5
   },
   codeforces: {
@@ -40,11 +40,11 @@ const fallbackStats = {
   },
   github: {
     username: 'ajitkumarsaini02',
-    publicRepos: 25,
+    publicRepos: 23,
     followers: 4,
-    pullRequests: '20+ Merged'
+    pullRequests: '20+ Merged (GSSoC)'
   },
-  totalSolvedAll: 1498
+  totalSolvedAll: 1515
 };
 
 const LiveStatsContext = createContext({

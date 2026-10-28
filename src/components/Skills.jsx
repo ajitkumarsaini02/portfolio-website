@@ -1,21 +1,21 @@
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
-import { Layout, Server, Binary, Wrench, Cpu, Layers } from 'lucide-react';
-import { skillCategories } from '../data/portfolioData';
-import ScrollReveal from './ScrollReveal';
+import React, { useState } from "react";
+import { motion } from "framer-motion";
+import { Layout, Server, Binary, Wrench, Cpu, Layers } from "lucide-react";
+import { skillCategories } from "../data/portfolioData";
+import ScrollReveal from "./ScrollReveal";
 
 export default function Skills() {
-  const [selectedCategory, setSelectedCategory] = useState('All');
+  const [selectedCategory, setSelectedCategory] = useState("All");
 
   const iconMap = {
     Layout: <Layout size={22} />,
     Server: <Server size={22} />,
     Binary: <Binary size={22} />,
-    Wrench: <Wrench size={22} />
+    Wrench: <Wrench size={22} />,
   };
 
   const displayedCategories =
-    selectedCategory === 'All'
+    selectedCategory === "All"
       ? skillCategories
       : skillCategories.filter((c) => c.category === selectedCategory);
 
@@ -28,27 +28,29 @@ export default function Skills() {
               <Layers size={15} /> 02 / Tech Stack
             </span>
             <h2 className="section-title">
-              Skills &amp; <span className="gradient-text">Engineering Capabilities</span>
+              Skills &amp;{" "}
+              <span className="gradient-text">Engineering Capabilities</span>
             </h2>
             <p className="section-subtitle">
-              Specialized in modern full-stack development with React, Node.js, and core computer science fundamentals.
+              Specialized in modern full-stack development with React, Node.js,
+              and core computer science fundamentals.
             </p>
           </div>
         </ScrollReveal>
 
         {/* Category Filter Pills */}
         <ScrollReveal delay={0.1}>
-          <div className="project-filters" style={{ marginBottom: '32px' }}>
+          <div className="project-filters" style={{ marginBottom: "32px" }}>
             <button
-              className={`filter-btn ${selectedCategory === 'All' ? 'active' : ''}`}
-              onClick={() => setSelectedCategory('All')}
+              className={`filter-btn ${selectedCategory === "All" ? "active" : ""}`}
+              onClick={() => setSelectedCategory("All")}
             >
               All Skills
             </button>
             {skillCategories.map((c) => (
               <button
                 key={c.category}
-                className={`filter-btn ${selectedCategory === c.category ? 'active' : ''}`}
+                className={`filter-btn ${selectedCategory === c.category ? "active" : ""}`}
                 onClick={() => setSelectedCategory(c.category)}
               >
                 {c.category}
@@ -64,7 +66,7 @@ export default function Skills() {
               className="glass-card skill-category-card"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-50px' }}
+              viewport={{ once: true, margin: "-50px" }}
               transition={{ delay: catIdx * 0.1, duration: 0.6 }}
               whileHover={{ y: -4 }}
               layout
@@ -75,7 +77,13 @@ export default function Skills() {
                 </div>
                 <div>
                   <h3>{categoryGroup.category}</h3>
-                  <span style={{ fontSize: '0.8rem', color: 'var(--text-dim)', fontFamily: 'var(--font-mono)' }}>
+                  <span
+                    style={{
+                      fontSize: "0.8rem",
+                      color: "var(--text-dim)",
+                      fontFamily: "var(--font-mono)",
+                    }}
+                  >
                     {categoryGroup.skills.length} core competencies
                   </span>
                 </div>
@@ -87,7 +95,9 @@ export default function Skills() {
                     <div className="skill-meta">
                       <span className="skill-name">
                         {skill.name}
-                        {skill.tag && <span className="skill-tag">{skill.tag}</span>}
+                        {skill.tag && (
+                          <span className="skill-tag">{skill.tag}</span>
+                        )}
                       </span>
                       <span className="skill-pct">{skill.level}%</span>
                     </div>
@@ -97,7 +107,11 @@ export default function Skills() {
                         initial={{ width: 0 }}
                         whileInView={{ width: `${skill.level}%` }}
                         viewport={{ once: true }}
-                        transition={{ duration: 1.2, delay: 0.2 + sIdx * 0.08, ease: 'easeOut' }}
+                        transition={{
+                          duration: 1.2,
+                          delay: 0.2 + sIdx * 0.08,
+                          ease: "easeOut",
+                        }}
                       />
                     </div>
                   </div>

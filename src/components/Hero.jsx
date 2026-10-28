@@ -1,14 +1,25 @@
-import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
-import { Github, Linkedin, Code2, Globe, FileDown, ArrowRight, Sparkles, Terminal, Copy, Check } from 'lucide-react';
-import { personalInfo } from '../data/portfolioData';
-import { useLiveStats } from '../context/LiveStatsContext';
-import MagneticButton from './MagneticButton';
-import AnimatedCounter from './AnimatedCounter';
+import React, { useState, useEffect } from "react";
+import { motion } from "framer-motion";
+import {
+  Github,
+  Linkedin,
+  Code2,
+  Globe,
+  FileDown,
+  ArrowRight,
+  Sparkles,
+  Terminal,
+  Copy,
+  Check,
+} from "lucide-react";
+import { personalInfo } from "../data/portfolioData";
+import { useLiveStats } from "../context/LiveStatsContext";
+import MagneticButton from "./MagneticButton";
+import AnimatedCounter from "./AnimatedCounter";
 
 export default function Hero() {
   const [currentRoleIndex, setCurrentRoleIndex] = useState(0);
-  const [displayedText, setDisplayedText] = useState('');
+  const [displayedText, setDisplayedText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
   const [copiedCode, setCopiedCode] = useState(false);
 
@@ -56,18 +67,22 @@ export default function Hero() {
 
   const scrollToProjects = (e) => {
     e.preventDefault();
-    window.history.pushState({}, '', '/projects');
-    const el = document.getElementById('projects');
+    window.history.pushState({}, "", "/projects");
+    const el = document.getElementById("projects");
     if (el) {
-      el.scrollIntoView({ behavior: 'smooth' });
+      el.scrollIntoView({ behavior: "smooth" });
     }
   };
 
   const dynamicStats = [
-    { label: "LeetCode Solved", value: liveData.leetcode.totalSolved, suffix: "+" },
+    {
+      label: "LeetCode Solved",
+      value: liveData.leetcode.totalSolved,
+      suffix: "+",
+    },
     { label: "LeetCode Rating", value: liveData.leetcode.rating, suffix: "" },
     { label: "B.Tech CGPA", value: 8.48, isFloat: true, suffix: "/10" },
-    { label: "CodeChef Rating", value: liveData.codechef.rating, suffix: "" }
+    { label: "CodeChef Rating", value: liveData.codechef.rating, suffix: "" },
   ];
 
   return (
@@ -90,7 +105,9 @@ export default function Hero() {
               <span className="status-ping"></span>
               <span className="status-dot"></span>
             </span>
-            <span className="status-text">Available for Internships &amp; Full-Time Roles</span>
+            <span className="status-text">
+              Available for Internships &amp; Full-Time Roles
+            </span>
           </motion.div>
 
           <motion.h1
@@ -99,7 +116,9 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.7 }}
           >
-            Building Modern <span className="gradient-text">Full-Stack Web</span> Apps &amp; Solving Algorithms.
+            Building Modern{" "}
+            <span className="gradient-text">Full-Stack Web</span> Apps &amp;
+            Solving Algorithms.
           </motion.h1>
 
           <div className="hero-typing">
@@ -114,8 +133,12 @@ export default function Hero() {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5, duration: 0.7 }}
           >
-            I am a Computer Science student at <strong>ABES Engineering College</strong> with proven expertise
-            in <strong>React.js, Node.js, Express, MongoDB</strong>, and competitive programming with <strong>{liveData.totalSolvedAll}+ total problems solved</strong> across LeetCode, CodeChef, Codeforces, and GFG.
+            I am a Computer Science student at{" "}
+            <strong>ABES Engineering College</strong> with proven expertise in{" "}
+            <strong>React.js, Node.js, Express, MongoDB</strong>, and
+            competitive programming with{" "}
+            <strong>{liveData.totalSolvedAll}+ total problems solved</strong>{" "}
+            across LeetCode, CodeChef, Codeforces, and GFG.
           </motion.p>
 
           <motion.div
@@ -206,7 +229,11 @@ export default function Hero() {
             {dynamicStats.map((s, idx) => (
               <div key={idx} className="stat-box">
                 <span className="stat-val gradient-text">
-                  <AnimatedCounter value={s.value} suffix={s.suffix} isFloat={s.isFloat} />
+                  <AnimatedCounter
+                    value={s.value}
+                    suffix={s.suffix}
+                    isFloat={s.isFloat}
+                  />
                 </span>
                 <span className="stat-lbl">{s.label}</span>
               </div>
@@ -223,7 +250,7 @@ export default function Hero() {
           <motion.div
             className="terminal-card"
             animate={{ y: [0, -8, 0] }}
-            transition={{ repeat: Infinity, duration: 6, ease: 'easeInOut' }}
+            transition={{ repeat: Infinity, duration: 6, ease: "easeInOut" }}
           >
             <div className="terminal-bar">
               <div className="terminal-dots">
@@ -232,20 +259,55 @@ export default function Hero() {
                 <span className="dot dot-green"></span>
               </div>
               <span className="terminal-title">developer.js</span>
-              <button onClick={copyCode} className="icon-btn" style={{ width: '28px', height: '28px' }} title="Copy Code">
-                {copiedCode ? <Check size={14} color="#10B981" /> : <Copy size={14} />}
+              <button
+                onClick={copyCode}
+                className="icon-btn"
+                style={{ width: "28px", height: "28px" }}
+                title="Copy Code"
+              >
+                {copiedCode ? (
+                  <Check size={14} color="#10B981" />
+                ) : (
+                  <Copy size={14} />
+                )}
               </button>
             </div>
             <pre className="terminal-body">
               <code>
-                <span className="t-keyword">const</span> <span className="t-var">ajit</span> = &#123;{'\n'}
-                {'  '}<span className="t-prop">role</span>: <span className="t-str">"Full-Stack MERN Developer"</span>,{'\n'}
-                {'  '}<span className="t-prop">skills</span>: [<span className="t-str">"React.js"</span>, <span className="t-str">"Node.js"</span>, <span className="t-str">"Express"</span>, <span className="t-str">"MongoDB"</span>],{'\n'}
-                {'  '}<span className="t-prop">dsaSolved</span>: <span className="t-num">{liveData.leetcode.totalSolved}</span>, <span className="t-prop">lcRating</span>: <span className="t-num">{liveData.leetcode.rating}</span>,{'\n'}
-                {'  '}<span className="t-prop">codeChef</span>: <span className="t-str">"{liveData.codechef.stars}★ ({liveData.codechef.rating})"</span>,{'\n'}
-                {'  '}<span className="t-prop">totalProblems</span>: <span className="t-num">{liveData.totalSolvedAll}</span>,{'\n'}
-                {'  '}<span className="t-prop">college</span>: <span className="t-str">"ABESEC Ghaziabad (8.48 CGPA)"</span>,{'\n'}
-                {'  '}<span className="t-prop">featuredProject</span>: <span className="t-str">"CodeTrack MERN Dashboard"</span>{'\n'}
+                <span className="t-keyword">const</span>{" "}
+                <span className="t-var">ajit</span> = &#123;{"\n"}
+                {"  "}
+                <span className="t-prop">role</span>:{" "}
+                <span className="t-str">"Full-Stack MERN Developer"</span>,
+                {"\n"}
+                {"  "}
+                <span className="t-prop">skills</span>: [
+                <span className="t-str">"React.js"</span>,{" "}
+                <span className="t-str">"Node.js"</span>,{" "}
+                <span className="t-str">"Express"</span>,{" "}
+                <span className="t-str">"MongoDB"</span>],{"\n"}
+                {"  "}
+                <span className="t-prop">dsaSolved</span>:{" "}
+                <span className="t-num">{liveData.leetcode.totalSolved}</span>,{" "}
+                <span className="t-prop">lcRating</span>:{" "}
+                <span className="t-num">{liveData.leetcode.rating}</span>,{"\n"}
+                {"  "}
+                <span className="t-prop">codeChef</span>:{" "}
+                <span className="t-str">
+                  "{liveData.codechef.stars}★ ({liveData.codechef.rating})"
+                </span>
+                ,{"\n"}
+                {"  "}
+                <span className="t-prop">totalProblems</span>:{" "}
+                <span className="t-num">{liveData.totalSolvedAll}</span>,{"\n"}
+                {"  "}
+                <span className="t-prop">college</span>:{" "}
+                <span className="t-str">"ABESEC Ghaziabad (8.48 CGPA)"</span>,
+                {"\n"}
+                {"  "}
+                <span className="t-prop">featuredProject</span>:{" "}
+                <span className="t-str">"CodeTrack MERN Dashboard"</span>
+                {"\n"}
                 &#125;;
               </code>
             </pre>
@@ -254,12 +316,33 @@ export default function Hero() {
           <motion.div
             className="profile-chip-glow"
             animate={{ y: [0, -6, 0] }}
-            transition={{ repeat: Infinity, duration: 4, ease: 'easeInOut', delay: 1 }}
+            transition={{
+              repeat: Infinity,
+              duration: 4,
+              ease: "easeInOut",
+              delay: 1,
+            }}
           >
             <Sparkles size={20} color="var(--primary)" />
             <div>
-              <p style={{ fontSize: '0.82rem', fontWeight: 700, color: 'var(--text-main)' }}>Open to Work</p>
-              <p style={{ fontSize: '0.72rem', color: 'var(--primary)', fontFamily: 'var(--font-mono)' }}>{liveData.totalSolvedAll}+ Problems Solved</p>
+              <p
+                style={{
+                  fontSize: "0.82rem",
+                  fontWeight: 700,
+                  color: "var(--text-main)",
+                }}
+              >
+                Open to Work
+              </p>
+              <p
+                style={{
+                  fontSize: "0.72rem",
+                  color: "var(--primary)",
+                  fontFamily: "var(--font-mono)",
+                }}
+              >
+                {liveData.totalSolvedAll}+ Problems Solved
+              </p>
             </div>
           </motion.div>
         </motion.div>

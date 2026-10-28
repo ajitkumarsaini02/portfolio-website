@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from "react";
 
 export default function ParticleBackground({ theme }) {
   const canvasRef = useRef(null);
@@ -6,7 +6,7 @@ export default function ParticleBackground({ theme }) {
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
-    const ctx = canvas.getContext('2d');
+    const ctx = canvas.getContext("2d");
     let animationFrameId;
 
     let width = (canvas.width = window.innerWidth);
@@ -43,18 +43,24 @@ export default function ParticleBackground({ theme }) {
       height = canvas.height = window.innerHeight;
     };
 
-    window.addEventListener('resize', handleResize);
-    window.addEventListener('mousemove', handleMouseMove);
-    window.addEventListener('mouseleave', handleMouseLeave);
-    window.addEventListener('click', handleClick);
+    window.addEventListener("resize", handleResize);
+    window.addEventListener("mousemove", handleMouseMove);
+    window.addEventListener("mouseleave", handleMouseLeave);
+    window.addEventListener("click", handleClick);
 
     const particleCount = Math.min(Math.floor(width / 13), 105);
     const particles = [];
 
-    const isDark = theme === 'dark';
-    const dotColor = isDark ? 'rgba(16, 185, 129, 0.75)' : 'rgba(4, 120, 87, 0.6)';
-    const lineColor = isDark ? 'rgba(16, 185, 129, 0.16)' : 'rgba(4, 120, 87, 0.12)';
-    const mouseLineColor = isDark ? 'rgba(20, 184, 166, 0.4)' : 'rgba(13, 148, 136, 0.28)';
+    const isDark = theme === "dark";
+    const dotColor = isDark
+      ? "rgba(16, 185, 129, 0.75)"
+      : "rgba(4, 120, 87, 0.6)";
+    const lineColor = isDark
+      ? "rgba(16, 185, 129, 0.16)"
+      : "rgba(4, 120, 87, 0.12)";
+    const mouseLineColor = isDark
+      ? "rgba(20, 184, 166, 0.4)"
+      : "rgba(13, 148, 136, 0.28)";
 
     for (let i = 0; i < particleCount; i++) {
       particles.push({
@@ -63,7 +69,7 @@ export default function ParticleBackground({ theme }) {
         vx: (Math.random() - 0.5) * 0.75,
         vy: (Math.random() - 0.5) * 0.75,
         radius: Math.random() * 2.2 + 0.8,
-        baseRadius: Math.random() * 2.2 + 0.8
+        baseRadius: Math.random() * 2.2 + 0.8,
       });
     }
 
@@ -136,10 +142,10 @@ export default function ParticleBackground({ theme }) {
     render();
 
     return () => {
-      window.removeEventListener('resize', handleResize);
-      window.removeEventListener('mousemove', handleMouseMove);
-      window.removeEventListener('mouseleave', handleMouseLeave);
-      window.removeEventListener('click', handleClick);
+      window.removeEventListener("resize", handleResize);
+      window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("mouseleave", handleMouseLeave);
+      window.removeEventListener("click", handleClick);
       cancelAnimationFrame(animationFrameId);
     };
   }, [theme]);
