@@ -1,11 +1,11 @@
 import React, { useRef, useState } from "react";
 
-export default function TiltCard({
+const TiltCard = ({
   children,
   className = "",
   maxTilt = 10,
   ...props
-}) {
+}) => {
   const cardRef = useRef(null);
   const [style, setStyle] = useState({});
   const [glareStyle, setGlareStyle] = useState({ opacity: 0 });
@@ -68,7 +68,6 @@ export default function TiltCard({
       style={{ position: "relative", willChange: "transform", ...style }}
       {...props}
     >
-      {/* Dynamic Cursor Spotlight Glare */}
       <div
         className="tilt-glare"
         style={{
@@ -85,7 +84,6 @@ export default function TiltCard({
         aria-hidden="true"
       />
 
-      {/* Dynamic Border Spotlight Glow */}
       <div
         className="tilt-border-spotlight"
         style={{
@@ -99,7 +97,6 @@ export default function TiltCard({
             "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
           maskComposite: "exclude",
           WebkitMaskComposite: "xor",
-          padding: "1px",
           ...borderGlow,
         }}
         aria-hidden="true"
@@ -108,4 +105,6 @@ export default function TiltCard({
       {children}
     </div>
   );
-}
+};
+
+export default TiltCard;

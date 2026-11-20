@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function AmbientGlow() {
+const AmbientGlow = () => {
   return (
     <div className="ambient-glow-wrapper" aria-hidden="true">
       <div className="glow-orb orb-1"></div>
@@ -9,4 +9,6 @@ export default function AmbientGlow() {
       <div className="grid-overlay"></div>
     </div>
   );
-}
+};
+
+export default AmbientGlow;

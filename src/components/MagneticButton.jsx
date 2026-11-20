@@ -1,12 +1,12 @@
 import React, { useRef, useState } from "react";
 import { motion } from "framer-motion";
 
-export default function MagneticButton({
+const MagneticButton = ({
   children,
   className = "",
   strength = 0.35,
   ...props
-}) {
+}) => {
   const ref = useRef(null);
   const [position, setPosition] = useState({ x: 0, y: 0 });
 
@@ -42,4 +42,6 @@ export default function MagneticButton({
       {children}
     </motion.div>
   );
-}
+};
+
+export default MagneticButton;

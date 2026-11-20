@@ -1,12 +1,11 @@
 import React, { useState } from "react";
-import { motion } from "framer-motion";
 import { ShieldCheck } from "lucide-react";
 import { getFeaturedCertifications } from "../data/certificatesData";
 import CertificateCard from "./CertificateCard";
 import CertificateModal from "./CertificateModal";
 import ScrollReveal from "./ScrollReveal";
 
-export default function CertificationsSection() {
+const CertificationsSection = () => {
   const [selectedCert, setSelectedCert] = useState(null);
   const certs = getFeaturedCertifications();
 
@@ -16,7 +15,6 @@ export default function CertificationsSection() {
       className="section section-alt cert-section-wrapper"
     >
       <div className="container">
-        {/* Section Header */}
         <ScrollReveal>
           <div className="section-header">
             <span className="section-eyebrow">
@@ -32,7 +30,6 @@ export default function CertificationsSection() {
           </div>
         </ScrollReveal>
 
-        {/* All 9 Certificates Unified Grid */}
         <div className="cert-grid">
           {certs.map((cert, idx) => (
             <CertificateCard
@@ -45,7 +42,6 @@ export default function CertificationsSection() {
         </div>
       </div>
 
-      {/* Modal Dialog for Certificate Preview */}
       {selectedCert && (
         <CertificateModal
           cert={selectedCert}
@@ -54,4 +50,6 @@ export default function CertificationsSection() {
       )}
     </section>
   );
-}
+};
+
+export default CertificationsSection;

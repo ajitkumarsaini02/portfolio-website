@@ -5,7 +5,7 @@ import { education } from "../data/portfolioData";
 import ScrollReveal from "./ScrollReveal";
 import TiltCard from "./TiltCard";
 
-export default function Education() {
+const Education = () => {
   return (
     <section id="education" className="section">
       <div className="container">
@@ -15,12 +15,10 @@ export default function Education() {
               <GraduationCap size={15} /> 06 / Academics
             </span>
             <h2 className="section-title">
-              Education &amp;{" "}
-              <span className="gradient-text">Academic Journey</span>
+              Education &amp; <span className="gradient-text">Academic Journey</span>
             </h2>
             <p className="section-subtitle">
-              Formal educational background in Computer Science &amp;
-              Engineering.
+              Formal educational background in Computer Science &amp; Engineering.
             </p>
           </div>
         </ScrollReveal>
@@ -91,4 +89,6 @@ export default function Education() {
       </div>
     </section>
   );
-}
+};
+
+export default Education;

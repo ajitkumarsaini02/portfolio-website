@@ -5,7 +5,7 @@ import { experience } from "../data/portfolioData";
 import ScrollReveal from "./ScrollReveal";
 import TiltCard from "./TiltCard";
 
-export default function Experience() {
+const Experience = () => {
   return (
     <section id="experience" className="section">
       <div className="container">
@@ -15,12 +15,10 @@ export default function Experience() {
               <Briefcase size={15} /> 04 / Experience
             </span>
             <h2 className="section-title">
-              Open Source &amp;{" "}
-              <span className="gradient-text">Contributions</span>
+              Open Source &amp; <span className="gradient-text">Contributions</span>
             </h2>
             <p className="section-subtitle">
-              Hands-on collaborative development in public repositories, bug
-              triage, and UI engineering.
+              Hands-on collaborative development in public repositories, bug triage, and UI engineering.
             </p>
           </div>
         </ScrollReveal>
@@ -83,4 +81,6 @@ export default function Experience() {
       </div>
     </section>
   );
-}
+};
+
+export default Experience;

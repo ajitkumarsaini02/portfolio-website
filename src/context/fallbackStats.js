@@ -1,0 +1,42 @@
+export const fallbackStats = {
+  leetcode: {
+    totalSolved: 746,
+    rating: 1750,
+    easySolved: 377,
+    mediumSolved: 341,
+    hardSolved: 28,
+    maxRating: 1750,
+    contestsParticipated: 27,
+    globalRank: 95205,
+  },
+  codechef: {
+    totalSolved: 695,
+    rating: 1525,
+    maxRating: 1525,
+    contestsParticipated: 39,
+    stars: 2,
+    globalRank: 22357,
+    countryRank: 21082,
+  },
+  gfg: {
+    totalSolved: 95,
+    easySolved: 40,
+    mediumSolved: 50,
+    hardSolved: 5,
+  },
+  codeforces: {
+    totalSolved: 36,
+    rating: 1022,
+    maxRating: 1022,
+    contestsParticipated: 4,
+    easy: 33,
+    medium: 3,
+  },
+  github: {
+    username: "ajitkumarsaini02",
+    publicRepos: 23,
+    followers: 6,
+    pullRequests: "20+ Merged (GSSoC)",
+  },
+  totalSolvedAll: 1572,
+};

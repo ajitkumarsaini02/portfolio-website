@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
-export default function CustomCursor() {
+const CustomCursor = () => {
   const [mousePosition, setMousePosition] = useState({ x: -100, y: -100 });
   const [isHovered, setIsHovered] = useState(false);
   const [isClicking, setIsClicking] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    // Disable on touch devices
     if (window.matchMedia("(hover: none)").matches) return;
 
     const handleMouseMove = (e) => {
@@ -54,7 +53,6 @@ export default function CustomCursor() {
 
   return (
     <>
-      {/* Primary Dot */}
       <motion.div
         className="custom-cursor-dot"
         animate={{
@@ -64,8 +62,6 @@ export default function CustomCursor() {
         }}
         transition={{ type: "spring", damping: 30, stiffness: 400, mass: 0.1 }}
       />
-
-      {/* Trailing Ring */}
       <motion.div
         className={`custom-cursor-ring ${isHovered ? "hovered" : ""}`}
         animate={{
@@ -77,4 +73,6 @@ export default function CustomCursor() {
       />
     </>
   );
-}
+};
+
+export default CustomCursor;

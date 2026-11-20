@@ -1,11 +1,11 @@
 import React, { useEffect, useState, useRef } from "react";
 
-export default function AnimatedCounter({
+const AnimatedCounter = ({
   value,
   suffix = "",
   isFloat = false,
   duration = 1500,
-}) {
+}) => {
   const [count, setCount] = useState(0);
   const ref = useRef(null);
   const [isVisible, setIsVisible] = useState(false);
@@ -86,4 +86,6 @@ export default function AnimatedCounter({
       {suffix}
     </span>
   );
-}
+};
+
+export default AnimatedCounter;

@@ -345,7 +345,7 @@ export const codingProfiles = [
   {
     name: "LeetCode",
     handle: "@ajitkumarsaini02",
-    stats: "710+ Solved • Rating 1664",
+    stats: "746 Solved • Rating 1750",
     url: "https://leetcode.com/u/ajitkumarsaini02",
     icon: "Code",
   },
@@ -359,21 +359,21 @@ export const codingProfiles = [
   {
     name: "CodeChef",
     handle: "@ajitsaini94",
-    stats: "2★ Coder • Rating 1455",
+    stats: "2★ Coder • Rating 1525",
     url: "https://www.codechef.com/users/ajitsaini94",
     icon: "Crown",
   },
   {
     name: "Codeforces",
     handle: "@ajitkumarsaini02",
-    stats: "Rating 668 • 26 Solved",
+    stats: "Rating 1022 • 36 Solved",
     url: "https://codeforces.com/profile/ajitkumarsaini02",
     icon: "Terminal",
   },
   {
     name: "GeeksforGeeks",
     handle: "@ajitkumarsaini02",
-    stats: "89 Solved • Active Practice",
+    stats: "95 Solved • Active Practice",
     url: "https://www.geeksforgeeks.org/profile/ajitkumarsaini02?tab=activity",
     icon: "BookMarked",
   },
@@ -397,7 +397,7 @@ export const faqs = [
   },
   {
     q: "What are your competitive programming milestones?",
-    a: "I have solved 710+ problems on LeetCode with a contest rating of 1664 (Peak 1679) and earned the 100 Days Badge. On CodeChef, I am a 2-Star coder (Rating 1455, Peak 1461).",
+    a: "I have solved 746+ problems on LeetCode with a contest rating of 1750 and earned the streak badge. On CodeChef, I am a 2-Star coder (Rating 1525). Across all platforms, I have solved 1572+ problems.",
   },
   {
     q: "Are you available for software engineering internships?",

@@ -1,14 +1,14 @@
 import React from "react";
 import { motion } from "framer-motion";
 
-export default function ScrollReveal({
+const ScrollReveal = ({
   children,
   delay = 0,
   direction = "up",
   duration = 0.6,
   className = "",
   ...props
-}) {
+}) => {
   const directions = {
     up: { y: 40, x: 0 },
     down: { y: -40, x: 0 },
@@ -35,4 +35,6 @@ export default function ScrollReveal({
       {children}
     </motion.div>
   );
-}
+};
+
+export default ScrollReveal;

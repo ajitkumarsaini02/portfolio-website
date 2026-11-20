@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { HelpCircle, ChevronDown, ChevronUp } from "lucide-react";
+import { HelpCircle, ChevronDown } from "lucide-react";
 import { faqs } from "../data/portfolioData";
 import ScrollReveal from "./ScrollReveal";
 
-export default function Faq() {
+const Faq = () => {
   const [openIndex, setOpenIndex] = useState(0);
 
   const toggleFaq = (index) => {
@@ -23,8 +23,7 @@ export default function Faq() {
               Frequently Asked <span className="gradient-text">Questions</span>
             </h2>
             <p className="section-subtitle">
-              Common questions regarding my full-stack capabilities, experience,
-              and availability.
+              Common questions regarding my full-stack capabilities, experience, and availability.
             </p>
           </div>
         </ScrollReveal>
@@ -72,4 +71,6 @@ export default function Faq() {
       </div>
     </section>
   );
-}
+};
+
+export default Faq;

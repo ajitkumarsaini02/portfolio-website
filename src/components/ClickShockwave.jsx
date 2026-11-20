@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-export default function ClickShockwave() {
+const ClickShockwave = () => {
   const [ripples, setRipples] = useState([]);
 
   useEffect(() => {
@@ -28,7 +28,6 @@ export default function ClickShockwave() {
       <AnimatePresence>
         {ripples.map((ripple) => (
           <React.Fragment key={ripple.id}>
-            {/* Primary Glowing Ring */}
             <motion.div
               className="shockwave-ring ring-primary"
               style={{ left: ripple.x, top: ripple.y }}
@@ -43,7 +42,6 @@ export default function ClickShockwave() {
               exit={{ opacity: 0 }}
               transition={{ duration: 0.7, ease: [0.1, 0.8, 0.3, 1] }}
             />
-            {/* Secondary Violet Ring */}
             <motion.div
               className="shockwave-ring ring-secondary"
               style={{ left: ripple.x, top: ripple.y }}
@@ -67,4 +65,6 @@ export default function ClickShockwave() {
       </AnimatePresence>
     </div>
   );
-}
+};
+
+export default ClickShockwave;
