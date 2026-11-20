@@ -128,8 +128,7 @@ src/
 
 ## 🌐 Deployment
 
-- **Vercel**: Configured for automated continuous deployment from the `main` branch.
-- **Netlify**: Configured via `netlify.toml` with client-side URL fallback routing to `index.html`.
+- **Vercel**: Configured for automated continuous deployment from the `main` branch with SPA fallback routing via `vercel.json`.
 
 ---
 

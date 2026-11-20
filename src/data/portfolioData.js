@@ -17,7 +17,7 @@ export const personalInfo = {
     leetcode: "https://leetcode.com/u/ajitkumarsaini02",
     codechef: "https://www.codechef.com/users/ajitsaini94",
     codeforces: "https://codeforces.com/profile/ajitkumarsaini02",
-    portfolio: "https://ajit-kumar-saini-portfolio.netlify.app/",
+    portfolio: "https://ajit-kumar-saini-portfolio.vercel.app/",
     geeksforgeeks:
       "https://www.geeksforgeeks.org/profile/ajitkumarsaini02?tab=activity",
   },
@@ -116,7 +116,7 @@ export const skillCategories = [
       { name: "C", level: 88, tag: "Low-level" },
       { name: "Git & GitHub", level: 92, tag: "VCS" },
       { name: "VS Code & Chrome DevTools", level: 94, tag: "Tooling" },
-      { name: "Vite, Netlify, Vercel, Render", level: 90, tag: "Deployment" },
+      { name: "Vite, Vercel, Render, Docker", level: 90, tag: "Deployment" },
     ],
   },
 ];
@@ -212,9 +212,9 @@ export const projects = [
     bullets: [
       "Implemented instant real-time filtering, keyword search, dark/light theme persistence, and priority sorting.",
       "Engineered zero-backend modular architecture with LocalStorage persistence and clean separation of concerns.",
-      "Deployed on Netlify and achieved 90+ Google Lighthouse performance scores across all devices.",
+      "Achieved 90+ Google Lighthouse performance scores across all devices with zero external dependencies.",
     ],
-    tech: ["JavaScript (ES6+)", "HTML5", "CSS3", "LocalStorage", "Netlify"],
+    tech: ["JavaScript (ES6+)", "HTML5", "CSS3", "LocalStorage", "Web App"],
     links: {
       github: "https://github.com/ajitkumarsaini02/taskmaster",
       demo: "https://taskmaster-ajit.netlify.app",
@@ -238,7 +238,7 @@ export const projects = [
     tech: ["React.js", "Vite", "Modern CSS", "HTML5 Canvas", "Lucide Icons"],
     links: {
       github: "https://github.com/ajitkumarsaini02/portfolio-website",
-      demo: "https://ajit-kumar-saini-portfolio.netlify.app/",
+      demo: "https://ajit-kumar-saini-portfolio.vercel.app/",
     },
   },
   {
@@ -256,7 +256,7 @@ export const projects = [
       "Includes playlist state management, volume slider, track timeline scrubber, and keyboard shortcuts.",
       "Responsive glassmorphism layout optimized across smartphone, tablet, and desktop viewports.",
     ],
-    tech: ["JavaScript", "HTML5 Audio API", "CSS3 Flexbox", "Netlify"],
+    tech: ["JavaScript", "HTML5 Audio API", "CSS3 Flexbox", "Web Audio"],
     links: {
       github: "https://github.com/ajitkumarsaini02/EchoStream-Media-Player",
       demo: "https://echostream-media-player.netlify.app/",
@@ -275,9 +275,9 @@ export const projects = [
     bullets: [
       "Replicated pixel-perfect Spotify dark-theme UI with library sidebar, search, and browse categories.",
       "Implemented seamless audio playback engine with track seeker, volume control, play/pause state, and track queue.",
-      "Optimized for smooth 60fps performance and deployed live on Netlify.",
+      "Optimized for smooth 60fps performance and cross-browser responsiveness.",
     ],
-    tech: ["JavaScript (ES6+)", "HTML5 Audio", "CSS3 Flexbox/Grid", "Netlify"],
+    tech: ["JavaScript (ES6+)", "HTML5 Audio", "CSS3 Flexbox/Grid", "Responsive UI"],
     links: {
       github: "https://github.com/ajitkumarsaini02/Spotify-Clone",
       demo: "https://spotify-music-cl.netlify.app/",
