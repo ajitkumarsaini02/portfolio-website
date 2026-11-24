@@ -1,43 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import { motion } from "framer-motion";
 import { Send, CheckCircle2 } from "lucide-react";
-import confetti from "canvas-confetti";
 import ScrollReveal from "../ScrollReveal";
+import { useContactForm } from "./useContactForm";
 
 const ContactForm = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    subject: "",
-    message: "",
-  });
-  const [submitted, setSubmitted] = useState(false);
-  const [loading, setLoading] = useState(false);
-
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (!formData.name || !formData.email || !formData.message) return;
-
-    setLoading(true);
-
-    setTimeout(() => {
-      setLoading(false);
-      setSubmitted(true);
-
-      confetti({
-        particleCount: 100,
-        spread: 70,
-        origin: { y: 0.6 },
-      });
-
-      setFormData({ name: "", email: "", subject: "", message: "" });
-      setTimeout(() => setSubmitted(false), 6000);
-    }, 700);
-  };
+  const { formData, submitted, loading, handleChange, handleSubmit } = useContactForm();
 
   return (
     <ScrollReveal direction="left" delay={0.3}>
@@ -96,7 +64,7 @@ const ContactForm = () => {
             value={formData.message}
             onChange={handleChange}
             required
-          ></textarea>
+          />
         </div>
 
         <motion.button
@@ -106,13 +74,7 @@ const ContactForm = () => {
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
         >
-          {loading ? (
-            <span>Sending...</span>
-          ) : (
-            <>
-              <Send size={18} /> Send Message
-            </>
-          )}
+          {loading ? <span>Sending...</span> : <><Send size={18} /> Send Message</>}
         </motion.button>
 
         {submitted && (

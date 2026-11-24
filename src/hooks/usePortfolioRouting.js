@@ -1,40 +1,20 @@
 import { useState, useEffect } from "react";
+import { sectionIds, scrollToSection, resolveTargetId } from "./routingUtils";
 
-export const sectionIds = [
-  "about",
-  "skills",
-  "projects",
-  "experience",
-  "achievements",
-  "certifications",
-  "education",
-  "profiles",
-  "contact",
-];
+export { sectionIds };
 
 export function usePortfolioRouting() {
   const [currentPath, setCurrentPath] = useState(() => {
-    return window.location.pathname.startsWith("/certificates")
-      ? "/certificates"
-      : "/";
+    return window.location.pathname.startsWith("/certificates") ? "/certificates" : "/";
   });
 
-  // Handle client-side routing on popstate (browser back/forward)
   useEffect(() => {
     const handlePopState = () => {
       const isCerts = window.location.pathname.startsWith("/certificates");
       setCurrentPath(isCerts ? "/certificates" : "/");
-
       if (!isCerts) {
         const path = window.location.pathname.replace(/^\//, "").toLowerCase();
-        if (!path || path === "hero") {
-          window.scrollTo({ top: 0, behavior: "smooth" });
-        } else if (sectionIds.includes(path)) {
-          const el = document.getElementById(path);
-          if (el) {
-            el.scrollIntoView({ behavior: "smooth" });
-          }
-        }
+        scrollToSection(path);
       }
     };
 
@@ -42,30 +22,13 @@ export function usePortfolioRouting() {
     return () => window.removeEventListener("popstate", handlePopState);
   }, []);
 
-  // Handle clean URLs without '#'
   useEffect(() => {
+    const rawPath = window.location.hash ? window.location.hash.replace("#", "") : window.location.pathname.replace(/^\//, "");
     if (window.location.hash) {
-      const rawHash = window.location.hash.replace("#", "");
-      const cleanPath = rawHash ? `/${rawHash}` : "/";
-      window.history.replaceState(null, "", cleanPath);
-      if (rawHash) {
-        setTimeout(() => {
-          const el = document.getElementById(rawHash);
-          if (el) {
-            el.scrollIntoView({ behavior: "smooth" });
-          }
-        }, 150);
-      }
-    } else {
-      const path = window.location.pathname.replace(/^\//, "").toLowerCase();
-      if (sectionIds.includes(path)) {
-        setTimeout(() => {
-          const el = document.getElementById(path);
-          if (el) {
-            el.scrollIntoView({ behavior: "smooth" });
-          }
-        }, 150);
-      }
+      window.history.replaceState(null, "", rawPath ? `/${rawPath}` : "/");
+    }
+    if (sectionIds.includes(rawPath.toLowerCase())) {
+      setTimeout(() => scrollToSection(rawPath.toLowerCase()), 150);
     }
 
     const handleLinkClick = (e) => {
@@ -74,39 +37,15 @@ export function usePortfolioRouting() {
       const href = anchor.getAttribute("href");
       if (!href) return;
 
-      let targetId = null;
-      if (href.startsWith("#")) {
-        targetId = href.slice(1);
-      } else if (
-        href.startsWith("/") &&
-        href !== "/" &&
-        !href.startsWith("/certificates") &&
-        !href.includes(".")
-      ) {
-        const potentialId = href.slice(1).toLowerCase();
-        if (sectionIds.includes(potentialId)) {
-          targetId = potentialId;
-        }
-      }
-
+      const targetId = resolveTargetId(href);
       if (targetId) {
         e.preventDefault();
-        const newPath = targetId === "hero" ? "/" : `/${targetId}`;
-        window.history.pushState({}, "", newPath);
-        if (targetId === "hero") {
-          window.scrollTo({ top: 0, behavior: "smooth" });
-        } else {
-          const el = document.getElementById(targetId);
-          if (el) {
-            el.scrollIntoView({ behavior: "smooth" });
-          }
-        }
-      } else if (href === "/" || href === "#hero") {
-        if (!anchor.closest(".cert-page-wrapper")) {
-          e.preventDefault();
-          window.history.pushState({}, "", "/");
-          window.scrollTo({ top: 0, behavior: "smooth" });
-        }
+        window.history.pushState({}, "", targetId === "hero" ? "/" : `/${targetId}`);
+        scrollToSection(targetId);
+      } else if ((href === "/" || href === "#hero") && !anchor.closest(".cert-page-wrapper")) {
+        e.preventDefault();
+        window.history.pushState({}, "", "/");
+        scrollToSection("hero");
       }
     };
 
