@@ -17,7 +17,7 @@ A modern, high-performance developer portfolio built with **React.js 18**, **Vit
   - Interactive **1-Click Refresh Stats Button** in the Navbar, Achievements banner, and Footer with cache-busting requests and smooth animated counter re-triggering.
 
 - **Modular Architecture (< 100 lines per file)**:
-  - Component hierarchy decomposed into organized subdirectories (`Hero/`, `Achievements/`, `Footer/`, `About/`, `Navbar/`, `Contact/`, `Projects/`, `Skills/`, `CertificateCard/`, `CertificateModal/`, `ParticleBackground/`, `CertificationsPage/`).
+  - Component hierarchy decomposed into organized subdirectories (`Hero/`, `Achievements/`, `Experience/`, `Footer/`, `About/`, `Navbar/`, `Contact/`, `Projects/`, `Skills/`, `CertificateCard/`, `CertificateModal/`, `ParticleBackground/`, `CertificationsPage/`).
   - Standardized modern arrow functional components:
     ```jsx
     import React from 'react';
@@ -68,6 +68,7 @@ src/
 │   ├── CertificateCard/         # Modular certificate card item & media
 │   ├── CertificateModal/        # Certificate preview modal & details
 │   ├── Contact/                 # Contact info & validated message form
+│   ├── Experience/              # Modular timeline experience cards & links
 │   ├── Footer/                  # Brand, navigation links, dynamic socials & bottom bar
 │   ├── Hero/                    # Title, typing role, CTA buttons, stats & terminal card
 │   ├── Navbar/                  # Brand logo, nav links, theme toggle & refresh action
