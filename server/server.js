@@ -15,7 +15,6 @@ dotenv.config({ path: path.join(__dirname, ".env") });
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-// Middleware with flexible CORS for Vercel & localhost
 app.use(
   cors({
     origin: (origin, callback) => {
@@ -29,16 +28,22 @@ app.use(
 );
 app.use(express.json({ limit: "1mb" }));
 
-// Health Check
+// Root welcome route
+app.get("/", (req, res) => {
+  res.status(200).json({
+    service: "Ajit Kumar Saini - Portfolio Backend API",
+    status: "online",
+    endpoints: { health: "/api/health", stats: "/api/stats", contact: "/api/contact [POST]" },
+  });
+});
+
 app.get("/api/health", (req, res) => {
   res.status(200).json({ status: "OK", service: "portfolio-backend", uptime: process.uptime() });
 });
 
-// API Routes
 app.use("/api/contact", contactRoutes);
 app.use("/api/stats", statsRoutes);
 
-// Global Error Handler
 app.use((err, req, res, next) => {
   if (err instanceof SyntaxError && err.status === 400 && "body" in err) {
     return res.status(400).json({ success: false, message: "Invalid JSON payload" });
@@ -47,13 +52,10 @@ app.use((err, req, res, next) => {
   res.status(500).json({ success: false, message: "Internal server error" });
 });
 
-// Start Server & Background Services
 const startServer = async () => {
   await connectDB();
-
   fetchUnifiedStats(true).catch((err) => console.warn("Cache warm-up warning:", err.message));
 
-  // Cron Job: Refresh stats every 30 minutes
   cron.schedule("*/30 * * * *", () => {
     console.log("⏰ [Cron] Running scheduled stats refresh...");
     fetchUnifiedStats(true);
@@ -61,7 +63,6 @@ const startServer = async () => {
 
   app.listen(PORT, () => {
     console.log(`🚀 [Backend] Portfolio Server running on port ${PORT}`);
-    console.log(`📡 [Endpoints] Contact: http://localhost:${PORT}/api/contact | Stats: http://localhost:${PORT}/api/stats`);
   });
 };
 
