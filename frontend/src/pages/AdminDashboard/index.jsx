@@ -1,9 +1,10 @@
 import React, { useState, useEffect, useCallback } from "react";
-import { ArrowLeft, LogOut, ShieldAlert } from "lucide-react";
+import { ArrowLeft, LogOut } from "lucide-react";
 import { useAdminAuth } from "./useAdminAuth";
 import AdminLogin from "./AdminLogin";
 import AdminStatsBar from "./AdminStatsBar";
 import AdminMessagesTable from "./AdminMessagesTable";
+import AdminReplyModal from "./AdminReplyModal";
 
 const API_BASE = import.meta.env.VITE_API_URL || "";
 
@@ -13,19 +14,19 @@ const AdminDashboard = ({ onBackToHome }) => {
   const [analytics, setAnalytics] = useState(null);
   const [filter, setFilter] = useState("all");
   const [loading, setLoading] = useState(false);
+  const [activeReply, setActiveReply] = useState(null);
 
   const fetchData = useCallback(async () => {
     if (!token) return;
     setLoading(true);
     try {
-      const [msgRes, anaRes] = await Promise.all([
+      const [mRes, aRes] = await Promise.all([
         fetch(`${API_BASE}/api/admin/messages?status=${filter}`, { headers: { Authorization: `Bearer ${token}` } }),
         fetch(`${API_BASE}/api/analytics/summary`),
       ]);
-      const msgJson = await msgRes.json();
-      const anaJson = await anaRes.json();
-      if (msgJson?.success) setMessages(msgJson.messages || []);
-      if (anaJson?.success) setAnalytics(anaJson);
+      const [mJson, aJson] = await Promise.all([mRes.json(), aRes.json()]);
+      if (mJson?.success) setMessages(mJson.messages || []);
+      if (aJson?.success) setAnalytics(aJson);
     } catch {
       // Offline fallback
     } finally {
@@ -33,34 +34,21 @@ const AdminDashboard = ({ onBackToHome }) => {
     }
   }, [token, filter]);
 
-  useEffect(() => {
-    fetchData();
-  }, [fetchData]);
+  useEffect(() => { fetchData(); }, [fetchData]);
 
   const handleUpdateStatus = async (id, status) => {
-    try {
-      await fetch(`${API_BASE}/api/admin/messages/${id}`, {
-        method: "PATCH",
-        headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
-        body: JSON.stringify({ status }),
-      });
-      fetchData();
-    } catch {
-      // Handle error
-    }
+    await fetch(`${API_BASE}/api/admin/messages/${id}`, {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
+      body: JSON.stringify({ status }),
+    }).catch(() => {});
+    fetchData();
   };
 
   const handleDelete = async (id) => {
     if (!window.confirm("Are you sure you want to delete this message?")) return;
-    try {
-      await fetch(`${API_BASE}/api/admin/messages/${id}`, {
-        method: "DELETE",
-        headers: { Authorization: `Bearer ${token}` },
-      });
-      fetchData();
-    } catch {
-      // Handle error
-    }
+    await fetch(`${API_BASE}/api/admin/messages/${id}`, { method: "DELETE", headers: { Authorization: `Bearer ${token}` } }).catch(() => {});
+    fetchData();
   };
 
   if (!isAuthenticated) {
@@ -83,9 +71,27 @@ const AdminDashboard = ({ onBackToHome }) => {
       </div>
 
       <AdminStatsBar stats={analytics} />
-      <AdminMessagesTable messages={messages} filter={filter} setFilter={setFilter} onUpdateStatus={handleUpdateStatus} onDelete={handleDelete} loading={loading} />
+      <AdminMessagesTable
+        messages={messages}
+        filter={filter}
+        setFilter={setFilter}
+        onUpdateStatus={handleUpdateStatus}
+        onDelete={handleDelete}
+        onOpenReply={setActiveReply}
+        loading={loading}
+      />
+      {activeReply && (
+        <AdminReplyModal
+          message={activeReply}
+          token={token}
+          apiBase={API_BASE}
+          onClose={() => setActiveReply(null)}
+          onSuccess={() => { setActiveReply(null); fetchData(); }}
+        />
+      )}
     </div>
   );
 };
 
+export { AdminDashboard };
 export default AdminDashboard;

@@ -1,7 +1,7 @@
 import React from "react";
-import { Mail, CheckCircle, Reply, Trash2, Calendar, User } from "lucide-react";
+import { Mail, CheckCircle, Reply, Trash2, Calendar, User, ExternalLink } from "lucide-react";
 
-const AdminMessagesTable = ({ messages, filter, setFilter, onUpdateStatus, onDelete, loading }) => {
+const AdminMessagesTable = ({ messages, filter, setFilter, onUpdateStatus, onDelete, onOpenReply, loading }) => {
   const filters = ["all", "unread", "read", "replied"];
 
   return (
@@ -57,8 +57,11 @@ const AdminMessagesTable = ({ messages, filter, setFilter, onUpdateStatus, onDel
               <p style={{ fontSize: "0.85rem", color: "var(--text-muted)", background: "rgba(0, 0, 0, 0.15)", padding: "10px", borderRadius: "8px", whiteSpace: "pre-wrap", marginBottom: "12px" }}>{m.message}</p>
 
               <div style={{ display: "flex", gap: "8px", justifyContent: "flex-end", flexWrap: "wrap" }}>
-                <a href={`mailto:${m.email}?subject=Re: ${encodeURIComponent(m.subject)}`} className="btn btn-outline" style={{ padding: "4px 10px", fontSize: "0.75rem" }}>
+                <button type="button" onClick={() => onOpenReply(m)} className="btn btn-outline" style={{ padding: "4px 10px", fontSize: "0.75rem", display: "inline-flex", alignItems: "center", gap: "4px" }}>
                   <Reply size={13} /> Reply
+                </button>
+                <a href={`https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(m.email)}&su=${encodeURIComponent("Re: " + m.subject)}`} target="_blank" rel="noopener noreferrer" className="btn btn-outline" style={{ padding: "4px 8px", fontSize: "0.75rem", display: "inline-flex", alignItems: "center", gap: "4px" }} title="Open in Gmail Web">
+                  <ExternalLink size={12} /> Gmail
                 </a>
                 {m.status !== "read" && (
                   <button onClick={() => onUpdateStatus(m._id, "read")} className="btn btn-outline" style={{ padding: "4px 10px", fontSize: "0.75rem" }}>
@@ -82,4 +85,5 @@ const AdminMessagesTable = ({ messages, filter, setFilter, onUpdateStatus, onDel
   );
 };
 
+export { AdminMessagesTable };
 export default AdminMessagesTable;

@@ -67,5 +67,5 @@ const sendContactEmails = async ({ name, email, subject, message }) => {
   }
 };
 
-export { sendContactEmails };
+export { sendContactEmails, createTransporter };
 export default sendContactEmails;
