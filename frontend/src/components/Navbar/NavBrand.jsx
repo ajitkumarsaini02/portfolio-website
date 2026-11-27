@@ -17,4 +17,5 @@ const NavBrand = ({ handleNavClick }) => {
   );
 };
 
+export { NavBrand };
 export default NavBrand;

@@ -73,4 +73,5 @@ const Navbar = ({ theme, toggleTheme }) => {
   );
 };
 
+export { Navbar };
 export default Navbar;

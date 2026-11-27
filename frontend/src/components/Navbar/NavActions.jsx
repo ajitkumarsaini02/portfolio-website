@@ -60,4 +60,5 @@ const NavActions = ({ theme, toggleTheme, mobileMenuOpen, setMobileMenuOpen }) =
   );
 };
 
+export { NavActions };
 export default NavActions;
