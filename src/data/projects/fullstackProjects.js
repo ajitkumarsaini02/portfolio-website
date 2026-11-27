@@ -36,8 +36,8 @@ export const fullstackProjects = [
     ],
     tech: ["React.js", "Node.js", "Express.js", "MongoDB", "REST API", "JWT Auth", "Render"],
     links: {
-      github: "https://github.com/ajitkumarsaini02",
-      demo: "https://github.com/ajitkumarsaini02",
+      github: "https://github.com/ajitkumarsaini02/codetrack",
+      demo: "https://codetrack-rho.vercel.app",
     },
   },
 ];
