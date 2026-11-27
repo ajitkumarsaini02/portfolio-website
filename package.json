@@ -4,21 +4,11 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
-  },
-  "dependencies": {
-    "canvas-confetti": "^1.9.4",
-    "framer-motion": "^14.6.0",
-    "lucide-react": "^0.475.0",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1"
-  },
-  "devDependencies": {
-    "@types/react": "^18.3.18",
-    "@types/react-dom": "^18.3.5",
-    "@vitejs/plugin-react": "^4.3.4",
-    "vite": "^6.1.0"
+    "dev": "npm run dev --prefix frontend",
+    "build": "cd frontend && npm install && npm run build",
+    "preview": "npm run preview --prefix frontend",
+    "server": "npm run dev --prefix server",
+    "server:start": "npm run start --prefix server",
+    "install:all": "npm install --prefix frontend && npm install --prefix server"
   }
 }
