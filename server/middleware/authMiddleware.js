@@ -1,4 +1,4 @@
- const authMiddleware = (req, res, next) => {
+const authMiddleware = (req, res, next) => {
   const authHeader = req.headers.authorization;
   const expectedToken = process.env.ADMIN_TOKEN || "ajit_admin_token_secure_2026";
 
@@ -14,4 +14,5 @@
   next();
 };
 
-export authMiddleware;
+export { authMiddleware };
+export default authMiddleware;
