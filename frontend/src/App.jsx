@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { LiveStatsProvider } from "./context/LiveStatsContext";
 import { usePortfolioRouting } from "./hooks/usePortfolioRouting";
+import { useAnalyticsTracker } from "./hooks/useAnalyticsTracker";
 import CustomCursor from "./components/CustomCursor";
 import ClickShockwave from "./components/ClickShockwave";
 import AmbientGlow from "./components/AmbientGlow";
@@ -19,22 +20,20 @@ import Faq from "./components/Faq";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import CertificationsPage from "./pages/CertificationsPage";
+import AdminDashboard from "./pages/AdminDashboard";
 
 const App = () => {
-  const [theme, setTheme] = useState(() => {
-    return localStorage.getItem("portfolio-theme") || "dark";
-  });
+  const [theme, setTheme] = useState(() => localStorage.getItem("portfolio-theme") || "dark");
+  const { isCertificatesPage, isAdminPage, navigateToHome } = usePortfolioRouting();
 
-  const { isCertificatesPage, navigateToHome } = usePortfolioRouting();
+  useAnalyticsTracker();
 
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", theme);
     localStorage.setItem("portfolio-theme", theme);
   }, [theme]);
 
-  const toggleTheme = () => {
-    setTheme((prev) => (prev === "dark" ? "light" : "dark"));
-  };
+  const toggleTheme = () => setTheme((prev) => (prev === "dark" ? "light" : "dark"));
 
   return (
     <LiveStatsProvider>
@@ -44,13 +43,14 @@ const App = () => {
         <AmbientGlow />
         <ParticleBackground theme={theme} />
 
-        {isCertificatesPage ? (
+        {isAdminPage ? (
           <>
-            <CertificationsPage
-              theme={theme}
-              toggleTheme={toggleTheme}
-              onBackToHome={navigateToHome}
-            />
+            <AdminDashboard onBackToHome={navigateToHome} />
+            <Footer />
+          </>
+        ) : isCertificatesPage ? (
+          <>
+            <CertificationsPage theme={theme} toggleTheme={toggleTheme} onBackToHome={navigateToHome} />
             <Footer />
           </>
         ) : (

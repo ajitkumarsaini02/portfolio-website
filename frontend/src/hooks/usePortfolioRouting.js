@@ -5,28 +5,28 @@ export { sectionIds };
 
 export function usePortfolioRouting() {
   const [currentPath, setCurrentPath] = useState(() => {
-    return window.location.pathname.startsWith("/certificates") ? "/certificates" : "/";
+    const p = window.location.pathname;
+    if (p.startsWith("/certificates")) return "/certificates";
+    if (p.startsWith("/admin")) return "/admin";
+    return "/";
   });
 
   useEffect(() => {
     const handlePopState = () => {
-      const isCerts = window.location.pathname.startsWith("/certificates");
-      setCurrentPath(isCerts ? "/certificates" : "/");
-      if (!isCerts) {
-        const path = window.location.pathname.replace(/^\//, "").toLowerCase();
-        scrollToSection(path);
+      const p = window.location.pathname;
+      if (p.startsWith("/certificates")) setCurrentPath("/certificates");
+      else if (p.startsWith("/admin")) setCurrentPath("/admin");
+      else {
+        setCurrentPath("/");
+        scrollToSection(p.replace(/^\//, "").toLowerCase());
       }
     };
-
     window.addEventListener("popstate", handlePopState);
     return () => window.removeEventListener("popstate", handlePopState);
   }, []);
 
   useEffect(() => {
     const rawPath = window.location.hash ? window.location.hash.replace("#", "") : window.location.pathname.replace(/^\//, "");
-    if (window.location.hash) {
-      window.history.replaceState(null, "", rawPath ? `/${rawPath}` : "/");
-    }
     if (sectionIds.includes(rawPath.toLowerCase())) {
       setTimeout(() => scrollToSection(rawPath.toLowerCase()), 150);
     }
@@ -42,26 +42,16 @@ export function usePortfolioRouting() {
         e.preventDefault();
         window.history.pushState({}, "", targetId === "hero" ? "/" : `/${targetId}`);
         scrollToSection(targetId);
-      } else if ((href === "/" || href === "#hero") && !anchor.closest(".cert-page-wrapper")) {
+      } else if (href === "/admin") {
         e.preventDefault();
-        window.history.pushState({}, "", "/");
-        scrollToSection("hero");
-      }
-    };
-
-    const handleHashChange = () => {
-      if (window.location.hash) {
-        const raw = window.location.hash.replace("#", "");
-        window.history.replaceState(null, "", raw ? `/${raw}` : "/");
+        window.history.pushState({}, "", "/admin");
+        setCurrentPath("/admin");
+        window.scrollTo({ top: 0, behavior: "smooth" });
       }
     };
 
     document.addEventListener("click", handleLinkClick);
-    window.addEventListener("hashchange", handleHashChange);
-    return () => {
-      document.removeEventListener("click", handleLinkClick);
-      window.removeEventListener("hashchange", handleHashChange);
-    };
+    return () => document.removeEventListener("click", handleLinkClick);
   }, []);
 
   const navigateToCertificates = () => {
@@ -79,6 +69,7 @@ export function usePortfolioRouting() {
   return {
     currentPath,
     isCertificatesPage: currentPath === "/certificates",
+    isAdminPage: currentPath === "/admin",
     navigateToCertificates,
     navigateToHome,
   };

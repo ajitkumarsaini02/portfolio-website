@@ -1,16 +1,9 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { Cpu, CheckSquare, Sparkles, Music, Headphones, Boxes, Github, ExternalLink } from "lucide-react";
+import { Github, ExternalLink } from "lucide-react";
 import TiltCard from "../TiltCard";
-
-const iconMap = {
-  Cpu: <Cpu size={24} />,
-  CheckSquare: <CheckSquare size={24} />,
-  Sparkles: <Sparkles size={24} />,
-  Music: <Music size={24} />,
-  Headphones: <Headphones size={24} />,
-  Boxes: <Boxes size={24} />,
-};
+import { projectIconMap } from "./projectIconMap";
+import ProjectUptimeBadge from "./ProjectUptimeBadge";
 
 const ProjectCard = ({ project, index }) => {
   return (
@@ -25,12 +18,7 @@ const ProjectCard = ({ project, index }) => {
       <TiltCard maxTilt={6} className="project-tilt-wrapper">
         <article className="glass-card project-card">
           <div className="project-image-wrapper">
-            <img
-              src={project.image}
-              alt={`${project.title} Preview`}
-              className="project-image"
-              loading="lazy"
-            />
+            <img src={project.image} alt={`${project.title} Preview`} className="project-image" loading="lazy" />
             <div className="project-image-gradient" />
             <div className="project-image-badge">
               <span className="project-badge-tag">{project.badge}</span>
@@ -38,11 +26,12 @@ const ProjectCard = ({ project, index }) => {
           </div>
 
           <div className="project-card-body">
-            <div className="project-top">
-              <div className="project-icon-box">
-                {iconMap[project.icon] || <Cpu size={22} />}
+            <div className="project-top" style={{ justifyContent: "space-between", alignItems: "flex-start" }}>
+              <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+                <div className="project-icon-box">{projectIconMap[project.icon] || null}</div>
+                <h3 className="project-title">{project.title}</h3>
               </div>
-              <h3 className="project-title">{project.title}</h3>
+              <ProjectUptimeBadge projectTitle={project.title} demoUrl={project.links?.demo} />
             </div>
 
             <p className="project-desc">{project.description}</p>
@@ -60,32 +49,18 @@ const ProjectCard = ({ project, index }) => {
 
             <div className="project-tech">
               {project.tech.map((t, i) => (
-                <span key={i} className="tech-tag">
-                  {t}
-                </span>
+                <span key={i} className="tech-tag">{t}</span>
               ))}
             </div>
 
             <div className="project-links">
               {project.links.github && (
-                <motion.a
-                  href={project.links.github}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="project-link-item"
-                  whileHover={{ x: 3 }}
-                >
+                <motion.a href={project.links.github} target="_blank" rel="noreferrer" className="project-link-item" whileHover={{ x: 3 }}>
                   <Github size={16} /> Source Code
                 </motion.a>
               )}
               {project.links.demo && (
-                <motion.a
-                  href={project.links.demo}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="project-link-item project-link-demo"
-                  whileHover={{ x: 3 }}
-                >
+                <motion.a href={project.links.demo} target="_blank" rel="noreferrer" className="project-link-item project-link-demo" whileHover={{ x: 3 }}>
                   <ExternalLink size={16} /> Live Demo
                 </motion.a>
               )}
