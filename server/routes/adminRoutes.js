@@ -9,4 +9,5 @@ router.get("/messages", authMiddleware, getAdminMessages);
 router.patch("/messages/:id", authMiddleware, updateMessageStatus);
 router.delete("/messages/:id", authMiddleware, deleteMessage);
 
+export { router };
 export default router;

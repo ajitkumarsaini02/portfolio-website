@@ -17,7 +17,7 @@ const LiveStatsContext = createContext({
   refreshStats: () => {},
 });
 
-export const LiveStatsProvider = ({ children }) => {
+const LiveStatsProvider = ({ children }) => {
   const [stats, setStats] = useState(fallbackStats);
   const [loading, setLoading] = useState(false);
   const [isLive, setIsLive] = useState(false);
@@ -74,4 +74,7 @@ export const LiveStatsProvider = ({ children }) => {
   );
 };
 
-export const useLiveStats = () => useContext(LiveStatsContext);
+const useLiveStats = () => useContext(LiveStatsContext);
+
+export { LiveStatsContext, LiveStatsProvider, useLiveStats };
+export default LiveStatsProvider;

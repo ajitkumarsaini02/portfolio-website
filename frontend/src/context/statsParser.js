@@ -1,6 +1,6 @@
 import { fallbackStats } from "./fallbackStats";
 
-export const parseLiveStats = (statsData, githubData, cfDirectData) => {
+const parseLiveStats = (statsData, githubData, cfDirectData) => {
   let parsed = { ...fallbackStats };
 
   if (statsData && Array.isArray(statsData.profiles)) {
@@ -65,3 +65,6 @@ export const parseLiveStats = (statsData, githubData, cfDirectData) => {
 
   return parsed;
 };
+
+export { parseLiveStats };
+export default parseLiveStats;

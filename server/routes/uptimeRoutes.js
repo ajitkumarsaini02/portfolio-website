@@ -21,4 +21,5 @@ router.post("/ping", async (req, res) => {
   }
 });
 
+export { router };
 export default router;

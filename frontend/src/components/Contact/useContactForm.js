@@ -3,7 +3,7 @@ import confetti from "canvas-confetti";
 
 const API_BASE = import.meta.env.VITE_API_URL || "";
 
-export const useContactForm = () => {
+const useContactForm = () => {
   const [formData, setFormData] = useState({ name: "", email: "", subject: "", message: "" });
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -41,3 +41,6 @@ export const useContactForm = () => {
 
   return { formData, submitted, loading, handleChange, handleSubmit };
 };
+
+export { useContactForm };
+export default useContactForm;

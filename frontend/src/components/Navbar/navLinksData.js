@@ -1,15 +1,17 @@
-export const navLinks = [
-  { name: "About", href: "/about", id: "about" },
-  { name: "Skills", href: "/skills", id: "skills" },
-  { name: "Projects", href: "/projects", id: "projects" },
-  { name: "Experience", href: "/experience", id: "experience" },
-  { name: "Achievements", href: "/achievements", id: "achievements" },
-  { name: "Certificates", href: "/certifications", id: "certifications" },
-  { name: "Education", href: "/education", id: "education" },
-  { name: "Contact", href: "/contact", id: "contact" },
+const navLinks = [
+  { name: "About", id: "about" },
+  { name: "Skills", id: "skills" },
+  { name: "Projects", id: "projects" },
+  { name: "Experience", id: "experience" },
+  { name: "Milestones", id: "achievements" },
+  { name: "Certifications", id: "certifications" },
+  { name: "Education", id: "education" },
+  { name: "Coding Handles", id: "profiles" },
+  { name: "FAQ", id: "faq" },
+  { name: "Contact", id: "contact" },
 ];
 
-export const navSections = [
-  "hero", "about", "skills", "projects", "experience",
-  "achievements", "certifications", "education", "contact",
-];
+const navSections = ["hero", ...navLinks.map((l) => l.id)];
+
+export { navLinks, navSections };
+export default navLinks;

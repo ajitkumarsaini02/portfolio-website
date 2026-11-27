@@ -6,4 +6,5 @@ const router = express.Router();
 router.get("/", getStats);
 router.post("/refresh", refreshStats);
 
+export { router };
 export default router;

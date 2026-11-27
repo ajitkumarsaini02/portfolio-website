@@ -1,7 +1,7 @@
 import { Contact } from "../models/Contact.js";
 import { getDbStatus } from "../config/db.js";
 
-export const adminLogin = (req, res) => {
+const adminLogin = (req, res) => {
   const { password } = req.body || {};
   const expectedPassword = process.env.ADMIN_PASSWORD || "Ajit@Admin2026";
   const token = process.env.ADMIN_TOKEN || "ajit_admin_token_secure_2026";
@@ -13,7 +13,7 @@ export const adminLogin = (req, res) => {
   return res.status(200).json({ success: true, token, message: "Welcome back, Ajit!" });
 };
 
-export const getAdminMessages = async (req, res) => {
+const getAdminMessages = async (req, res) => {
   try {
     if (!getDbStatus()) {
       return res.status(200).json({ success: true, messages: [], mode: "memory_only" });
@@ -27,7 +27,7 @@ export const getAdminMessages = async (req, res) => {
   }
 };
 
-export const updateMessageStatus = async (req, res) => {
+const updateMessageStatus = async (req, res) => {
   try {
     const { id } = req.params;
     const { status } = req.body;
@@ -41,7 +41,7 @@ export const updateMessageStatus = async (req, res) => {
   }
 };
 
-export const deleteMessage = async (req, res) => {
+const deleteMessage = async (req, res) => {
   try {
     const { id } = req.params;
     await Contact.findByIdAndDelete(id);
@@ -50,3 +50,5 @@ export const deleteMessage = async (req, res) => {
     return res.status(500).json({ success: false, message: error.message });
   }
 };
+
+export { adminLogin, getAdminMessages, updateMessageStatus, deleteMessage };

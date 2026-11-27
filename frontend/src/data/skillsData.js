@@ -1,4 +1,4 @@
-export const skillCategories = [
+const skillCategories = [
   {
     category: "Web & Frontend",
     icon: "Layout",
@@ -48,3 +48,6 @@ export const skillCategories = [
     ],
   },
 ];
+
+export { skillCategories };
+export default skillCategories;

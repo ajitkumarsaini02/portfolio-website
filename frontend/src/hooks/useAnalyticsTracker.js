@@ -2,7 +2,7 @@ import { useEffect } from "react";
 
 const API_BASE = import.meta.env.VITE_API_URL || "";
 
-export const trackResumeDownload = async (source = "general") => {
+const trackResumeDownload = async (source = "general") => {
   try {
     await fetch(`${API_BASE}/api/analytics/resume`, {
       method: "POST",
@@ -14,7 +14,7 @@ export const trackResumeDownload = async (source = "general") => {
   }
 };
 
-export const useAnalyticsTracker = () => {
+const useAnalyticsTracker = () => {
   useEffect(() => {
     const hasVisited = sessionStorage.getItem("portfolio_session_visit");
     if (!hasVisited) {
@@ -27,3 +27,6 @@ export const useAnalyticsTracker = () => {
     }
   }, []);
 };
+
+export { trackResumeDownload, useAnalyticsTracker };
+export default useAnalyticsTracker;

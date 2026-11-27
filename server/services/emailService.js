@@ -17,17 +17,16 @@ const createTransporter = () => {
   });
 };
 
-export const sendContactEmails = async ({ name, email, subject, message }) => {
+const sendContactEmails = async ({ name, email, subject, message }) => {
   const transporter = createTransporter();
   const receiver = process.env.NOTIFY_EMAIL || process.env.SMTP_USER || "ajitkumarsaini02@gmail.com";
 
   if (!transporter) {
-    console.log(`📨 [Email Service Demo Mode] New message from ${name} (${email}): "${subject}" - ${message}`);
+    console.log(`📨 [Email Demo Mode] ${name} (${email}): "${subject}" - ${message}`);
     return { success: true, mode: "demo_logged" };
   }
 
   try {
-    // 1. Alert to Ajit
     await transporter.sendMail({
       from: `"Portfolio Contact Form" <${process.env.SMTP_USER}>`,
       to: receiver,
@@ -46,7 +45,6 @@ export const sendContactEmails = async ({ name, email, subject, message }) => {
       `,
     });
 
-    // 2. Auto-reply to recruiter
     await transporter.sendMail({
       from: `"Ajit Kumar Saini" <${process.env.SMTP_USER}>`,
       to: email,
@@ -68,3 +66,6 @@ export const sendContactEmails = async ({ name, email, subject, message }) => {
     return { success: false, error: error.message };
   }
 };
+
+export { sendContactEmails };
+export default sendContactEmails;

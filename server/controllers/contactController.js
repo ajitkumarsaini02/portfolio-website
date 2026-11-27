@@ -4,7 +4,7 @@ import { getDbStatus } from "../config/db.js";
 
 const isValidEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
-export const submitContact = async (req, res) => {
+const submitContact = async (req, res) => {
   try {
     const { name, email, subject, message } = req.body || {};
 
@@ -30,7 +30,6 @@ export const submitContact = async (req, res) => {
       savedMessage = await Contact.create(contactData);
     }
 
-    // Fire email notifications in background
     sendContactEmails(contactData).catch((err) =>
       console.warn("⚠️  [ContactController] Email dispatch error:", err.message)
     );
@@ -46,7 +45,7 @@ export const submitContact = async (req, res) => {
   }
 };
 
-export const getAllContacts = async (req, res) => {
+const getAllContacts = async (req, res) => {
   try {
     if (!getDbStatus()) {
       return res.status(200).json({ success: true, contacts: [], mode: "memory_only" });
@@ -57,3 +56,5 @@ export const getAllContacts = async (req, res) => {
     return res.status(500).json({ success: false, error: error.message });
   }
 };
+
+export { submitContact, getAllContacts };

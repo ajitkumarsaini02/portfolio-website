@@ -1,4 +1,4 @@
-export const fallbackStats = {
+const fallbackStats = {
   leetcode: {
     totalSolved: 746,
     rating: 1750,
@@ -40,3 +40,6 @@ export const fallbackStats = {
   },
   totalSolvedAll: 1572,
 };
+
+export { fallbackStats };
+export default fallbackStats;

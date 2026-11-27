@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 let isConnected = false;
 
-export const connectDB = async () => {
+const connectDB = async () => {
   const uri = process.env.MONGODB_URI;
 
   if (!uri || uri.includes("<username>")) {
@@ -23,4 +23,7 @@ export const connectDB = async () => {
   }
 };
 
-export const getDbStatus = () => isConnected;
+const getDbStatus = () => isConnected;
+
+export { connectDB, getDbStatus };
+export default connectDB;

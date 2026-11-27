@@ -1,4 +1,4 @@
-export const analyticsCerts = [
+const analyticsCerts = [
   {
     id: "exploratory-data-analysis",
     title: "Exploratory Data Analysis",
@@ -50,3 +50,6 @@ export const analyticsCerts = [
     description: "Extensive 30.5-hour deep dive masterclass in modern C++ instructed by Abdul Bari, covering memory architecture, pointers, object-oriented design, dynamic allocation, and standard library structures.",
   },
 ];
+
+export { analyticsCerts };
+export default analyticsCerts;

@@ -8,7 +8,7 @@ let uptimeCache = {
   projects: {},
 };
 
-export const pingProjects = async () => {
+const pingProjects = async () => {
   const results = {};
 
   await Promise.allSettled(
@@ -49,9 +49,11 @@ export const pingProjects = async () => {
   return uptimeCache;
 };
 
-export const getUptimeStatus = async () => {
+const getUptimeStatus = async () => {
   if (!uptimeCache.lastChecked) {
     return await pingProjects();
   }
   return uptimeCache;
 };
+
+export { pingProjects, getUptimeStatus };

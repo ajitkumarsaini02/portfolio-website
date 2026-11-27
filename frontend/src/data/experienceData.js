@@ -1,4 +1,4 @@
-export const experience = [
+const experience = [
   {
     role: "Software Developer Intern",
     organization: "HCLTech (HCL Technologies & NASSCOM)",
@@ -28,3 +28,6 @@ export const experience = [
     ],
   },
 ];
+
+export { experience };
+export default experience;

@@ -1,4 +1,7 @@
 import { fullstackProjects } from "./projects/fullstackProjects";
 import { frontendProjects } from "./projects/frontendProjects";
 
-export const projects = [...fullstackProjects, ...frontendProjects];
+const projects = [...fullstackProjects, ...frontendProjects];
+
+export { projects };
+export default projects;

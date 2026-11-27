@@ -1,4 +1,4 @@
-export const personalInfo = {
+const personalInfo = {
   name: "Ajit Kumar Saini",
   role: "Full-Stack Developer (MERN) & Competitive Programmer",
   tagline: "Building scalable full-stack web applications & solving complex DSA challenges.",
@@ -32,14 +32,14 @@ export const personalInfo = {
   ],
 };
 
-export const stats = [
+const stats = [
   { label: "LeetCode Problems", value: 711, suffix: "+", icon: "Code", highlight: "Contest Rating 1664" },
   { label: "CodeChef Rating", value: 1455, suffix: "", icon: "Crown", highlight: "2★ Coder (Peak 1461)" },
   { label: "B.Tech CGPA", value: 8.48, isFloat: true, suffix: "/10", icon: "GraduationCap", highlight: "ABES Engg College" },
   { label: "Open Source PRs", value: 20, suffix: "+", icon: "GitPullRequest", highlight: "GSSoC 2026 Contributor" },
 ];
 
-export const education = [
+const education = [
   {
     degree: "Bachelor of Technology (B.Tech) – Computer Science & Engineering",
     institution: "ABES Engineering College, Ghaziabad (AKTU)",
@@ -62,3 +62,5 @@ export const education = [
     details: "Strong foundational academics with distinction in Science and Mathematics.",
   },
 ];
+
+export { personalInfo, stats, education };

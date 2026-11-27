@@ -1,4 +1,4 @@
-export const webAndAiCerts = [
+const webAndAiCerts = [
   {
     id: "guvi-ai-buildathon",
     title: "India AI Impact Buildathon – Certificate of Participation",
@@ -48,3 +48,6 @@ export const webAndAiCerts = [
     description: "4.5-hour accredited web development course instructed by Stephen Koel Soren, covering semantic HTML5 architecture, modern CSS3 styling, responsive layouts, flexbox, and grid positioning.",
   },
 ];
+
+export { webAndAiCerts };
+export default webAndAiCerts;

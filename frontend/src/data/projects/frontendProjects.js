@@ -1,4 +1,4 @@
-export const frontendProjects = [
+const frontendProjects = [
   {
     id: "taskmaster",
     title: "TaskMaster",
@@ -80,3 +80,6 @@ export const frontendProjects = [
     },
   },
 ];
+
+export { frontendProjects };
+export default frontendProjects;

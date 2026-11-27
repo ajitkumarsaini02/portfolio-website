@@ -1,4 +1,4 @@
-export const cloudCerts = [
+const cloudCerts = [
   {
     id: "aws-cloud-foundations",
     title: "AWS Academy Graduate – Cloud Foundations",
@@ -47,3 +47,6 @@ export const cloudCerts = [
     description: "Advanced Python certification offered through ABES Engineering College via Cisco Networking Academy & Python Institute, covering object-oriented system design, packaging, and stream operations.",
   },
 ];
+
+export { cloudCerts };
+export default cloudCerts;

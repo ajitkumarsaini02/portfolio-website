@@ -1,4 +1,4 @@
-export const achievements = [
+const achievements = [
   {
     title: "710+ LeetCode Solved",
     metric: "Rating 1664 (Peak 1679)",
@@ -25,7 +25,7 @@ export const achievements = [
   },
 ];
 
-export const codingProfiles = [
+const codingProfiles = [
   {
     name: "LeetCode",
     handle: "@ajitkumarsaini02",
@@ -70,7 +70,7 @@ export const codingProfiles = [
   },
 ];
 
-export const faqs = [
+const faqs = [
   {
     q: "What technologies and frameworks do you work with?",
     a: "I work with the full MERN stack (React.js, Node.js, Express.js, MongoDB), along with C++, Java, Python, JavaScript (ES6+), HTML5, CSS3, REST APIs, Git, and SQL/MySQL.",
@@ -88,3 +88,5 @@ export const faqs = [
     a: "Yes! I am actively looking for software development, full-stack, and frontend internships where I can contribute to production-grade applications.",
   },
 ];
+
+export { achievements, codingProfiles, faqs };

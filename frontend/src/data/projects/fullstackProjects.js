@@ -1,4 +1,4 @@
-export const fullstackProjects = [
+const fullstackProjects = [
   {
     id: "retail-inventory",
     title: "Retail Inventory & Supply Chain ERP",
@@ -41,3 +41,6 @@ export const fullstackProjects = [
     },
   },
 ];
+
+export { fullstackProjects };
+export default fullstackProjects;

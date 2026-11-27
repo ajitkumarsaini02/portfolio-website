@@ -1,9 +1,7 @@
 import { useState, useEffect } from "react";
 import { sectionIds, scrollToSection, resolveTargetId } from "./routingUtils";
 
-export { sectionIds };
-
-export function usePortfolioRouting() {
+const usePortfolioRouting = () => {
   const [currentPath, setCurrentPath] = useState(() => {
     const p = window.location.pathname;
     if (p.startsWith("/certificates")) return "/certificates";
@@ -73,4 +71,7 @@ export function usePortfolioRouting() {
     navigateToCertificates,
     navigateToHome,
   };
-}
+};
+
+export { usePortfolioRouting, sectionIds };
+export default usePortfolioRouting;

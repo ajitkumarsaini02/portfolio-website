@@ -18,4 +18,5 @@ const contactLimiter = rateLimit({
 router.post("/", contactLimiter, submitContact);
 router.get("/", getAllContacts);
 
+export { router };
 export default router;

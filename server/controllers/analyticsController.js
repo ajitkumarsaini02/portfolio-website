@@ -2,7 +2,7 @@ import { Analytics } from "../models/Analytics.js";
 import { Contact } from "../models/Contact.js";
 import { getDbStatus } from "../config/db.js";
 
-export const recordVisit = async (req, res) => {
+const recordVisit = async (req, res) => {
   try {
     if (getDbStatus()) {
       await Analytics.create({
@@ -18,7 +18,7 @@ export const recordVisit = async (req, res) => {
   }
 };
 
-export const recordResumeDownload = async (req, res) => {
+const recordResumeDownload = async (req, res) => {
   try {
     if (getDbStatus()) {
       await Analytics.create({
@@ -34,7 +34,7 @@ export const recordResumeDownload = async (req, res) => {
   }
 };
 
-export const getAnalyticsSummary = async (req, res) => {
+const getAnalyticsSummary = async (req, res) => {
   try {
     if (!getDbStatus()) {
       return res.status(200).json({ success: true, totalVisits: 1420, resumeDownloads: 86, totalMessages: 0 });
@@ -49,7 +49,7 @@ export const getAnalyticsSummary = async (req, res) => {
 
     return res.status(200).json({
       success: true,
-      totalVisits: totalVisits + 1420, // base legacy count + recorded
+      totalVisits: totalVisits + 1420,
       resumeDownloads: resumeDownloads + 86,
       totalMessages,
       unreadMessages,
@@ -58,3 +58,5 @@ export const getAnalyticsSummary = async (req, res) => {
     return res.status(500).json({ success: false, message: error.message });
   }
 };
+
+export { recordVisit, recordResumeDownload, getAnalyticsSummary };

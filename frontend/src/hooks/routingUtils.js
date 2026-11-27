@@ -1,10 +1,10 @@
-export const sectionIds = [
+const sectionIds = [
   "about", "skills", "projects", "experience",
   "achievements", "certifications", "education",
   "profiles", "contact",
 ];
 
-export const scrollToSection = (id) => {
+const scrollToSection = (id) => {
   if (!id || id === "hero") {
     window.scrollTo({ top: 0, behavior: "smooth" });
   } else {
@@ -13,7 +13,7 @@ export const scrollToSection = (id) => {
   }
 };
 
-export const resolveTargetId = (href) => {
+const resolveTargetId = (href) => {
   if (href.startsWith("#")) return href.slice(1);
   if (href.startsWith("/") && href !== "/" && !href.startsWith("/certificates") && !href.includes(".")) {
     const potentialId = href.slice(1).toLowerCase();
@@ -21,3 +21,5 @@ export const resolveTargetId = (href) => {
   }
   return null;
 };
+
+export { sectionIds, scrollToSection, resolveTargetId };

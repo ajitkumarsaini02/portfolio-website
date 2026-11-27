@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 
 const API_BASE = import.meta.env.VITE_API_URL || "";
 
-export const useAdminAuth = () => {
+const useAdminAuth = () => {
   const [token, setToken] = useState(() => sessionStorage.getItem("admin_portfolio_token") || "");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -39,3 +39,6 @@ export const useAdminAuth = () => {
 
   return { token, isAuthenticated: Boolean(token), loading, error, login, logout };
 };
+
+export { useAdminAuth };
+export default useAdminAuth;

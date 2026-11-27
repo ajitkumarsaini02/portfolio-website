@@ -1,4 +1,4 @@
-export const createParticles = (width, height) => {
+const createParticles = (width, height) => {
   const count = Math.min(Math.floor(width / 13), 105);
   const particles = [];
   for (let i = 0; i < count; i++) {
@@ -13,7 +13,7 @@ export const createParticles = (width, height) => {
   return particles;
 };
 
-export const drawLines = (ctx, particles, mouse, lineColor, mouseLineColor) => {
+const drawLines = (ctx, particles, mouse, lineColor, mouseLineColor) => {
   for (let i = 0; i < particles.length; i++) {
     for (let j = i + 1; j < particles.length; j++) {
       const dx = particles[i].x - particles[j].x;
@@ -45,7 +45,7 @@ export const drawLines = (ctx, particles, mouse, lineColor, mouseLineColor) => {
   }
 };
 
-export const updateParticles = (ctx, particles, dotColor, width, height) => {
+const updateParticles = (ctx, particles, dotColor, width, height) => {
   for (let p of particles) {
     ctx.beginPath();
     ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
@@ -65,3 +65,5 @@ export const updateParticles = (ctx, particles, dotColor, width, height) => {
     if (p.y > height) p.y = 0;
   }
 };
+
+export { createParticles, drawLines, updateParticles };

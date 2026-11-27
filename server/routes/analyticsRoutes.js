@@ -7,4 +7,5 @@ router.post("/visit", recordVisit);
 router.post("/resume", recordResumeDownload);
 router.get("/summary", getAnalyticsSummary);
 
+export { router };
 export default router;

@@ -5,7 +5,7 @@ const STATS_API =
 const GITHUB_API = "https://api.github.com/users/ajitkumarsaini02";
 const CF_API = "https://codeforces.com/api/user.info?handles=ajitkumarsaini02";
 
-export const fetchUnifiedStats = async (forceFresh = false) => {
+const fetchUnifiedStats = async (forceFresh = false) => {
   const cached = getCachedStats();
   if (cached && !forceFresh) return cached;
 
@@ -69,3 +69,6 @@ export const fetchUnifiedStats = async (forceFresh = false) => {
     return cached || initialStatsFallback;
   }
 };
+
+export { fetchUnifiedStats };
+export default fetchUnifiedStats;

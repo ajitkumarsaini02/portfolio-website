@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Eye, Sparkles, Cloud, Terminal, TrendingUp, Award, ShieldCheck } from "lucide-react";
 
-export function getCategoryIcon(category) {
+const getCategoryIcon = (category) => {
   switch (category) {
     case "AI & Cloud":
       return <Cloud size={14} />;
@@ -14,7 +14,7 @@ export function getCategoryIcon(category) {
     default:
       return <ShieldCheck size={14} />;
   }
-}
+};
 
 const CardMedia = ({ cert, onSelect }) => {
   const [imageError, setImageError] = useState(false);
@@ -83,4 +83,5 @@ const CardMedia = ({ cert, onSelect }) => {
   );
 };
 
+export { getCategoryIcon, CardMedia };
 export default CardMedia;

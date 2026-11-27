@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { createParticles, drawLines, updateParticles } from "./particleEngine";
 
-export function useParticleCanvas(canvasRef, theme) {
+const useParticleCanvas = (canvasRef, theme) => {
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -62,4 +62,7 @@ export function useParticleCanvas(canvasRef, theme) {
       cancelAnimationFrame(animationFrameId);
     };
   }, [canvasRef, theme]);
-}
+};
+
+export { useParticleCanvas };
+export default useParticleCanvas;

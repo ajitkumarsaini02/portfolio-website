@@ -28,4 +28,7 @@ const analyticsSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-export const Analytics = mongoose.model("Analytics", analyticsSchema);
+const Analytics = mongoose.model("Analytics", analyticsSchema);
+
+export { Analytics };
+export default Analytics;
