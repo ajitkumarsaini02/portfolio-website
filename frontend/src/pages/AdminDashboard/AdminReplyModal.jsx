@@ -7,6 +7,18 @@ const AdminReplyModal = ({ message, token, apiBase, onClose, onSuccess }) => {
   const [sending, setSending] = useState(false);
   const [error, setError] = useState("");
 
+  const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(message.email)}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(replyText)}`;
+
+  const handleOpenGmailWeb = async () => {
+    fetch(`${apiBase}/api/admin/messages/${message._id}`, {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
+      body: JSON.stringify({ status: "replied" }),
+    }).catch(() => {});
+    window.open(gmailUrl, "_blank", "noopener,noreferrer");
+    onSuccess();
+  };
+
   const handleSend = async (e) => {
     e.preventDefault();
     if (!replyText.trim()) return;
@@ -21,15 +33,16 @@ const AdminReplyModal = ({ message, token, apiBase, onClose, onSuccess }) => {
       });
       const data = await res.json();
       if (!res.ok || !data.success) throw new Error(data.message || "Failed to send reply");
+      if (data.emailSent === false) {
+        window.open(data.gmailWebUrl || gmailUrl, "_blank", "noopener,noreferrer");
+      }
       onSuccess();
     } catch (err) {
-      setError(err.message);
+      setError(err.message + ". You can use 'Open in Gmail Web' to send directly.");
     } finally {
       setSending(false);
     }
   };
-
-  const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(message.email)}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(replyText)}`;
 
   return (
     <div style={{ position: "fixed", inset: 0, zIndex: 9999, background: "rgba(0,0,0,0.7)", backdropFilter: "blur(6px)", display: "flex", alignItems: "center", justifyContent: "center", padding: "16px" }}>
@@ -61,9 +74,9 @@ const AdminReplyModal = ({ message, token, apiBase, onClose, onSuccess }) => {
             required
           />
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: "8px", marginTop: "8px", flexWrap: "wrap" }}>
-            <a href={gmailUrl} target="_blank" rel="noopener noreferrer" className="btn btn-outline" style={{ fontSize: "0.8rem", padding: "8px 12px", display: "inline-flex", alignItems: "center", gap: "6px" }}>
+            <button type="button" onClick={handleOpenGmailWeb} className="btn btn-outline" style={{ fontSize: "0.8rem", padding: "8px 12px", display: "inline-flex", alignItems: "center", gap: "6px" }}>
               <ExternalLink size={14} /> Open in Gmail Web
-            </a>
+            </button>
             <div style={{ display: "flex", gap: "8px" }}>
               <button type="button" onClick={onClose} className="btn btn-outline" style={{ fontSize: "0.8rem", padding: "8px 14px" }}>Cancel</button>
               <button type="submit" disabled={sending} className="btn btn-primary" style={{ fontSize: "0.8rem", padding: "8px 16px", display: "inline-flex", alignItems: "center", gap: "6px" }}>

@@ -60,7 +60,15 @@ const AdminMessagesTable = ({ messages, filter, setFilter, onUpdateStatus, onDel
                 <button type="button" onClick={() => onOpenReply(m)} className="btn btn-outline" style={{ padding: "4px 10px", fontSize: "0.75rem", display: "inline-flex", alignItems: "center", gap: "4px" }}>
                   <Reply size={13} /> Reply
                 </button>
-                <a href={`https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(m.email)}&su=${encodeURIComponent("Re: " + m.subject)}`} target="_blank" rel="noopener noreferrer" className="btn btn-outline" style={{ padding: "4px 8px", fontSize: "0.75rem", display: "inline-flex", alignItems: "center", gap: "4px" }} title="Open in Gmail Web">
+                <a
+                  href={`https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(m.email)}&su=${encodeURIComponent("Re: " + m.subject)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => onUpdateStatus(m._id, "replied")}
+                  className="btn btn-outline"
+                  style={{ padding: "4px 8px", fontSize: "0.75rem", display: "inline-flex", alignItems: "center", gap: "4px" }}
+                  title="Open in Gmail Web & Mark Replied"
+                >
                   <ExternalLink size={12} /> Gmail
                 </a>
                 {m.status !== "read" && (

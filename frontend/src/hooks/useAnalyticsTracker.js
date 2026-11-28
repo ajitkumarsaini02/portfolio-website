@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-const API_BASE = import.meta.env.VITE_API_URL || "";
+const API_BASE = import.meta.env.VITE_API_URL || "https://ajit-portfolio-backend.onrender.com";
 
 const trackResumeDownload = async (source = "general") => {
   try {

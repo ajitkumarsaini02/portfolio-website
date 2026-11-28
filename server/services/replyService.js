@@ -1,10 +1,20 @@
-import { createTransporter } from "./emailService.js";
+import nodemailer from "nodemailer";
 
 const sendReplyEmail = async ({ to, name, subject, replyText }) => {
-  const transporter = createTransporter();
-  if (!transporter) {
-    throw new Error("SMTP transporter is not configured on server.");
+  const user = process.env.SMTP_USER;
+  const pass = process.env.SMTP_PASS ? process.env.SMTP_PASS.replace(/\s+/g, "") : "";
+
+  if (!user || !pass || pass === "your_gmail_app_password") {
+    throw new Error("SMTP credentials not configured.");
   }
+
+  const transporter = nodemailer.createTransport({
+    service: "gmail",
+    auth: { user, pass },
+    connectionTimeout: 4000,
+    greetingTimeout: 4000,
+    socketTimeout: 5000,
+  });
 
   const html = `
     <div style="font-family:sans-serif;padding:24px;color:#222;max-width:600px;margin:0 auto;line-height:1.6;border:1px solid #e2e8f0;border-radius:10px;">
@@ -23,7 +33,7 @@ const sendReplyEmail = async ({ to, name, subject, replyText }) => {
   `;
 
   return transporter.sendMail({
-    from: `"Ajit Kumar Saini" <${process.env.SMTP_USER}>`,
+    from: `"Ajit Kumar Saini" <${user}>`,
     to,
     subject: subject || "Response from Ajit Kumar Saini",
     html,

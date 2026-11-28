@@ -2,7 +2,7 @@ import React, { createContext, useContext, useState, useEffect, useCallback } fr
 import { fallbackStats } from "./fallbackStats";
 import { parseLiveStats } from "./statsParser";
 
-const API_BASE = import.meta.env.VITE_API_URL || "";
+const API_BASE = import.meta.env.VITE_API_URL || "https://ajit-portfolio-backend.onrender.com";
 const STATS_API_URL =
   "https://coding-profile-service-v2-0.onrender.com/stats?leetcode=ajitkumarsaini02&codechef=ajitsaini94&gfg=ajitkumarsaini02&codeforces=ajitkumarsaini02";
 const GITHUB_API_URL = "https://api.github.com/users/ajitkumarsaini02";

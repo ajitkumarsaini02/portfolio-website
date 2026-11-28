@@ -10,15 +10,12 @@ const adminLogin = (req, res) => {
   if (!password || password !== expectedPassword) {
     return res.status(401).json({ success: false, message: "Invalid admin password." });
   }
-
   return res.status(200).json({ success: true, token, message: "Welcome back, Ajit!" });
 };
 
 const getAdminMessages = async (req, res) => {
   try {
-    if (!getDbStatus()) {
-      return res.status(200).json({ success: true, messages: [], mode: "memory_only" });
-    }
+    if (!getDbStatus()) return res.status(200).json({ success: true, messages: [], mode: "memory_only" });
     const { status } = req.query;
     const filter = status && status !== "all" ? { status } : {};
     const messages = await Contact.find(filter).sort({ createdAt: -1 }).limit(100);
@@ -56,25 +53,34 @@ const replyToMessage = async (req, res) => {
   try {
     const { id } = req.params;
     const { replyText, subject } = req.body || {};
-    if (!replyText?.trim()) {
-      return res.status(400).json({ success: false, message: "Reply text is required." });
-    }
+    if (!replyText?.trim()) return res.status(400).json({ success: false, message: "Reply text is required." });
     const message = await Contact.findById(id);
-    if (!message) {
-      return res.status(404).json({ success: false, message: "Message not found." });
-    }
+    if (!message) return res.status(404).json({ success: false, message: "Message not found." });
 
-    await sendReplyEmail({
-      to: message.email,
-      name: message.name,
-      subject: subject || `Re: ${message.subject}`,
-      replyText: replyText.trim(),
-    });
+    let emailSent = false;
+    let emailError = null;
+
+    try {
+      await sendReplyEmail({ to: message.email, name: message.name, subject: subject || `Re: ${message.subject}`, replyText: replyText.trim() });
+      emailSent = true;
+    } catch (err) {
+      console.warn("⚠️ [AdminReply] Direct SMTP dispatch failed:", err.message);
+      emailError = err.message;
+    }
 
     message.status = "replied";
     await message.save();
 
-    return res.status(200).json({ success: true, message: "Reply sent successfully!", data: message });
+    const gmailWebUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(message.email)}&su=${encodeURIComponent(subject || "Re: " + message.subject)}&body=${encodeURIComponent(replyText.trim())}`;
+
+    return res.status(200).json({
+      success: true,
+      emailSent,
+      emailError,
+      message: emailSent ? "Reply sent via email!" : "Status updated to replied. (Cloud SMTP blocked: please dispatch via Gmail Web).",
+      gmailWebUrl,
+      data: message,
+    });
   } catch (error) {
     return res.status(500).json({ success: false, message: error.message });
   }
