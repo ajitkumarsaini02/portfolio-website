@@ -6,7 +6,7 @@ import AdminStatsBar from "./AdminStatsBar";
 import AdminMessagesTable from "./AdminMessagesTable";
 import AdminReplyModal from "./AdminReplyModal";
 
-const API_BASE = import.meta.env.VITE_API_URL || "https://ajit-portfolio-backend.onrender.com";
+const API_BASE = import.meta.env.VITE_API_URL || "http://localhost:5000";
 
 const AdminDashboard = ({ onBackToHome }) => {
   const { token, isAuthenticated, loading: authLoading, error: authError, login, logout } = useAdminAuth();
